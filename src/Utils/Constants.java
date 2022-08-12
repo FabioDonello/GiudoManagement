@@ -20,6 +20,9 @@ public abstract class Constants {
     public static final CompoundBorder compoundBottom5 = new CompoundBorder(emptyBottom5, null);
     public static final CompoundBorder compoundBottom20 = new CompoundBorder(emptyBottom20, null);
     public static final Insets top10bottom10 = new Insets(10,0,10,0);
+    //Label dimensions
+
+    public static final Dimension LabeltextFieldDimensions = new Dimension(100,100);
     //Colors
     public static final Color senapeColor = new Color(0xE5D224);
     public static final Color redAccent = new Color(0xffff4a4a);
