@@ -11,32 +11,27 @@ import Utils.Constants;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
-public class Registration extends JFrame implements ActionListener, MouseListener {
+public class UserLogin extends JFrame implements ActionListener, MouseListener {
 
-    public Registration() {
-        super("Gestionale Eventi - Registrati");
+    public UserLogin() {
+        super("Gestionale Eventi - Accedi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
         //Creo
-        Text headerText = new Text("Registrazione", Constants.fontLabel26);
-        Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
-
-        Text name_text = new Text("Name:    ");
-        LabelTextField name_field = new LabelTextField();
-
-        Text surname_text = new Text("Surname:    ");
-        LabelTextField surname_field = new LabelTextField();
+        Text headerText = new Text("Accedi", Constants.fontLabel26);
+        Text subText = new Text("Accedi utilizzando le credenziali utilizzate al momento della registrazione");
 
         Text email_text = new Text("Email:    ");
         LabelTextField email_field = new LabelTextField();
-
+        email_field.setBorder(Constants.compoundBottom20);
         Text password_text = new Text("Password: ");
         PasswordTextField password_field = new PasswordTextField();
+        password_field.setBorder(Constants.compoundBottom20);
 
 
         Button deletebutton = new Button(this, "Delete", "Delete");
-        Button loginbutton = new Button(this, "Sing in", "Sing in");
+        Button loginbutton = new Button(this, "Login", "Login");
 
         //UI Settings
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -44,35 +39,28 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         headerText.setBorder(Constants.compoundBottom5);
         subText.setBorder(Constants.compoundBottom20);
 
-        name_text.setBorder(Constants.compoundBottom20);
-        surname_text.setBorder(Constants.compoundBottom20);
         email_text.setBorder(Constants.compoundBottom20);
         password_text.setBorder(Constants.compoundBottom20);
 
-        name_field.setBorder(Constants.compoundBottom20);
-        surname_field.setBorder(Constants.compoundBottom20);
-        email_field.setBorder(Constants.compoundBottom20);
-        password_field.setBorder(Constants.compoundBottom20);
-
         //Pannelli
         PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloSingIn = new PannelloBorder();
-        PannelloBorder pannelloButtonSingIn = new PannelloBorder();
+        PannelloBorder pannelloLogin = new PannelloBorder();
+        PannelloBorder pannelloButtonAccedi = new PannelloBorder();
         PannelloBorder pannelloButtonAnnulla = new PannelloBorder();
         JPanel pannelloAdmin = new JPanel();
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
 
-        pannelloButtonSingIn.add(loginbutton);
-        pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
+        pannelloButtonAccedi.add(loginbutton);
+        pannelloButtonAccedi.setBorder(Constants.emptyBottom5);
 
         pannelloButtonAnnulla.add(deletebutton);
         pannelloButtonAnnulla.setBorder(Constants.emptyBottom20);
 
         //Grid
 
-        GrigliaBorder grigliaSingIn = new GrigliaBorder();
+        GrigliaBorder griglialogin = new GrigliaBorder();
         GridBagConstraints a = new GridBagConstraints();
 
         a.fill = GridBagConstraints.BASELINE;
@@ -80,63 +68,35 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(name_text,a);
+        griglialogin.add(email_text,a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(name_field,a);
+        griglialogin.add(email_field,a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(surname_text,a);
+        griglialogin.add(password_text,a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(surname_field,a);
-
-        a.fill = GridBagConstraints.BASELINE;
-        a.gridx = 0;
-        a.gridy = 2;
-        a.weightx = 0.1;
-        a.weighty = 0.1;
-        grigliaSingIn.add(email_text,a);
-
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 1;
-        a.gridy = 2;
-        a.weightx = 1;
-        a.weighty = 1;
-        grigliaSingIn.add(email_field,a);
-
-        a.fill = GridBagConstraints.BASELINE;
-        a.gridx = 0;
-        a.gridy = 3;
-        a.weightx = 0.1;
-        a.weighty = 0.1;
-        grigliaSingIn.add(password_text,a);
-
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 1;
-        a.gridy = 3;
-        a.weightx = 1;
-        a.weighty = 1;
-        grigliaSingIn.add(password_field,a);
-        pannelloSingIn.add(grigliaSingIn);
+        griglialogin.add(password_field,a);
+        pannelloLogin.add(griglialogin);
 
         //Container
         Container contentView = new Container();
         contentView.add(pannelloLogo);
-        contentView.add(pannelloSingIn);
-        contentView.add(pannelloButtonSingIn);
+        contentView.add(pannelloLogin);
+        contentView.add(pannelloButtonAccedi);
         contentView.add(pannelloButtonAnnulla);
         contentView.add(pannelloAdmin);
 
