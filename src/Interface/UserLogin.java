@@ -24,10 +24,10 @@ public class UserLogin extends JFrame implements ActionListener, MouseListener {
 
         Text email_text = new Text("Email:    ");
         LabelTextField email_field = new LabelTextField();
-        email_field.setSize(Constants.LabeltextFieldDimensions);
+        email_field.setBorder(Constants.compoundBottom20);
         Text password_text = new Text("Password: ");
         PasswordTextField password_field = new PasswordTextField();
-        password_field.setSize(Constants.LabeltextFieldDimensions);
+        password_field.setBorder(Constants.compoundBottom20);
 
 
         Button deletebutton = new Button(this, "Delete", "Delete");
@@ -44,6 +44,7 @@ public class UserLogin extends JFrame implements ActionListener, MouseListener {
 
         //Pannelli
         PannelloBorder pannelloLogo = new PannelloBorder();
+        PannelloBorder pannelloLogin = new PannelloBorder();
         PannelloBorder pannelloButtonAccedi = new PannelloBorder();
         PannelloBorder pannelloButtonAnnulla = new PannelloBorder();
         JPanel pannelloAdmin = new JPanel();
@@ -59,38 +60,42 @@ public class UserLogin extends JFrame implements ActionListener, MouseListener {
 
         //Grid
 
+        GrigliaBorder griglialogin = new GrigliaBorder();
         GridBagConstraints a = new GridBagConstraints();
 
+        a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 0;
-        a.weightx = 0.0;
-        a.weighty = 0.0;
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        griglialogin.add(email_text,a);
 
-        add(email_text,a);
-
+        a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
-        a.weightx = 0.0;
-        a.weighty = 0.0;
-        add(email_field,a);
+        a.weightx = 1;
+        a.weighty = 1;
+        griglialogin.add(email_field,a);
 
-
+        a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
-        a.weightx = 0.0;
-        a.weighty = 0.0;
-        add(password_text,a);
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        griglialogin.add(password_text,a);
 
+        a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
-        a.weightx = 0.0;
-        a.weighty = 0.0;
-        add(password_field,a);
+        a.weightx = 1;
+        a.weighty = 1;
+        griglialogin.add(password_field,a);
+        pannelloLogin.add(griglialogin);
 
         //Container
         Container contentView = new Container();
-
         contentView.add(pannelloLogo);
+        contentView.add(pannelloLogin);
         contentView.add(pannelloButtonAccedi);
         contentView.add(pannelloButtonAnnulla);
         contentView.add(pannelloAdmin);
