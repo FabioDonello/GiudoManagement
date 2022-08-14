@@ -6,8 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
 import Utils.Constants;
+import Utils.DBManager;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
@@ -150,9 +154,20 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         switch (cmd) {
-            case "Login":
-                dispose();
-                new UserLogin();
+            case "Sing in":
+                DBManager.setConnection(DBManager.JDBC_Driver,DBManager.JDBC_URL);
+                try {
+                    Statement statement = DBManager.getConnection().createStatement(
+                            ResultSet.TYPE_SCROLL_SENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    DBManager.close();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 break;
             case "Delete":
                 dispose();

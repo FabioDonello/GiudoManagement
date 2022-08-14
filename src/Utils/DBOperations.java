@@ -16,19 +16,11 @@ public class DBOperations {
 
     public DBOperations() throws SQLException {
 
-        DBManager.setConnection(
-                DBUtils.JDBC_Driver_SQLite,
-                DBUtils.JDBC_URL_SQLite);
-        statement = DBManager.getConnection().createStatement();
-
-        /* MySQL connection
-        DBManager.setConnection(
-                DBManager.JDBC_Driver_MySQL,
-                DBManager.JDBC_URL_MySQL);
+        DBManager.setConnection(DBManager.JDBC_Driver, DBManager.JDBC_URL);
         statement = DBManager.getConnection().createStatement(
                 ResultSet.TYPE_SCROLL_SENSITIVE,
                 ResultSet.CONCUR_UPDATABLE);
-        */
+
 
         try {
             /*
