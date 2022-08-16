@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class DBManager {
     public static String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
-    public static String JDBC_URL = "jdbc:mysql://GiudoManagement/GiudoManagement?user=root&password=Fabiodonello98";
+    public static String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/GiudoManagement?user=root&password=Fabiodonello98";
     static Connection connection;
 
     public static void setConnection(String Driver, String URL) {
@@ -29,9 +29,7 @@ public class DBManager {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/GiudoManagement",
-                    "root",
-                    "Fabiodonello98");
+            connection = DriverManager.getConnection(JDBC_URL);
             showMetadata();
         }
         return connection;
