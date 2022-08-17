@@ -72,11 +72,11 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         switch (cmd) {
             case "login":
                 dispose();
-                new UserLogin();
+                new Login();
                 break;
             case "regis":
                 dispose();
-               // new Registration();
+                new Registration();
                 break;
             default:
                 break;
@@ -85,8 +85,6 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        dispose();
-        new AdminLogin();
     }
 
     @Override

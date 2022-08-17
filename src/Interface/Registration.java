@@ -1,27 +1,227 @@
 package Interface;
 
-import Widgets.Button;
-import Widgets.LabelPasswordField;
-import Widgets.LabelTextField;
-import Widgets.Text;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
+import Utils.Constants;
+import Utils.DBManager;
+import Utils.DBOperations;
+import Utils.DBUtils;
+import Widgets.*;
+import Widgets.Button;
+import Widgets.Container;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Registration extends JFrame implements ActionListener, MouseListener {
 
-/*public class Registration extends JFrame implements ActionListener {
+    private final LabelTextField name_field;
+    private final LabelTextField surname_field;
+    private final LabelTextField email_field;
+    private final LabelTextField password_field;
 
-    private final LabelTextField username;
-    private final LabelTextField indirizzo;
-    private final LabelPasswordField password;
-    private final LabelPasswordField confirmPassword;
-    private final Button regisButton;
-
-    public Registration(){
-        super("Gestionale eventi - Registrazione");
+    public Registration() {
+        super("Gestionale Eventi - Registrati");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
-        Text headertext = new Text();
+        //Creo
+        Text headerText = new Text("Registrazione", Constants.fontLabel26);
+        Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
+
+        Text name_text = new Text("Name:    ");
+        name_field = new LabelTextField();
+
+        Text surname_text = new Text("Surname:    ");
+        surname_field = new LabelTextField();
+
+        Text email_text = new Text("Email:    ");
+        email_field = new LabelTextField();
+
+        Text password_text = new Text("Password: ");
+        password_field = new LabelTextField();
+
+
+        Button deletebutton = new Button(this, "Delete", "Delete");
+        Button loginbutton = new Button(this, "Sing in", "Sing in");
+
+        //UI Settings
+        headerText.setHorizontalAlignment(SwingConstants.CENTER);
+        subText.setHorizontalAlignment(SwingConstants.CENTER);
+        headerText.setBorder(Constants.compoundBottom5);
+        subText.setBorder(Constants.compoundBottom20);
+
+        name_text.setBorder(Constants.compoundBottom20);
+        surname_text.setBorder(Constants.compoundBottom20);
+        email_text.setBorder(Constants.compoundBottom20);
+        password_text.setBorder(Constants.compoundBottom20);
+
+        name_field.setBorder(Constants.compoundBottom20);
+        surname_field.setBorder(Constants.compoundBottom20);
+        email_field.setBorder(Constants.compoundBottom20);
+        password_field.setBorder(Constants.compoundBottom20);
+
+        //Pannelli
+        PannelloBorder pannelloLogo = new PannelloBorder();
+        PannelloBorder pannelloSingIn = new PannelloBorder();
+        PannelloBorder pannelloButtonSingIn = new PannelloBorder();
+        PannelloBorder pannelloButtonAnnulla = new PannelloBorder();
+        JPanel pannelloAdmin = new JPanel();
+
+        pannelloLogo.add(headerText, BorderLayout.NORTH);
+        pannelloLogo.add(subText, BorderLayout.SOUTH);
+
+        pannelloButtonSingIn.add(loginbutton);
+        pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
+
+        pannelloButtonAnnulla.add(deletebutton);
+        pannelloButtonAnnulla.setBorder(Constants.emptyBottom20);
+
+        //Grid
+
+        GrigliaBorder grigliaSingIn = new GrigliaBorder();
+        GridBagConstraints a = new GridBagConstraints();
+
+        a.fill = GridBagConstraints.BASELINE;
+        a.gridx = 0;
+        a.gridy = 0;
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        grigliaSingIn.add(name_text,a);
+
+        a.fill = GridBagConstraints.HORIZONTAL;
+        a.gridx = 1;
+        a.gridy = 0;
+        a.weightx = 1;
+        a.weighty = 1;
+        grigliaSingIn.add(name_field,a);
+
+        a.fill = GridBagConstraints.BASELINE;
+        a.gridx = 0;
+        a.gridy = 1;
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        grigliaSingIn.add(surname_text,a);
+
+        a.fill = GridBagConstraints.HORIZONTAL;
+        a.gridx = 1;
+        a.gridy = 1;
+        a.weightx = 1;
+        a.weighty = 1;
+        grigliaSingIn.add(surname_field,a);
+
+        a.fill = GridBagConstraints.BASELINE;
+        a.gridx = 0;
+        a.gridy = 2;
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        grigliaSingIn.add(email_text,a);
+
+        a.fill = GridBagConstraints.HORIZONTAL;
+        a.gridx = 1;
+        a.gridy = 2;
+        a.weightx = 1;
+        a.weighty = 1;
+        grigliaSingIn.add(email_field,a);
+
+        a.fill = GridBagConstraints.BASELINE;
+        a.gridx = 0;
+        a.gridy = 3;
+        a.weightx = 0.1;
+        a.weighty = 0.1;
+        grigliaSingIn.add(password_text,a);
+
+        a.fill = GridBagConstraints.HORIZONTAL;
+        a.gridx = 1;
+        a.gridy = 3;
+        a.weightx = 1;
+        a.weighty = 1;
+        grigliaSingIn.add(password_field,a);
+        pannelloSingIn.add(grigliaSingIn);
+
+        //Container
+        Container contentView = new Container();
+        contentView.add(pannelloLogo);
+        contentView.add(pannelloSingIn);
+        contentView.add(pannelloButtonSingIn);
+        contentView.add(pannelloButtonAnnulla);
+        contentView.add(pannelloAdmin);
+
+        this.add(contentView);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+
+
     }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+        switch (cmd) {
+            case "Sing in":
+                try {
+                    Statement statement = DBOperations.establish_connection();
+                    String name = name_field.getText();
+                    String surname = surname_field.getText();
+                    String email = email_field.getText();
+                    String password = password_field.getText();
+                    int a = DBOperations.user_load(statement, name, surname, email, password);
+                    if (a == 0){
+                        System.out.println("Caricamento users non riuscito");
+                        dispose();
+                        new Registration();
+                        break;
+                    }
+                    dispose();
+                    new PreMainPage(email);
+                    break;
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            case "Delete":
+                dispose();
+                new Registration();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+
+
 }
-*/
