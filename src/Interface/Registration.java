@@ -1,17 +1,33 @@
 package Interface;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.*;
 import Utils.Constants;
+import Utils.DBManager;
+import Utils.DBOperations;
+import Utils.DBUtils;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class Registration extends JFrame implements ActionListener, MouseListener {
+
+    private final LabelTextField name_field;
+    private final LabelTextField surname_field;
+    private final LabelTextField email_field;
+    private final LabelTextField password_field;
 
     public Registration() {
         super("Gestionale Eventi - Registrati");
@@ -23,16 +39,16 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
 
         Text name_text = new Text("Name:    ");
-        LabelTextField name_field = new LabelTextField();
+        name_field = new LabelTextField();
 
         Text surname_text = new Text("Surname:    ");
-        LabelTextField surname_field = new LabelTextField();
+        surname_field = new LabelTextField();
 
         Text email_text = new Text("Email:    ");
-        LabelTextField email_field = new LabelTextField();
+        email_field = new LabelTextField();
 
         Text password_text = new Text("Password: ");
-        PasswordTextField password_field = new PasswordTextField();
+        password_field = new LabelTextField();
 
 
         Button deletebutton = new Button(this, "Delete", "Delete");
@@ -144,19 +160,37 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-    }
 
+
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         switch (cmd) {
-            case "Login":
-                dispose();
-                new UserLogin();
-                break;
+            case "Sing in":
+                try {
+                    Statement statement = DBOperations.establish_connection();
+                    String name = name_field.getText();
+                    String surname = surname_field.getText();
+                    String email = email_field.getText();
+                    String password = password_field.getText();
+                    int a = DBOperations.user_load(statement, name, surname, email, password);
+                    if (a == 0){
+                        System.out.println("Caricamento users non riuscito");
+                        dispose();
+                        new Registration();
+                        break;
+                    }
+                    dispose();
+                    new PreMainPage(email);
+                    break;
+
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             case "Delete":
                 dispose();
-                new Welcome();
+                new Registration();
                 break;
             default:
                 break;
@@ -187,6 +221,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 
 }

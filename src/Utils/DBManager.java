@@ -10,8 +10,8 @@ import java.sql.*;
  * @author Nicola Bicocchi
  */
 public class DBManager {
-    public static String JDBC_Driver = "com.mysql.jbdc.Driver";
-    public static String JDBC_URL = "jdbc:mysql://localhost:3036";
+    public static String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
+    public static String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/GiudoManagement?user=root&password=Fabiodonello98";
     static Connection connection;
 
     public static void setConnection(String Driver, String URL) {
