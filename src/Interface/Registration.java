@@ -174,16 +174,15 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                     String surname = surname_field.getText();
                     String email = email_field.getText();
                     String password = password_field.getText();
-
-                    System.out.println(name);
-                    if (DBOperations.user_load(statement, name, surname, email, password) == 0){
+                    int a = DBOperations.user_load(statement, name, surname, email, password);
+                    if (a == 0){
                         System.out.println("Caricamento users non riuscito");
                         dispose();
                         new Registration();
                         break;
                     }
                     dispose();
-                    new Welcome();
+                    new PreMainPage(email);
                     break;
 
                 } catch (SQLException ex) {
@@ -191,7 +190,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                 }
             case "Delete":
                 dispose();
-                new Welcome();
+                new Registration();
                 break;
             default:
                 break;

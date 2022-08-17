@@ -1,9 +1,6 @@
 package Utils;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * A class for testing basic operations with JDBC It supports both MySQL and
@@ -33,7 +30,7 @@ public class DBOperations {
     }
 
     public static ResultSet users_upload(Statement statement) throws SQLException {
-        return statement.executeQuery("SELECT * FROM book LIMIT 100");
+        return statement.executeQuery("SELECT * FROM Utenti");
     }
 
     public static int userLoad(Statement statement,
@@ -49,6 +46,32 @@ public class DBOperations {
 
     public static int user_load(Statement statement,
                                 String name,String surname,String email,String password) throws SQLException {
-        return statement.executeUpdate("SELECT * FROM book LIMIT 100");
+
+        int a = statement.executeUpdate("INSERT INTO Utenti(Name,Surname,Email,Password) " +
+                "VALUES('"+name+"' , '"+surname+"', '"+email+"','"+password+"')");
+
+        DBManager.close();
+        return a;
+    }
+
+    public static int projectLoad(Statement statement,
+                               String project_name,String creator) throws SQLException{
+        try {
+            System.out.println("\n- reading database...");
+            return project_Load(statement,project_name,creator);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+
+    public static int project_Load(Statement statement,
+                                String project_name,String creator) throws SQLException {
+
+        int a = statement.executeUpdate("INSERT INTO Projects(Name,Creator,) " +
+                "VALUES('"+project_name+"', '"+creator+"')");
+
+        DBManager.close();
+        return a;
     }
 }
