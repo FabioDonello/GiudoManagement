@@ -76,7 +76,7 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
                 break;
             case "regis":
                 dispose();
-                new Registration();
+               // new Registration();
                 break;
             default:
                 break;

@@ -1,5 +1,7 @@
 package Interface;
 
+import Utils.CheckEmail;
+import Utils.CheckPassword;
 import Widgets.*;
 import Utils.Constants;
 import Utils.Constants.*;
