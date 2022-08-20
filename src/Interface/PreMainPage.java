@@ -112,7 +112,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         //Container
         Container contentView = new Container();
-
         contentView.add(pannelloLogo);
         contentView.add(pannelloNew);
         contentView.add(pannelloLoad);

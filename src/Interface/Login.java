@@ -1,7 +1,6 @@
 package Interface;
 
 
-import Widgets.Container;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,15 +10,18 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import Utils.Constants;
 import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
+import Widgets.Container;
 
 public class Login extends JFrame implements ActionListener, MouseListener {
 
     private final LabelTextField email_field;
     private final LabelTextField password_field;
+
     public Login() {
         super("Gestionale Eventi - Accedi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,28 +78,28 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(email_text,a);
+        griglialogin.add(email_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(email_field,a);
+        griglialogin.add(email_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(password_text,a);
+        griglialogin.add(password_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(password_field,a);
+        griglialogin.add(password_field, a);
         pannelloLogin.add(griglialogin);
 
         //Container
@@ -124,7 +126,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
                     String email = email_field.getText();
                     String password = password_field.getText();
                     ResultSet ris = DBOperations.users_upload(statement);
-                    if (ris == null){
+                    if (ris == null) {
                         System.out.println("Caricamento users non riuscito");
                         dispose();
                         new Welcome();
@@ -135,7 +137,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
                     while (ris.next()) {
                         String DBEmail = ris.getString("Email");
                         String DBPassword = ris.getString("Password");
-                        if (DBEmail.compareTo(email)==0 && DBPassword.compareTo(password)==0){
+                        if (DBEmail.compareTo(email) == 0 && DBPassword.compareTo(password) == 0) {
                             dispose();
                             new PreMainPage(DBEmail);
                         }

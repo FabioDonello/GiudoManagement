@@ -69,6 +69,8 @@ public class CheckEmail {
 
     public static boolean isAddressValid(String address) {
         int pos = address.indexOf('@');
+        String split_address = address.substring(0, address.indexOf("@"));
+        System.out.println(split_address);
         if (pos == -1) return false;
 
         String domain = address.substring(++pos);
@@ -93,11 +95,11 @@ public class CheckEmail {
                 res = hear(rdr);
                 if (res != 220) throw new Exception("Invalid header");
 
-                say(wtr, "EHLO peppeb176");
+                say(wtr, "EHLO " + split_address);
                 res = hear(rdr);
                 if (res != 250) throw new Exception("Not ESMTP");
 
-                say(wtr, "MAIL FROM: <info@peppeb176>");
+                say(wtr, "MAIL FROM: <info@" + split_address+ ">");
                 res = hear(rdr);
                 if (res != 250) throw new Exception("Sender rejected");
 
@@ -123,9 +125,4 @@ public class CheckEmail {
         }
         return false;
     }
-
-    /*public static void main(String[] args) {
-        System.out.println("peppeb176@icloud.com.com" + "is valid? " +
-                isAddressValid("peppeb176@icloud.com.com"));
-    }*/
 }
