@@ -19,6 +19,7 @@ import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,6 +36,10 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         setResizable(true);
 
         //Creo
+        BasicArrowButton Arrow = new BasicArrowButton(BasicArrowButton.WEST);
+        Arrow.setBackground(Color.red);
+        Arrow.addActionListener(this);
+
         Text headerText = new Text("Registrazione", Constants.fontLabel26);
         Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
 
@@ -50,8 +55,6 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         Text password_text = new Text("Password: ");
         password_field = new LabelTextField();
 
-
-        Button deletebutton = new Button(this, "Delete", "Delete");
         Button loginbutton = new Button(this, "Sing in", "Sing in");
 
         //UI Settings
@@ -71,11 +74,12 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         password_field.setBorder(Constants.compoundBottom20);
 
         //Pannelli
+        PannelloBorder pannelloArrow = new PannelloBorder();
         PannelloBorder pannelloLogo = new PannelloBorder();
         PannelloBorder pannelloSingIn = new PannelloBorder();
         PannelloBorder pannelloButtonSingIn = new PannelloBorder();
-        PannelloBorder pannelloButtonAnnulla = new PannelloBorder();
-        JPanel pannelloAdmin = new JPanel();
+
+        pannelloArrow.add(Arrow,BorderLayout.WEST);
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
@@ -83,8 +87,6 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         pannelloButtonSingIn.add(loginbutton);
         pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
 
-        pannelloButtonAnnulla.add(deletebutton);
-        pannelloButtonAnnulla.setBorder(Constants.emptyBottom20);
 
         //Grid
 
@@ -150,17 +152,15 @@ public class Registration extends JFrame implements ActionListener, MouseListene
 
         //Container
         Container contentView = new Container();
+        contentView.add(pannelloArrow);
         contentView.add(pannelloLogo);
         contentView.add(pannelloSingIn);
         contentView.add(pannelloButtonSingIn);
-        contentView.add(pannelloButtonAnnulla);
-        contentView.add(pannelloAdmin);
 
         this.add(contentView);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-
 
     }
     @Override
@@ -174,7 +174,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                     String surname = surname_field.getText();
                     String email = email_field.getText();
                     String password = password_field.getText();
-                    int a = DBOperations.user_load(statement, name, surname, email, password);
+                    int a = DBOperations.userLoad(statement, name, surname, email, password);
                     if (a == 0){
                         System.out.println("Caricamento users non riuscito");
                         dispose();
@@ -188,9 +188,9 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-            case "Delete":
+            case "":
                 dispose();
-                new Registration();
+                new Welcome();
                 break;
             default:
                 break;

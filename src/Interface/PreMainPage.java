@@ -1,11 +1,13 @@
 package Interface;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import Utils.Constants;
@@ -13,141 +15,123 @@ import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableModel;
 
 public class PreMainPage extends JFrame implements ActionListener, MouseListener {
 
-    private final LabelTextField newProject_field;
-    private final LabelTextField loadProject_field;
-
-    public PreMainPage(String Creator){
+    private final JTable jTable;
+    private static DefaultTableModel tableModel = null;
+    public PreMainPage(String Creator) throws SQLException {
 
         super("GIUDO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
-        Text headerText = new Text("GIUDO", Constants.fontLabel26);
-        Text newText = new Text("Assegna un nome al progetto:");
-        Text loadText = new Text("Seleziona uno dei progetti esistenti:");
+        //Create
 
-        Button NewProjectButton = new Button(this, "New project", "New");
-        Button LoadDbProjectButton = new Button(this, "Load existing project", "Load");
+        Text headerText = new Text("Giudo", Constants.fontLabel26);
+        Text subText = new Text("Seleziona un progetto esistente o creane uno nuovo:");
 
-        newProject_field = new LabelTextField();
-        newProject_field.setBorder(Constants.compoundBottom20);
-
-        loadProject_field = new LabelTextField();
-        loadProject_field.setBorder(Constants.compoundBottom20);
+        Button open_project_button = new Button(this, "Open project", "Open");
+        Button create_table_button = new Button(this, "Create project", "Create");
+        Button delete_table_button = new Button(this, "Delete project", "Delete");
 
 
+        tableModel = new DefaultTableModel();
+        tableModel.addColumn("ID");
+        tableModel.addColumn("Name");
+        tableModel.addColumn("Description");
+        jTable = new JTable(tableModel);
+        jTable.setBounds(30, 40, 230, 280);
+        jTable.getModel().addTableModelListener(new MyTableModelListener(jTable));
 
-        //UI Settings
-        headerText.setHorizontalAlignment(SwingConstants.CENTER);
-        headerText.setBorder(Constants.compoundBottom5);
+        JScrollPane jScrollPane = new JScrollPane(jTable);
 
-        newText.setHorizontalAlignment(SwingConstants.CENTER);
-        newText.setBorder(Constants.compoundBottom20);
 
-        loadText.setHorizontalAlignment(SwingConstants.CENTER);
-        loadText.setBorder(Constants.compoundBottom20);
-        ;
+        //Panel
+        PannelloBorder LogoPanel = new PannelloBorder();
+        PannelloBorder ButtonPanel = new PannelloBorder();
 
-        //Pannelli
-        PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloNew = new PannelloBorder();
-        PannelloBorder pannelloLoad = new PannelloBorder();
+        LogoPanel.add(headerText, BorderLayout.NORTH);
+        LogoPanel.add(subText, BorderLayout.SOUTH);
 
-        pannelloLogo.add(headerText, BorderLayout.NORTH);
-        pannelloLogo.add(newText, BorderLayout.SOUTH);
-
-        GrigliaBorder grigliaNewProjects = new GrigliaBorder();
-        GridBagConstraints a = new GridBagConstraints();
-
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 0;
-        a.gridy = 0;
-        a.weightx = 1;
-        a.weighty = 1;
-        grigliaNewProjects.add(newText,a);
-
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 0;
-        a.gridy = 1;
-        a.weightx = 1;
-        a.weighty = 1;
-        grigliaNewProjects.add(newProject_field,a);
-
-        a.fill = GridBagConstraints.HORIZONTAL;
-        a.gridx = 0;
-        a.gridy = 2;
-        a.weightx = 1;
-        a.weighty = 1;
-        grigliaNewProjects.add(NewProjectButton,a);
-        pannelloNew.add(grigliaNewProjects);
-
-        GrigliaBorder grigliaLoadProjects = new GrigliaBorder();
-        GridBagConstraints b = new GridBagConstraints();
-
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 0;
-        b.weightx = 1;
-        b.weighty = 1;
-        grigliaLoadProjects.add(loadText,b);
-
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 1;
-        b.weightx = 1;
-        b.weighty = 1;
-        grigliaLoadProjects.add(loadProject_field,b);
-
-        b.fill = GridBagConstraints.HORIZONTAL;
-        b.gridx = 0;
-        b.gridy = 2;
-        b.weightx = 1;
-        b.weighty = 1;
-        grigliaLoadProjects.add(LoadDbProjectButton,b);
-        pannelloLoad.add(grigliaLoadProjects);
-
+        ButtonPanel.add(open_project_button,BorderLayout.WEST);
+        ButtonPanel.add(create_table_button,BorderLayout.CENTER);
+        ButtonPanel.add(delete_table_button,BorderLayout.EAST);
 
         //Container
         Container contentView = new Container();
+        contentView.add(LogoPanel);
+        contentView.add(jScrollPane);
+        contentView.add(ButtonPanel);
+        contentView.setSize(600, 300);
 
-        contentView.add(pannelloLogo);
-        contentView.add(pannelloNew);
-        contentView.add(pannelloLoad);
 
         this.add(contentView);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
 
+        UpLoadData();
+
     }
+
+
+    /**
+     * Upload all the project in the database when the table is build
+     */
+    public void UpLoadData() throws SQLException {
+        Statement statement = DBOperations.establish_connection();
+        ResultSet ris = DBOperations.projects_Upload(statement);
+        if (ris!=null){
+            while (ris.next()) {
+                String DBId = ris.getString("ID");
+                String DBName = ris.getString("Name");
+                String DBDescription = ris.getString("Description");
+
+                tableModel.insertRow(tableModel.getRowCount(), new Object[] { DBId,DBName,DBDescription});
+            }
+        }
+    }
+
+
+    /**
+     * Create a new project in the table
+     * After the project was created with default option they add to database
+     */
+    public void CreateProject() throws SQLException {
+        int Row = tableModel.getRowCount();
+        String ID = String.valueOf(Row);
+        tableModel.insertRow(tableModel.getRowCount(), new Object[] { ID,"Project "+ID, "This is project "+ID });
+
+        Statement statement = DBOperations.establish_connection();
+        DBOperations.projectLoad(statement,ID,"Project "+ID,"This is project "+ID);
+    }
+    public void DeleteProject(){
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         switch (cmd){
-            case "New":
+            case "Create":
                 try {
-                    Statement statement = DBOperations.establish_connection();
-                    String DBName = newProject_field.getText();
-
-
+                    CreateProject();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-
-                dispose();
-                new MainPage();
-                break;
-
-            case "Load":
-
+            case "Delete":
+                DeleteProject();
         }
 
 
     }
+
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -173,4 +157,45 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
     public void mouseExited(MouseEvent e) {
 
     }
+
+    static class MyTableModelListener implements TableModelListener {
+        JTable table;
+
+        MyTableModelListener(JTable table) {
+            this.table = table;
+        }
+
+        public void tableChanged(TableModelEvent e) {
+            int firstRow = e.getFirstRow();
+            int lastRow = e.getLastRow();
+            int index = e.getColumn();
+
+            System.out.println("La riga " + firstRow);
+            System.out.println("L'ndice" + index);
+
+            switch (e.getType()) {
+                case TableModelEvent.INSERT:
+                    for (int i = firstRow; i <= lastRow; i++) {
+                        System.out.println(i);
+                    }
+                    break;
+                case TableModelEvent.UPDATE:
+                    try {
+                        Statement statement = DBOperations.establish_connection();
+                        String id = (String) tableModel.getValueAt(firstRow,0);
+                        String name = (String) tableModel.getValueAt(firstRow,1);
+                        String description = (String) tableModel.getValueAt(firstRow,2);
+                        DBOperations.projectRefresh(statement, id, name, description);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    break;
+                case TableModelEvent.DELETE:
+                    break;
+            }
+        }
+    }
+
+
+
 }
