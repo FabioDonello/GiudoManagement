@@ -1,5 +1,6 @@
 package Interface;
 
+
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
@@ -10,15 +11,19 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import Utils.Constants;
 import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
+
 public class Login extends JFrame implements ActionListener, MouseListener {
+
 
     private static LabelTextField email_field;
     private static PasswordTextField password_field;
+
     public Login() {
         super("Gestionale Eventi - Accedi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -75,28 +80,28 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(email_text,a);
+        griglialogin.add(email_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(email_field,a);
+        griglialogin.add(email_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(password_text,a);
+        griglialogin.add(password_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(password_field,a);
+        griglialogin.add(password_field, a);
         pannelloLogin.add(griglialogin);
 
         //Container
@@ -153,7 +158,9 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         switch (cmd) {
             case "Login":
                 try {
+
                     LoginCheck();
+
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

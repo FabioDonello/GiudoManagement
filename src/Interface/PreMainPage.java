@@ -62,7 +62,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         JScrollPane jScrollPane = new JScrollPane(jTable);
 
-
         //Panel
         PannelloBorder LogoPanel = new PannelloBorder();
         PannelloBorder ButtonPanel = new PannelloBorder();

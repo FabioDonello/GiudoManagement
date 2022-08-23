@@ -14,7 +14,6 @@ import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
-
 import javax.swing.plaf.basic.BasicArrowButton;
 
 public class Registration extends JFrame implements ActionListener, MouseListener {
