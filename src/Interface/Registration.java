@@ -7,22 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.*;
 import Utils.Constants;
-import Utils.DBManager;
 import Utils.DBOperations;
-import Utils.DBUtils;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
-import javax.swing.*;
+
 import javax.swing.plaf.basic.BasicArrowButton;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 public class Registration extends JFrame implements ActionListener, MouseListener {
 
     private final LabelTextField name_field;
@@ -182,7 +176,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                         break;
                     }
                     dispose();
-                    new PreMainPage(email);
+                    new PreMainPage();
                     break;
 
                 } catch (SQLException ex) {

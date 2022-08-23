@@ -17,13 +17,14 @@ import Widgets.Button;
 import Widgets.Container;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import java.util.Random;
 import javax.swing.table.TableModel;
 
 public class PreMainPage extends JFrame implements ActionListener, MouseListener {
 
     private final JTable jTable;
     private static DefaultTableModel tableModel = null;
-    public PreMainPage(String Creator) throws SQLException {
+    public PreMainPage() throws SQLException {
 
         super("GIUDO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +40,19 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         Button delete_table_button = new Button(this, "Delete project", "Delete");
 
 
-        tableModel = new DefaultTableModel();
+        tableModel = new DefaultTableModel(){
+            /**
+             * Make the cell ID not editable
+             */
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                if (col == 0) {
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        };
         tableModel.addColumn("ID");
         tableModel.addColumn("Name");
         tableModel.addColumn("Description");
@@ -80,7 +93,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
 
     /**
-     * Upload all the project in the database when the table is build
+     * Upload all project from the database when the table is build
      */
     public void UpLoadData() throws SQLException {
         Statement statement = DBOperations.establish_connection();
@@ -103,13 +116,37 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
      */
     public void CreateProject() throws SQLException {
         int Row = tableModel.getRowCount();
-        String ID = String.valueOf(Row);
-        tableModel.insertRow(tableModel.getRowCount(), new Object[] { ID,"Project "+ID, "This is project "+ID });
+        String ID = String.valueOf((int) Math.floor(Math.random()*(19999-10000+1)+10000));
+        tableModel.insertRow(tableModel.getRowCount(), new Object[] { ID,"Project "+String.valueOf(Row),
+                "This is project "+String.valueOf(Row) });
 
         Statement statement = DBOperations.establish_connection();
-        DBOperations.projectLoad(statement,ID,"Project "+ID,"This is project "+ID);
+        DBOperations.projectLoad(statement,ID,"Project "+String.valueOf(Row),
+                "This is project "+String.valueOf(Row));
     }
-    public void DeleteProject(){
+
+    /**
+     * Delete a selected project in the table
+     * After the project was deleted they also delete in the database
+     */
+    public void DeleteProject() throws SQLException {
+        int index = jTable.getSelectedRow();
+        if (index != -1){
+            Statement statement = DBOperations.establish_connection();
+            String id = (String) tableModel.getValueAt(index,0);
+            DBOperations.projectDelete(statement,id);
+            tableModel.removeRow(index);
+            JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
+        }
+    }
+
+    public void OpenProject(){
+        int index = jTable.getSelectedRow();
+        if (index!=-1){
+            String id = (String) tableModel.getValueAt(index,0);
+            dispose();
+            new Welcome();
+        }
 
     }
 
@@ -125,7 +162,13 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                     throw new RuntimeException(ex);
                 }
             case "Delete":
-                DeleteProject();
+                try {
+                    DeleteProject();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+            case "Open":
+                OpenProject();
         }
 
 
@@ -170,15 +213,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
             int lastRow = e.getLastRow();
             int index = e.getColumn();
 
-            System.out.println("La riga " + firstRow);
-            System.out.println("L'ndice" + index);
-
             switch (e.getType()) {
-                case TableModelEvent.INSERT:
-                    for (int i = firstRow; i <= lastRow; i++) {
-                        System.out.println(i);
-                    }
-                    break;
                 case TableModelEvent.UPDATE:
                     try {
                         Statement statement = DBOperations.establish_connection();
@@ -186,16 +221,14 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                         String name = (String) tableModel.getValueAt(firstRow,1);
                         String description = (String) tableModel.getValueAt(firstRow,2);
                         DBOperations.projectRefresh(statement, id, name, description);
+                        break;
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
-                    break;
                 case TableModelEvent.DELETE:
+
                     break;
             }
         }
     }
-
-
-
 }

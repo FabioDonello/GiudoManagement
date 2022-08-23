@@ -61,7 +61,6 @@ public class DBOperations {
         int a = statement.executeUpdate("INSERT INTO Users(Name,Surname,Email,Password) " +
                 "VALUES('"+name+"' , '"+surname+"', '"+email+"','"+password+"')");
 
-        DBManager.close();
         return a;
     }
 
@@ -81,8 +80,6 @@ public class DBOperations {
 
         int a = statement.executeUpdate("INSERT INTO Projects(ID,Name,Description) " +
                 "VALUES('"+id+"', '"+project_name+"', '"+description+"')");
-
-        DBManager.close();
         return a;
     }
 
@@ -90,7 +87,7 @@ public class DBOperations {
                                   String id, String project_name,String description) throws SQLException{
         try {
             System.out.println("\n- Writing database...");
-            return project_Load(statement,id,project_name,description);
+            return project_Refresh(statement,id,project_name,description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -100,9 +97,24 @@ public class DBOperations {
     public static int project_Refresh(Statement statement,
                                    String id, String project_name,String description) throws SQLException {
 
-        int a = statement.executeUpdate("REPLACE INTO Projects(Name,Description) " +
-                "VALUES('"+project_name+"', '"+description+"') WHERE ID=id");
-        DBManager.close();
+        int a = statement.executeUpdate("REPLACE INTO Projects(ID,Name,Description) " +
+                "VALUES('"+id+"', '"+project_name+"', '"+description+"')");
+        return a;
+    }
+
+    public static int projectDelete(Statement statement, String id) throws SQLException{
+        try {
+            System.out.println("\n- Deleting project...");
+            return project_Delete(statement, id);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+
+    public static int project_Delete(Statement statement, String id) throws SQLException {
+
+        int a = statement.executeUpdate("DELETE FROM Projects WHERE ID = '" +id+ "'  ");
         return a;
     }
 

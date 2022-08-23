@@ -18,14 +18,10 @@ import Widgets.Container;
 
 public class MainPage extends JFrame implements ActionListener,MouseListener {
 
-    public MainPage(){
+    public MainPage(String id){
         super("Giudo - Main Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
-
-
-
-
     }
 
     @Override

@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,11 +15,10 @@ import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
-import javax.swing.Icon;
 public class Login extends JFrame implements ActionListener, MouseListener {
 
-    private final LabelTextField email_field;
-    private final LabelTextField password_field;
+    private static LabelTextField email_field;
+    private static PasswordTextField password_field;
     public Login() {
         super("Gestionale Eventi - Accedi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -40,11 +38,9 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         email_field.setBorder(Constants.compoundBottom20);
 
         Text password_text = new Text("Password: ");
-        password_field = new LabelTextField();
+        password_field = new PasswordTextField();
         password_field.setBorder(Constants.compoundBottom20);
 
-
-        Button deletebutton = new Button(this, "Delete", "Delete");
         Button loginbutton = new Button(this, "Login", "Login");
 
         //UI Settings
@@ -117,6 +113,39 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         setVisible(true);
     }
 
+    public void LoginCheck() throws SQLException {
+        Statement statement = DBOperations.establish_connection();
+        String email = email_field.getText();
+        String password = String.valueOf(password_field.getPassword());
+        ResultSet ris = DBOperations.users_upload(statement);
+        if (ris == null){
+            System.out.println("Caricamento users non riuscito");
+            dispose();
+            new Welcome();
+        }
+        //Check e-mail and password after upload
+        int x = 0;
+        while (true) {
+            assert ris != null;
+            if (!ris.next()) break;
+            String DBEmail = ris.getString("Email");
+            String DBPassword = ris.getString("Password");
+            if (DBEmail.compareTo(email)==0 && DBPassword.compareTo(password)==0){
+                dispose();
+                new PreMainPage();
+                x=1;
+            }
+        }
+        if (x==0){
+            email_field.setText("");
+            password_field.setText("");
+            JOptionPane.showMessageDialog(null,
+                    "Email or password d incorrect, please retry");
+
+        }
+
+}
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
@@ -124,33 +153,11 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         switch (cmd) {
             case "Login":
                 try {
-                    Statement statement = DBOperations.establish_connection();
-                    String email = email_field.getText();
-                    String password = password_field.getText();
-                    ResultSet ris = DBOperations.users_upload(statement);
-                    if (ris == null){
-                        System.out.println("Caricamento users non riuscito");
-                        dispose();
-                        new Welcome();
-                        break;
-                    }
-
-                    //Check e-mail and password after upload
-                    while (ris.next()) {
-                        String DBEmail = ris.getString("Email");
-                        String DBPassword = ris.getString("Password");
-                        if (DBEmail.compareTo(email)==0 && DBPassword.compareTo(password)==0){
-                            dispose();
-                            new PreMainPage(DBEmail);
-                        }
-                        ris.updateRow();
-                    }
-                    break;
-
+                    LoginCheck();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-
+                break;
             case "":
                 dispose();
                 new Welcome();
