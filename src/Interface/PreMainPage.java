@@ -49,7 +49,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         loadText.setHorizontalAlignment(SwingConstants.CENTER);
         loadText.setBorder(Constants.compoundBottom20);
-        ;
 
         //Pannelli
         PannelloBorder pannelloLogo = new PannelloBorder();
