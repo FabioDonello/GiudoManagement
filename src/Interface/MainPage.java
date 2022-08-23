@@ -15,7 +15,7 @@ import java.awt.event.MouseListener;
 
 public class MainPage extends JFrame implements ActionListener,MouseListener {
 
-    public MainPage(){
+    public MainPage(String id){
         super("Giudo - Main Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
@@ -74,7 +74,6 @@ public class MainPage extends JFrame implements ActionListener,MouseListener {
         this.add(contentView);
         pack();
         setLocationRelativeTo(null);
-
     }
 
     @Override
