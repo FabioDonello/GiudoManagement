@@ -10,8 +10,9 @@ import java.sql.*;
  * @author Nicola Bicocchi
  */
 public class DBManager {
-    public static String JDBC_Driver = "com.mysql.cj.jdbc.Driver";
-    public static String JDBC_URL = "jdbc:mysql://127.0.0.1:3306/GiudoManagement?user=root&password=Fabiodonello98";
+    public static String JDBC_Driver = "org.sqlite.JDBC";
+
+    public static String JDBC_URL = "jdbc:sqlite:/Users/fabiodonello/IdeaProjects/GiudoManagement/src/Utils/DATABASE";
     static Connection connection;
 
     public static void setConnection(String Driver, String URL) {
@@ -30,6 +31,7 @@ public class DBManager {
                 e.printStackTrace();
             }
             connection = DriverManager.getConnection(JDBC_URL);
+            DatabaseMetaData meta = connection.getMetaData();
             showMetadata();
         }
         return connection;

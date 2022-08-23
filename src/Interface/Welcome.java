@@ -22,7 +22,6 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         //Creo
         Text headerText = new Text("Gestionale Eventi", Constants.fontLabel26);
         Text subText = new Text("Con questo software potrai gestire i tuoi eventi.");
-        Text adminLink = new Text("Sei un Admin? Clicca qui.");
         Button loginbutton = new Button(this, "Accedi");
         Button registerbutton = new Button(this, "Registrati", "regis");
 
@@ -31,10 +30,6 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         subText.setHorizontalAlignment(SwingConstants.CENTER);
         headerText.setBorder(Constants.compoundBottom5);
         subText.setBorder(Constants.compoundBottom20);
-        adminLink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-
-        //Action Listener
-        adminLink.addMouseListener(this);
 
         //Pannelli
         PannelloBorder pannelloLogo = new PannelloBorder();
@@ -51,15 +46,12 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         pannelloButtonRegis.add(registerbutton);
         pannelloButtonRegis.setBorder(Constants.emptyBottom20);
 
-        pannelloAdmin.add(adminLink);
-
         //Container
         Container contentView = new Container();
 
         contentView.add(pannelloLogo);
         contentView.add(pannelloButtonAccedi);
         contentView.add(pannelloButtonRegis);
-        contentView.add(pannelloAdmin);
 
         this.add(contentView);
         pack();
