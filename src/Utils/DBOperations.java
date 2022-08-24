@@ -133,6 +133,24 @@ public class DBOperations {
         return statement.executeQuery("SELECT * FROM Projects");
     }
 
+    public static int AddRevCostUpload(Statement statement,
+                                  String table, String amount, String name,String description) throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return AddRevCostUpload(statement,table,amount,name,description);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+
+    public static int AddRevCost_Upload(Statement statement,
+                                   String table, String amount, String name, String description) throws SQLException {
+        int a = statement.executeUpdate("INSERT INTO '"+table+"'(ID,Name,Description) " +
+                "VALUES('"+amount+"', '"+name+"', '"+description+"')");
+        return a;
+    }
+
 
 
 

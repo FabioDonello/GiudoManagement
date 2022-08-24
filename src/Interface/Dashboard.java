@@ -3,7 +3,6 @@ package Interface;
 import Utils.Constants;
 import Widgets.*;
 import Widgets.Button;
-import Widgets.Container;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,8 +34,8 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         headerText.setBorder(Constants.compoundBottom5);
         headerText.setForeground(Color.GREEN);
 
-        PannelloBorder west = new PannelloBorder();
-        PannelloBorder center = new PannelloBorder();
+        PannelloBorder west = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder center = new PannelloBorder(new GridLayout(3, 2));
 
         west.setBackground(Constants.bluElettrico);
         west.setPreferredSize(new Dimension(100, 100));

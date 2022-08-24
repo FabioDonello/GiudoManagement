@@ -67,10 +67,10 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         password_field.setBorder(Constants.compoundBottom20);
 
         //Pannelli
-        PannelloBorder pannelloArrow = new PannelloBorder();
-        PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloSingIn = new PannelloBorder();
-        PannelloBorder pannelloButtonSingIn = new PannelloBorder();
+        PannelloBorder pannelloArrow = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloLogo = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloSingIn = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloButtonSingIn = new PannelloBorder(new GridLayout(3, 2));
 
         pannelloArrow.add(Arrow,BorderLayout.WEST);
 

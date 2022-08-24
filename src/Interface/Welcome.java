@@ -32,9 +32,9 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         subText.setBorder(Constants.compoundBottom20);
 
         //Pannelli
-        PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloButtonAccedi = new PannelloBorder();
-        PannelloBorder pannelloButtonRegis = new PannelloBorder();
+        PannelloBorder pannelloLogo = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloButtonAccedi = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloButtonRegis = new PannelloBorder(new GridLayout(3, 2));
         JPanel pannelloAdmin = new JPanel();
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
