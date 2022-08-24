@@ -31,10 +31,6 @@ public class Login extends JFrame implements ActionListener, MouseListener {
 
         //Creo
 
-        BasicArrowButton Arrow = new BasicArrowButton(BasicArrowButton.WEST);
-        Arrow.setBackground(Color.red);
-        Arrow.addActionListener(this);
-
         Text headerText = new Text("Accedi", Constants.fontLabel26);
         Text subText = new Text("Accedi utilizzando le credenziali utilizzate al momento della registrazione");
 
@@ -47,6 +43,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         password_field.setBorder(Constants.compoundBottom20);
 
         Button loginbutton = new Button(this, "Login", "Login");
+        BackButton backButton = new BackButton(this);
 
         //UI Settings
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -63,7 +60,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         PannelloBorder pannelloLogin = new PannelloBorder();
         PannelloBorder pannelloButtonAccedi = new PannelloBorder();
 
-        pannelloArrow.add(Arrow,BorderLayout.WEST);
+        pannelloArrow.add(backButton,BorderLayout.WEST);
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);

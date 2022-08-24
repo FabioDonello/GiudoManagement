@@ -11,9 +11,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
+    PannelloBorder center;
+    PannelloBorder west;
 
     public Dashboard() {
 
@@ -23,50 +26,58 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
         Text headerText = new Text("HOME", Constants.fontLabel26);
 
-        Button funz1 = new Button(this, "Contabilità", "cmd1");
-        funz1.setBounds(10,10,30,30);
+        CoinsButton coinsButton = new CoinsButton(this,"Contabilità","costi");
         Button funz2 = new Button(this, "Personale", "cmd2");
-        Button funz3 = new Button(this, "Magazzino", "cmd3");
+        Button magazzino = new Button(this, "Magazzino", "magazzino");
         Button funz4 = new Button(this, "To-Do List", "cmd4");
         Button funz5 = new Button(this, "Sponsor/Fornitori", "cmd5");
         Button funz6 = new Button(this, "Pre-vendite", "cmd6");
+        HomeButton homeButton = new HomeButton(this);
+        LogoutButton logoutButton = new LogoutButton(this);
 
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
         headerText.setBorder(Constants.compoundBottom5);
-        headerText.setForeground(Color.GREEN);
 
-        PannelloBorder west = new PannelloBorder();
-        PannelloBorder center = new PannelloBorder();
+        west = new PannelloBorder();
+        center = new PannelloBorder();
 
-        west.setBackground(Constants.bluElettrico);
-        west.setPreferredSize(new Dimension(100, 100));
+        Box b= Box.createHorizontalBox();
+        b.add(Box.createHorizontalGlue());
+        b.add(homeButton);
+        b.add(Box.createHorizontalStrut(10));
+        b.add(logoutButton);
+
+        west.setPreferredSize(Constants.FieldDimensions100);
+        west.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         west.add(headerText, BorderLayout.NORTH);
+        west.add(b,BorderLayout.SOUTH);
 
         center.setBackground(Constants.senapeColor);
-        center.setPreferredSize(new Dimension(100, 100));
-        center.setLayout(new FlowLayout(FlowLayout.CENTER,100,100));
-        center.add(funz1);
+        center.setPreferredSize(Constants.FieldDimensions100);
+        center.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
+        center.add(coinsButton);
         center.add(funz2);
-        center.add(funz3);
+        center.add(magazzino);
         center.add(funz4);
         center.add(funz5);
         center.add(funz6);
 
-        /*Container contentView = new Container();
-        contentView.add(west,BorderLayout.WEST);
-        contentView.add(center,BorderLayout.CENTER);
-
-        this.add(contentView);*/
-        this.add(west,BorderLayout.WEST);
-        this.add(center,BorderLayout.CENTER);
-        setLocationRelativeTo(null);
-        setSize(900,600);
+        this.add(west, BorderLayout.WEST);
+        this.add(center, BorderLayout.CENTER);
+        setSize(900, 600);
         setVisible(true);
+        setLocationRelativeTo(null);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        String cmd = e.getActionCommand();
+        if ("magazzino".equals(cmd)) {
+            center.setVisible(false);
+            new Magazzino(this);
+        }
     }
 
     @Override

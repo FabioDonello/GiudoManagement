@@ -7,10 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/mysql-connector-java-8.0.30.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/sqlite-jdbc-3.39.2.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
