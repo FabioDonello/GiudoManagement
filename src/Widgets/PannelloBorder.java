@@ -8,4 +8,8 @@ public class PannelloBorder extends JPanel {
         super();
         setLayout(new BorderLayout());
     }
+
+    public PannelloBorder(){
+        super();
+    }
 }

@@ -1,6 +1,5 @@
 package Utils;
 
-import Interface.MoneyFlow;
 import Widgets.*;
 import Widgets.Button;
 
@@ -9,15 +8,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddTextToTable extends JFrame implements ActionListener  {
+public class AddTextToMoneyTable extends JFrame implements ActionListener  {
 
     public Button Add_button;
     public LabelTextField ValueLabel;
     public LabelTextField NameLabel;
     public LabelTextField DescriptionLabel;
-    public AddTextToTable() {
 
-        JDialog InfoFrame = new JDialog();
+    public JDialog InfoFrame;
+    public AddTextToMoneyTable() {
+
+        InfoFrame = new JDialog();
 
         Text ValueText = new Text("Amount:");
         Text NameText = new Text("Name:");
@@ -49,9 +50,8 @@ public class AddTextToTable extends JFrame implements ActionListener  {
 
     }
 
-    public void ciao(){
-
-
+    public void Close(){
+        InfoFrame.dispose();
     }
 
 

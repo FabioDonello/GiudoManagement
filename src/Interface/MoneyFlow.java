@@ -1,6 +1,6 @@
 package Interface;
 
-import Utils.AddTextToTable;
+import Utils.AddTextToMoneyTable;
 import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -20,8 +21,12 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
 
     private final JTable Cost_jTable;
     private final JTable Revenues_jTable;
-    private static DefaultTableModel Cost_tableModel = null;
-    private static DefaultTableModel Revenues_tableModel = null;
+    private static DefaultTableModel Cost_tableModel;
+    private static DefaultTableModel Revenues_tableModel;
+    private static String id;
+    private static LabelTextField TotalCostLabel;
+    private static LabelTextField TotalRevLabel;
+    private static LabelTextField TotalContLabel;
 
     public MoneyFlow(String ID) throws SQLException{
         super("GIUDO - Money Flow");
@@ -31,7 +36,15 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         //Create Cost Management
 
         Text CostText = new Text("COST");
-        Cost_tableModel = new DefaultTableModel();
+        Cost_tableModel = new DefaultTableModel(){
+            /**
+             * Make the all cell not editable
+             */
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
 
         Cost_tableModel.addColumn("Cost Amount");
         Cost_tableModel.addColumn("Name");
@@ -42,13 +55,17 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         Cost_jTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(Cost_jTable));
         JScrollPane Cost_jScrollPane = new JScrollPane(Cost_jTable);
 
-        Button add_cost_button = new Button(this, "+", "AddCost");
-        Button delete_cost_button = new Button(this, "-", "DelCost");
-
-
         //Create Revenues Management
         Text RevenuesText = new Text("REVENUES");
-        Revenues_tableModel = new DefaultTableModel();
+        Revenues_tableModel = new DefaultTableModel(){
+            /**
+             * Make the all cell not editable
+             */
+            @Override
+            public boolean isCellEditable(int row, int col) {
+                return false;
+            }
+        };
 
         Revenues_tableModel.addColumn("Revenues Amount");
         Revenues_tableModel.addColumn("Name");
@@ -62,6 +79,34 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         Button add_Rev_button = new Button(this, "+", "AddRev");
         Button delete_Rev_button = new Button(this, "-", "DelRev");
 
+        //Button
+
+        Button add_cost_button = new Button(this, "+", "AddCost");
+        Button delete_cost_button = new Button(this, "-", "DelCost");
+
+        //Info
+
+        Text TotalCostText = new Text("Total cost:");
+        TotalCostLabel = new LabelTextField();
+        TotalCostLabel.setPreferredSize(new Dimension(100,20));
+        TotalCostLabel.setMinimumSize(new Dimension(100,20));
+        TotalCostLabel.setMaximumSize(new Dimension(100,20));
+        TotalCostLabel.setEditable(false);
+
+        Text TotalRevText = new Text("Total revenues:");
+        TotalRevLabel = new LabelTextField();
+        TotalRevLabel.setPreferredSize(new Dimension(100,20));
+        TotalRevLabel.setMinimumSize(new Dimension(100,20));
+        TotalRevLabel.setMaximumSize(new Dimension(100,20));
+        TotalRevLabel.setEditable(false);
+
+        Text TotalContText = new Text("Total cont:");
+        TotalContLabel = new LabelTextField();
+        TotalContLabel.setPreferredSize(new Dimension(100,20));
+        TotalContLabel.setMinimumSize(new Dimension(100,20));
+        TotalContLabel.setMaximumSize(new Dimension(100,20));
+        TotalContLabel.setEditable(false);
+
 
         //Panel
         PannelloBorder TitleTablePanel = new PannelloBorder(new GridLayout(3, 2));
@@ -69,6 +114,9 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         PannelloBorder ButtonPanel = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder CostButtonPanel = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder RevButtonPanel = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder InfoCostPanel = new PannelloBorder();
+        PannelloBorder InfoRevPanel = new PannelloBorder();
+        PannelloBorder InfoContPanel = new PannelloBorder();
 
         TablePanel.add(Cost_jScrollPane,BorderLayout.WEST);
         TablePanel.add(Revenues_jScrollPane,BorderLayout.EAST);
@@ -78,6 +126,16 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
 
         RevButtonPanel.add(add_Rev_button,BorderLayout.WEST);
         RevButtonPanel.add(delete_Rev_button,BorderLayout.CENTER);
+
+        InfoCostPanel.add(TotalCostText,BorderLayout.WEST);
+        InfoCostPanel.add(TotalCostLabel,BorderLayout.EAST);
+        InfoRevPanel.add(TotalRevText,BorderLayout.WEST);
+        InfoRevPanel.add(TotalRevLabel,BorderLayout.EAST);
+        InfoContPanel.add(TotalContText,BorderLayout.WEST);
+        InfoContPanel.add(TotalContLabel,BorderLayout.EAST);
+
+
+
 
         //Title Grid
 
@@ -124,16 +182,51 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         contentView.add(TitleTablePanel);
         contentView.add(TablePanel);
         contentView.add(ButtonPanel);
+        contentView.add(InfoCostPanel);
+        contentView.add(InfoRevPanel);
+        contentView.add(InfoContPanel);
 
         this.add(contentView);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
-    }
 
-    public void AddCostRev(String s) throws SQLException {
-        AddTextToTable l = new AddTextToTable();
+
+        id = ID;
+        UpLoadData();
+    }
+    public void UpLoadData() throws SQLException {
         Statement statement = DBOperations.establish_connection();
+
+        ResultSet Cost = DBOperations.RevCost_Upload(statement,"Cost",id);
+
+        if (Cost!=null){
+            while (Cost.next()) {
+                String DBAmount = Cost.getString("Amount");
+                String DBName = Cost.getString("Name");
+                String DBDescription = Cost.getString("Description");
+
+                Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[] { DBAmount,DBName,DBDescription});
+            }
+        }
+
+        ResultSet Revenues = DBOperations.RevCostUpload(statement,"Revenues",id);
+
+        if (Cost!=null){
+            while (Revenues.next()) {
+                String DBAmount = Revenues.getString("Amount");
+                String DBName = Revenues.getString("Name");
+                String DBDescription = Revenues.getString("Description");
+
+                Revenues_tableModel.insertRow(Revenues_tableModel.getRowCount(), new Object[] { DBAmount,DBName,DBDescription});
+            }
+        }
+
+        RefreshInfoPanel();
+    }
+    public void AddCostRev(String s) throws SQLException {
+
+        AddTextToMoneyTable l = new AddTextToMoneyTable();
         ActionListener x = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -144,44 +237,70 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
 
                 switch (cmd){
                     case "Add":
-                        if (s.compareTo("Cost")==0){
-                            try {
-                                DBOperations.AddRevCost_Upload(statement,
-                                        "Cost",Amount,Name,Description);
-                            } catch (SQLException ex) {
-                                throw new RuntimeException(ex);
-                            }
+                        Statement statement = null;
+                        try {
+                            statement = DBOperations.establish_connection();
+                            DBOperations.AddRevCostLoad(statement,
+                                    s,id,Amount+"€",Name,Description);
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
                         }
-                        if (s.compareTo("Cost")==0){
-                            try {
-                                DBOperations.AddRevCostUpload(statement,
-                                        "Revenues",Amount,Name,Description);
-                            } catch (SQLException ex) {
-                                throw new RuntimeException(ex);
-                            }
+
+                        if (s.compareTo("Cost")==0) {
+                            Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[]{
+                                    Amount+"€",Name,Description});
+                            RefreshInfoPanel();
                         }
+
+                        if (s.compareTo("Revenues")==0) {
+                            Revenues_tableModel.insertRow(Revenues_jTable.getRowCount(), new Object[]{
+                                    Amount+"€",Name,Description});
+                            RefreshInfoPanel();
+                        }
+                        l.Close();
                         break;
                     case "Del":
-                        l.dispose();
+                        l.Close();
                         break;
                 }
             }
         };
         l.Add_button.addActionListener(x);
-
-
-
-
     }
 
-    public void DeleteCost() throws SQLException {
+    public void DeleteRevCost(String s) throws SQLException {
 
+        String Amount ;
+        String Name ;
+        int index = 0;
+        if (s.compareTo("Cost")==0){
+            index = Cost_jTable.getSelectedRow();
+            Amount = (String) Cost_tableModel.getValueAt(index,0);
+            Name = (String) Cost_tableModel.getValueAt(index,1);
+            if (index != -1){
+                System.out.println(Amount);
+                System.out.println(Name);
+                Statement statement = DBOperations.establish_connection();
+                DBOperations.RevCostDelete(statement,s,Amount,Name);
+                Cost_tableModel.removeRow(index);
+                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
+            }
+        }
+        if (s.compareTo("Revenues")==0){
+            index = Revenues_jTable.getSelectedRow();
+            Amount = (String) Revenues_tableModel.getValueAt(index,0);
+            Name = (String) Revenues_tableModel.getValueAt(index,1);
+            if (index != -1){
+                System.out.println(Amount);
+                System.out.println(Name);
+                Statement statement = DBOperations.establish_connection();
+                DBOperations.RevCostDelete(statement,s,Amount,Name);
+                Revenues_tableModel.removeRow(index);
+                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
+            }
+        }
 
-    }
-
-    public void DeleteRev() throws SQLException {
-
-
+        RefreshInfoPanel();
     }
 
     @Override
@@ -198,21 +317,21 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
                 break;
             case "DelCost":
                 try {
-                    DeleteCost();
+                    DeleteRevCost("Cost");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 break;
             case "AddRev":
                 try {
-                    AddCostRev("Rev");
+                    AddCostRev("Revenues");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 break;
             case "DelRev":
                 try {
-                    DeleteRev();
+                    DeleteRevCost("Revenues");
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -220,6 +339,34 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
             default:
                 break;
         }
+    }
+
+    public void RefreshInfoPanel() {
+        double TotalCost = 0;
+        double TotalRev = 0;
+        double TotalCont = 0;
+        int i=0;
+
+
+        while (i<Cost_tableModel.getRowCount()){
+            String Cost_Str = (String) Cost_tableModel.getValueAt(i,0);
+            Cost_Str = Cost_Str.replace("€","");
+            TotalCost+=Double.parseDouble(Cost_Str);
+            i++;
+        }
+        i=0;
+        while (i<Revenues_tableModel.getRowCount()){
+            String Rev_Str = (String) Revenues_tableModel.getValueAt(i,0);
+            Rev_Str = Rev_Str.replace("€","");
+            TotalRev+=Double.parseDouble(Rev_Str);
+            i++;
+        }
+
+        TotalCont = TotalRev-TotalCost;
+
+        TotalCostLabel.setText(String.valueOf(TotalCost));
+        TotalRevLabel.setText(String.valueOf(TotalRev));
+        TotalContLabel.setText(String.valueOf(TotalCont));
     }
 
     @Override
@@ -246,4 +393,6 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
+
 }

@@ -142,7 +142,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         if (index!=-1){
             String id = (String) tableModel.getValueAt(index,0);
             dispose();
-            new MoneyFlow(id);
+            new Ticket(id);
         }
 
     }
@@ -211,8 +211,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         public void tableChanged(TableModelEvent e) {
             int firstRow = e.getFirstRow();
-            int lastRow = e.getLastRow();
-            int index = e.getColumn();
+
 
             switch (e.getType()) {
                 case TableModelEvent.UPDATE:
@@ -227,7 +226,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                         throw new RuntimeException(ex);
                     }
                 case TableModelEvent.DELETE:
-
                     break;
             }
         }
