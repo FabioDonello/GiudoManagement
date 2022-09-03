@@ -17,8 +17,6 @@ import Widgets.Button;
 import Widgets.Container;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import java.util.Random;
-import javax.swing.table.TableModel;
 
 public class PreMainPage extends JFrame implements ActionListener, MouseListener {
 
@@ -63,8 +61,8 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         JScrollPane jScrollPane = new JScrollPane(jTable);
 
         //Panel
-        PannelloBorder LogoPanel = new PannelloBorder();
-        PannelloBorder ButtonPanel = new PannelloBorder();
+        PannelloBorder LogoPanel = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder ButtonPanel = new PannelloBorder(new GridLayout(3, 2));
 
         LogoPanel.add(headerText, BorderLayout.NORTH);
         LogoPanel.add(subText, BorderLayout.SOUTH);
@@ -139,12 +137,12 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         }
     }
 
-    public void OpenProject(){
+    public void OpenProject() throws SQLException {
         int index = jTable.getSelectedRow();
         if (index!=-1){
             String id = (String) tableModel.getValueAt(index,0);
             dispose();
-            new Dashboard();
+            new Ticket(id);
         }
 
     }
@@ -167,7 +165,11 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                     throw new RuntimeException(ex);
                 }
             case "Open":
-                OpenProject();
+                try {
+                    OpenProject();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
         }
 
 
@@ -209,8 +211,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         public void tableChanged(TableModelEvent e) {
             int firstRow = e.getFirstRow();
-            int lastRow = e.getLastRow();
-            int index = e.getColumn();
+
 
             switch (e.getType()) {
                 case TableModelEvent.UPDATE:
@@ -225,7 +226,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                         throw new RuntimeException(ex);
                     }
                 case TableModelEvent.DELETE:
-
                     break;
             }
         }

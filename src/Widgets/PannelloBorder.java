@@ -4,8 +4,12 @@ import java.awt.*;
 
 public class PannelloBorder extends JPanel {
 
-    public PannelloBorder(){
+    public PannelloBorder(GridLayout gridLayout){
         super();
         setLayout(new BorderLayout());
+    }
+
+    public PannelloBorder(){
+        super();
     }
 }

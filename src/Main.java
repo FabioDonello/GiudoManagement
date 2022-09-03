@@ -1,17 +1,11 @@
 import Interface.Dashboard;
-import Interface.Login;
+import Interface.MainPage;
 import Interface.PreMainPage;
 import Interface.Welcome;
-
-import java.sql.SQLException;
-
-
+import Utils.DBOperations;
 public class Main {
+    public static void main(String[] args)  {
+        new Welcome();
 
-    public static void main(String[] args) throws SQLException {
-
-        //new PreMainPage();
-        new Dashboard();
-        //new Welcome();
     }
 }
