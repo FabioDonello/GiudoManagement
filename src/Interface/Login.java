@@ -58,10 +58,10 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         password_text.setBorder(Constants.compoundBottom20);
 
         //Pannelli
-        PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloArrow = new PannelloBorder();
-        PannelloBorder pannelloLogin = new PannelloBorder();
-        PannelloBorder pannelloButtonAccedi = new PannelloBorder();
+        PannelloBorder pannelloLogo = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloArrow = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloLogin = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloButtonAccedi = new PannelloBorder(new GridLayout(3, 2));
 
         pannelloArrow.add(Arrow,BorderLayout.WEST);
 
