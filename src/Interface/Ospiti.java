@@ -6,7 +6,6 @@ import Utils.DBOperations;
 import Widgets.Button;
 import Widgets.Container;
 import Widgets.PannelloBorder;
-import com.itextpdf.text.pdf.PdfWriter;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;

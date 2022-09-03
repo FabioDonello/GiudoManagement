@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 public class CoinsButton extends JButton {
 
-    public CoinsButton(ActionListener listener,String text,String cmd) {
+    public CoinsButton(ActionListener listener, String text, String cmd) {
         super(text);
         addActionListener(listener);
         setActionCommand(cmd);
