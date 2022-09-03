@@ -28,21 +28,33 @@
     <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="16c75499-3b91-4c02-8815-7ec0ab1bf46f">
-      <console name="Connection" type="STANDARD" schema="" session="Main" />
+    <connection id="826f5ec5-4afa-44d0-a696-92eec2273fc1">
+      <console name="GiudoManagement" type="STANDARD" schema="main" session="Main"><![CDATA[use DATABASE;
+create table main.Personale(
+Nome varchar(30) not null ,
+Compito varchar(30) not null ,
+Descrizione varchar(30) not null 
+)]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="16c75499-3b91-4c02-8815-7ec0ab1bf46f" />
+    <connection id="826f5ec5-4afa-44d0-a696-92eec2273fc1" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="826f5ec5-4afa-44d0-a696-92eec2273fc1" dataset="main.Projects" active-filter-id="" />
+    <filter-actions connection-id="826f5ec5-4afa-44d0-a696-92eec2273fc1" dataset="main.Users" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$APPLICATION_CONFIG_DIR$/console/f8ea0e7a-fa2d-4e79-af76-06be018350e4/console.sql" connection-id="virtual-sqlite-connection" session-id="MAIN" current-schema="" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -67,13 +79,13 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="16c75499-3b91-4c02-8815-7ec0ab1bf46f" active="true" signed="true">
+      <connection id="826f5ec5-4afa-44d0-a696-92eec2273fc1" active="true" signed="true">
         <database>
-          <name value="Connection" />
+          <name value="GiudoManagement" />
           <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
-          <database-version value="9999.0" />
+          <database-version value="3.39" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
@@ -82,8 +94,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="sqlite.db" schema="main" />
-            <file path="C:\Users\39377\Desktop\SW\GESTIONALE\src\Utils\DATABASE" schema="DATABASE" />
+            <file path="C:\Users\39377\Desktop\SW\GESTIONALE\src\Utils\DATABASE" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -124,7 +135,7 @@
           <max-connection-pool-size value="7" />
           <alternative-statement-delimiter value="" />
         </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="true">
           <object-type-filter>
             <object-type name="SCHEMA" enabled="true" />
             <object-type name="USER" enabled="true" />

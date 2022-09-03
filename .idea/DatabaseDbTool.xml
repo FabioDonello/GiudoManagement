@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DatabaseDbTool">
+    <option name="sources">
+      <map>
+        <entry key="database">
+          <value>
+            <DataConfigSourceDto>
+              <option name="comment" value="" />
+              <option name="dataBaseType" value="Sqlite" />
+              <option name="database" value="main" />
+              <option name="databaseName" value="database" />
+              <option name="databaseSslConfig">
+                <DatabaseSslConfig>
+                  <option name="caFile" value="" />
+                  <option name="clientCertificateFile" value="" />
+                  <option name="clientKeyFile" value="" />
+                  <option name="clientKeyPassword" value="" />
+                  <option name="sslMode" value="REQUIRE" />
+                </DatabaseSslConfig>
+              </option>
+              <option name="dbFile" value="C:\Users\39377\Desktop\SW\GESTIONALE\src\Utils\DATABASE" />
+              <option name="driverType" value="Sqlite 3.36" />
+              <option name="host" value="localhost" />
+              <option name="jarUrl" value="C:\Users\39377\AppData\Roaming\JetBrains\IdeaIC2022.2\jdbc-drivers\Xerial SQLiteJDBC\3.36.0.3\sqlite-jdbc-3.36.0.3.jar" />
+              <option name="myUniqueId" value="f8ea0e7a-fa2d-4e79-af76-06be018350e4" />
+              <option name="port" value="3306" />
+              <option name="properties">
+                <map />
+              </option>
+              <option name="schemaSourceDto">
+                <SchemaSourceDto>
+                  <option name="name" value="main" />
+                  <option name="tableSources">
+                    <list>
+                      <TableSourceDto>
+                        <option name="columns">
+                          <list>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Name" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Surname" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Email" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Password" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                          </list>
+                        </option>
+                        <option name="databaseType" value="Sqlite" />
+                        <option name="schema" value="main" />
+                        <option name="tableName" value="Users" />
+                        <option name="tableType" value="table" />
+                      </TableSourceDto>
+                      <TableSourceDto>
+                        <option name="columns">
+                          <list>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="ID" />
+                              <option name="typeName" value="INTEGER" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Name" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="Description" />
+                              <option name="typeName" value="VARCHAR(30)" />
+                            </ColumnSourceDto>
+                          </list>
+                        </option>
+                        <option name="databaseType" value="Sqlite" />
+                        <option name="schema" value="main" />
+                        <option name="tableName" value="Projects" />
+                        <option name="tableType" value="table" />
+                      </TableSourceDto>
+                      <TableSourceDto>
+                        <option name="columns">
+                          <list>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="type" />
+                              <option name="typeName" value="text" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="name" />
+                              <option name="typeName" value="text" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="tbl_name" />
+                              <option name="typeName" value="text" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="rootpage" />
+                              <option name="typeName" value="int" />
+                            </ColumnSourceDto>
+                            <ColumnSourceDto>
+                              <option name="autoIncrement" value="true" />
+                              <option name="columnName" value="sql" />
+                              <option name="typeName" value="text" />
+                            </ColumnSourceDto>
+                          </list>
+                        </option>
+                        <option name="databaseType" value="Sqlite" />
+                        <option name="schema" value="main" />
+                        <option name="tableName" value="sqlite_master" />
+                        <option name="tableType" value="table" />
+                      </TableSourceDto>
+                    </list>
+                  </option>
+                </SchemaSourceDto>
+              </option>
+              <option name="sid" value="" />
+              <option name="url" value="jdbc:sqlite:C:\Users\39377\Desktop\SW\GESTIONALE\src\Utils\DATABASE" />
+              <option name="userName" value="" />
+            </DataConfigSourceDto>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

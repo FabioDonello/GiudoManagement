@@ -37,6 +37,9 @@ public abstract class Constants {
     public static final Icon logoutIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\logout.png");
     public static final Icon leftarrowIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\back.png");
     public static final Icon coinsIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\coins.png");
-
-
+    public static final Icon garageIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\garage.png");
+    public static final Icon todolistIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\clipboard-list.png");
+    public static final Icon ticketIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\ticket.png");
+    public static final Icon usersIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\users.png");
+    public static final Icon guestsIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\guest.png");
 }

@@ -1,7 +1,6 @@
 package Interface;
 
-import Utils.AddTextToInventoryTable;
-import Utils.Constants;
+import Utils.AddTextToStaffTable;
 import Utils.DBOperations;
 import Widgets.Button;
 import Widgets.Container;
@@ -18,21 +17,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Magazzino extends PannelloBorder implements ActionListener, MouseListener {
+public class Staff extends PannelloBorder implements ActionListener, MouseListener {
 
     PannelloBorder mainPanel;
     PannelloBorder buttonPanel;
 
-    JTable inventoryJTable;
-    DefaultTableModel inventoryTableModel = null;
+    JTable staffJTable;
+    DefaultTableModel staffTableModel = null;
 
-    public Magazzino(JFrame parent) throws SQLException {
+    public Staff(JFrame parent) throws SQLException {
 
         //Create
-        Button AddObject = new Button(this, "Aggiungi oggetto", "Add");
-        Button DeleteObject = new Button(this, "Rimouvi oggetto", "Delete");
+        Button addStaff = new Button(this, "Aggiungi Personale", "Add");
+        Button deleteStaff = new Button(this, "Rimuovi Personale", "Delete");
 
-        inventoryTableModel = new DefaultTableModel() {
+        staffTableModel = new DefaultTableModel() {
+
             public boolean isCellEditable(int row, int col) {
                 if (col == 0)
                     return false;
@@ -40,16 +40,16 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
                     return true;
             }
         };
-        inventoryTableModel.addColumn("Object");
-        inventoryTableModel.addColumn("Quantity");
-        inventoryTableModel.addColumn("Description");
+        staffTableModel.addColumn("Name");
+        staffTableModel.addColumn("Task");
+        staffTableModel.addColumn("Description");
 
-        inventoryJTable = new JTable(inventoryTableModel);
-        inventoryJTable.setAutoCreateRowSorter(true);
-        inventoryJTable.setBounds(30, 40, 230, 280);
-        inventoryJTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(inventoryJTable));
+        staffJTable = new JTable(staffTableModel);
+        staffJTable.setAutoCreateRowSorter(true);
+        staffJTable.setBounds(30, 40, 230, 280);
+        staffJTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(staffJTable));
 
-        JScrollPane inventoryJScrollPane = new JScrollPane(inventoryJTable);
+        JScrollPane staffJScrollPane = new JScrollPane(staffJTable);
 
         //Panels
         mainPanel = new PannelloBorder();
@@ -57,12 +57,11 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
 
         Box button = Box.createHorizontalBox();
         button.add(Box.createHorizontalGlue());
-        button.add(AddObject);
+        button.add(addStaff);
         button.add(Box.createHorizontalStrut(10));
-        button.add(DeleteObject);
+        button.add(deleteStaff);
 
-
-        mainPanel.add(inventoryJScrollPane);
+        mainPanel.add(staffJScrollPane);
         buttonPanel.add(button, BorderLayout.CENTER);
 
         //Container
@@ -73,70 +72,71 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
 
         setVisible(true);
 
-        UploadDataInventory();
+        UploadDataStaff();
     }
 
-    public void UploadDataInventory() throws SQLException {
+    public void UploadDataStaff() throws SQLException {
+
         Statement statement = DBOperations.establish_connection();
-        ResultSet resultSet = DBOperations.inventoryUpload(statement);
+        ResultSet resultSet = DBOperations.staffUpload(statement);
         if (resultSet != null) {
             while (resultSet.next()) {
-                String DBObject = resultSet.getString("Object");
-                String DBQuantity = resultSet.getString("Quantity");
+                String DBName = resultSet.getString("Name");
+                String DBTask = resultSet.getString("Task");
                 String DBDescription = resultSet.getString("Description");
 
-                inventoryTableModel.insertRow(inventoryTableModel.getRowCount(), new Object[]{DBObject, DBQuantity, DBDescription});
+                staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{DBName, DBTask, DBDescription});
             }
         }
-
     }
 
-    public void AddObject() throws SQLException {
-        AddTextToInventoryTable addTextToInventoryTable = new AddTextToInventoryTable();
+    public void AddStaff() throws SQLException {
+        AddTextToStaffTable addTextToStaffTable = new AddTextToStaffTable();
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cmd = e.getActionCommand();
-                String Object = addTextToInventoryTable.ObjectLabel.getText();
-                String Quantity = addTextToInventoryTable.QuantityLabel.getText();
-                String Description = addTextToInventoryTable.DescriptionLabel.getText();
+                String Name = addTextToStaffTable.NameLabel.getText();
+                String Task = addTextToStaffTable.TaskLabel.getText();
+                String Description = addTextToStaffTable.DescriptionLabel.getText();
 
                 switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
-                            DBOperations.Add_Inventory(statement, Object, Quantity, Description);
+                            DBOperations.Add_Staff(statement, Name, Task, Description);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
-                        inventoryTableModel.insertRow(inventoryTableModel.getRowCount(), new Object[]{Object, Quantity, Description});
-                        addTextToInventoryTable.Close();
+                        staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
+                        addTextToStaffTable.Close();
                         break;
                     case "Delete":
-                        addTextToInventoryTable.Close();
+                        addTextToStaffTable.Close();
+                        break;
                 }
             }
         };
-        addTextToInventoryTable.AddButton.addActionListener(actionListener);
+        addTextToStaffTable.AddButton.addActionListener(actionListener);
     }
 
-    public void DeleteObject() throws SQLException {
-
-        String Object;
-        String Quantity;
+    public void DeleteStaff() throws SQLException {
+        String Name;
+        String Task;
         int index = 0;
-        index = inventoryJTable.getSelectedRow();
-        Object = (String) inventoryTableModel.getValueAt(index, 0);
-        Quantity = (String) inventoryTableModel.getValueAt(index, 1);
+        index = staffJTable.getSelectedRow();
+        Name = (String) staffTableModel.getValueAt(index, 0);
+        Task = (String) staffTableModel.getValueAt(index, 1);
         if (index != -1) {
-            System.out.println(Object);
-            System.out.println(Quantity);
+            System.out.println(Task);
+            System.out.println(Name);
             Statement statement = DBOperations.establish_connection();
-            DBOperations.Delete_Inventory(statement, Object, Quantity);
-            inventoryTableModel.removeRow(index);
+            DBOperations.Delete_Staff(statement, Name, Task);
+            staffTableModel.removeRow(index);
             JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
         }
+
     }
 
     @Override
@@ -146,14 +146,14 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         switch (cmd) {
             case "Add":
                 try {
-                    AddObject();
+                    AddStaff();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 break;
             case "Delete":
                 try {
-                    DeleteObject();
+                    DeleteStaff();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
