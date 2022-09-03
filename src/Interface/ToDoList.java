@@ -232,7 +232,7 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
     }
     public void Add_ToDo_Done(String s) throws SQLException {
 
-        AddTextTicketsTable l = new AddTextTicketsTable();
+        AddTextToDoTable l = new AddTextToDoTable(s);
         ActionListener x = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

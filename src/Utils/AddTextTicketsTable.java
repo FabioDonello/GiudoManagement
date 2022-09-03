@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class AddTextTicketsTable extends JFrame implements ActionListener {
     public Button Add_button;
-    public DateTextField DateTimeField;
+    public LabelTextField TicketsLabel;
     public LabelTextField NameLabel;
     public LabelTextField DescriptionLabel;
 
@@ -20,14 +20,12 @@ public class AddTextTicketsTable extends JFrame implements ActionListener {
     public AddTextTicketsTable(){
         InfoFrame = new JDialog();
 
-        Text NameText = new Text("Name:");
-        Text DateText = new Text("In Deadline:");
-
-        DateTimeField = new DateTextField();
-        DateTimeField.setVisible(true);
+        Text NameText = new Text("Name and Surname:");
+        Text TicketsText = new Text("Number of ticket:");
         Text DescriptionText = new Text("Description:");
 
         NameLabel = new LabelTextField();
+        TicketsLabel = new LabelTextField();
         DescriptionLabel = new LabelTextField();
 
         Add_button = new Button( this,"Add", "Add");
@@ -37,8 +35,8 @@ public class AddTextTicketsTable extends JFrame implements ActionListener {
 
         InfoPanel.add(NameText);
         InfoPanel.add(NameLabel);
-        InfoPanel.add(DateText);
-        InfoPanel.add(DateTimeField);
+        InfoPanel.add(TicketsText);
+        InfoPanel.add(TicketsLabel);
         InfoPanel.add(DescriptionText);
         InfoPanel.add(DescriptionLabel);
         InfoPanel.add(Add_button);

@@ -262,6 +262,57 @@ public class DBOperations {
     }
 
 
+    public static int TicketsLoad(Statement statement,
+                                   String id, String name, String tickets, String description)
+            throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return Tickets_Load(statement,id,name,tickets,description);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+    public static int Tickets_Load(Statement statement,
+                                     String id, String name, String tickets, String description)
+            throws SQLException {
+
+        int a = statement.executeUpdate("INSERT INTO Tickets (ID,NS,Tickets,Description) " +
+                "VALUES('"+id+"','"+name+"','"+tickets+"','"+description+"')");
+
+        return a;
+    }
+
+
+    public static int TicketsDelete(Statement statement, String id, String name) throws SQLException{
+        try {
+            System.out.println("\n- Deleting project...");
+            return Tickets_Delete(statement, id, name);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+    public static int Tickets_Delete(Statement statement, String id, String name) throws SQLException {
+        int a = statement.executeUpdate("DELETE FROM Tickets WHERE ID = '" +id+ "' AND NS = '" +name+ "' ");
+        return a;
+    }
+
+
+    public static ResultSet TicketsUpLoad(Statement statement,
+                                           String id) throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return Tickets_Upload(statement,id);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+    public static ResultSet Tickets_Upload(Statement statement, String id) throws SQLException {
+        return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" +id+ "' ");
+    }
+
 
 
 
