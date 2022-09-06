@@ -70,6 +70,7 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
+        parent.pack();
 
         setVisible(true);
 

@@ -6,7 +6,6 @@ import javax.swing.*;
 import java.time.LocalDate;
 
 public class DateTextField extends JPanel {
-
     public DatePicker datePicker;
     public DateTextField()
     {
@@ -14,12 +13,8 @@ public class DateTextField extends JPanel {
         datePicker = new DatePicker();
         add(datePicker);
     }
-
     public LocalDate GetData(){
         return datePicker.getDate();
     }
-
-
-
 }
 

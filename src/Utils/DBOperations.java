@@ -17,12 +17,10 @@ public class DBOperations {
             statement = DBManager.getConnection().createStatement();
             statement.executeQuery("SELECT * FROM Users LIMIT 1");
             statement.executeQuery("SELECT * FROM Projects LIMIT 1");
-            statement.executeQuery("SELECT * FROM Cost LIMIT 1");
-            statement.executeQuery("SELECT * FROM Revenues LIMIT 1");
             statement.executeQuery("SELECT * FROM Staff LIMIT 1");
             statement.executeQuery("SELECT * FROM Inventory LIMIT 1");
             statement.executeQuery("SELECT * FROM Guest LIMIT 1");
-        }catch (SQLException e){
+        } catch (SQLException e) {
             statement.executeUpdate("DROP TABLE IF EXISTS Users");
             statement.executeUpdate("DROP TABLE IF EXISTS Projects");
             statement.executeUpdate("DROP TABLE IF EXISTS Cost");
@@ -33,7 +31,7 @@ public class DBOperations {
             statement.executeUpdate("CREATE TABLE Users (" + "Name VARCHAR(30), " + "Surname VARCHAR(30),"
                     + "Email VARCHAR(30)," + "Password VARCHAR(30))");
             statement.executeUpdate("CREATE TABLE Projects (" + "ID INTEGER, " + "Name VARCHAR(30),"
-                     + "Description VARCHAR(30))");
+                    + "Description VARCHAR(30))");
             statement.executeUpdate("CREATE TABLE Cost (" + "ID VARCHAR(30)," + "Amount VARCHAR(30),"
                     + "Name VARCHAR(30)," + "Description VARCHAR(30))");
             statement.executeUpdate("CREATE TABLE Revenues (" + "ID VARCHAR(30)," + "Amount VARCHAR(30),"
@@ -43,14 +41,14 @@ public class DBOperations {
             statement.executeUpdate("CREATE TABLE Inventory (" + "Object VARCHAR(30), " + "Quantity INTEGER,"
                     + "Description VARCHAR)");
             statement.executeUpdate("CREATE TABLE Guest (" + "Name VARCHAR(30), " + "Surname VARCHAR(30),"
-                    + "Email VARCHAR" + "Phone_Number VARCHAR(10)" + "Confirm INTEGER = 0");
+                    + " Date DATE," + "Email VARCHAR, "
+                    + "Phone_Number VARCHAR(10)," + "Confirm INTEGER)");
         }
         return statement;
     }
 
 
-
-    public static ResultSet usersUpload(Statement statement) throws SQLException{
+    public static ResultSet usersUpload(Statement statement) throws SQLException {
         try {
             System.out.println("\n- reading database...");
             return users_upload(statement);
@@ -59,13 +57,14 @@ public class DBOperations {
             return null;
         }
     }
+
     public static ResultSet users_upload(Statement statement) throws SQLException {
         return statement.executeQuery("SELECT * FROM Users");
     }
 
 
     public static int userLoad(Statement statement,
-                               String name,String surname,String email,String password) throws SQLException{
+                               String name, String surname, String email, String password) throws SQLException {
         try {
             System.out.println("\n- reading database...");
             return user_load(statement, name, surname, email, password);
@@ -74,59 +73,62 @@ public class DBOperations {
             return 0;
         }
     }
+
     public static int user_load(Statement statement,
-                                String name,String surname,String email,String password) throws SQLException {
+                                String name, String surname, String email, String password) throws SQLException {
 
         int a = statement.executeUpdate("INSERT INTO Users(Name,Surname,Email,Password) " +
-                "VALUES('"+name+"' , '"+surname+"', '"+email+"','"+password+"')");
+                "VALUES('" + name + "' , '" + surname + "', '" + email + "','" + password + "')");
 
         return a;
     }
 
 
     public static int projectLoad(Statement statement,
-                                  String id, String project_name,String description)
-            throws SQLException{
+                                  String id, String project_name, String description)
+            throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return project_Load(statement,id,project_name,description);
+            return project_Load(statement, id, project_name, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
+
     public static int project_Load(Statement statement,
-                                   String id, String project_name,String description)
+                                   String id, String project_name, String description)
             throws SQLException {
 
         int a = statement.executeUpdate("INSERT INTO Projects(ID,Name,Description) " +
-                "VALUES('"+id+"', '"+project_name+"', '"+description+"')");
+                "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
         return a;
     }
 
 
     public static int projectRefresh(Statement statement,
-                                  String id, String project_name,String description)
-            throws SQLException{
+                                     String id, String project_name, String description)
+            throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return project_Refresh(statement,id,project_name,description);
+            return project_Refresh(statement, id, project_name, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
+
     public static int project_Refresh(Statement statement,
-                                   String id, String project_name,String description)
+                                      String id, String project_name, String description)
             throws SQLException {
 
         int a = statement.executeUpdate("REPLACE INTO Projects(ID,Name,Description) " +
-                "VALUES('"+id+"', '"+project_name+"', '"+description+"')");
+                "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
         return a;
     }
 
 
-    public static int projectDelete(Statement statement, String id) throws SQLException{
+    public static int projectDelete(Statement statement, String id) throws SQLException {
         try {
             System.out.println("\n- Deleting project...");
             return project_Delete(statement, id);
@@ -135,14 +137,15 @@ public class DBOperations {
             return 0;
         }
     }
+
     public static int project_Delete(Statement statement, String id) throws SQLException {
 
-        int a = statement.executeUpdate("DELETE FROM Projects WHERE ID = '" +id+ "'  ");
+        int a = statement.executeUpdate("DELETE FROM Projects WHERE ID = '" + id + "'  ");
         return a;
     }
 
 
-    public static ResultSet projectsUpload(Statement statement) throws SQLException{
+    public static ResultSet projectsUpload(Statement statement) throws SQLException {
         try {
             System.out.println("\n- reading database...");
             return projects_Upload(statement);
@@ -151,84 +154,89 @@ public class DBOperations {
             return null;
         }
     }
+
     public static ResultSet projects_Upload(Statement statement) throws SQLException {
         return statement.executeQuery("SELECT * FROM Projects");
     }
 
 
     public static int AddRevCostLoad(Statement statement,
-                                  String table,String id, String amount, String name,String description)
-            throws SQLException{
+                                     String table, String id, String amount, String name, String description)
+            throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return AddRevCost_Load(statement,table,id,amount,name,description);
+            return AddRevCost_Load(statement, table, id, amount, name, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
+
     public static int AddRevCost_Load(Statement statement,
-                                   String table,String id, String amount, String name, String description)
+                                      String table, String id, String amount, String name, String description)
             throws SQLException {
-        int a = statement.executeUpdate("INSERT INTO '"+table+"'(ID,Amount,Name,Description) " +
-                "VALUES('"+id+"','"+amount+"','"+name+"','"+description+"')");
+        int a = statement.executeUpdate("INSERT INTO '" + table + "'(ID,Amount,Name,Description) " +
+                "VALUES('" + id + "','" + amount + "','" + name + "','" + description + "')");
         return a;
     }
 
 
-    public static ResultSet RevCostUpload(Statement statement, String table, String id) throws SQLException{
+    public static ResultSet RevCostUpload(Statement statement, String table, String id) throws SQLException {
         try {
             System.out.println("\n- reading database...");
-            return RevCost_Upload(statement,table,id);
+            return RevCost_Upload(statement, table, id);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return null;
         }
     }
-    public static ResultSet RevCost_Upload(Statement statement,String table, String id) throws SQLException {
-        return statement.executeQuery("SELECT * FROM '"+table+"' WHERE ID = '" +id+ "'  ");
+
+    public static ResultSet RevCost_Upload(Statement statement, String table, String id) throws SQLException {
+        return statement.executeQuery("SELECT * FROM '" + table + "' WHERE ID = '" + id + "'  ");
     }
 
 
-    public static int RevCostDelete(Statement statement, String table, String amount, String name) throws SQLException{
+    public static int RevCostDelete(Statement statement, String table, String amount, String name) throws SQLException {
         try {
             System.out.println("\n- Deleting project...");
-            return RevCost_Delete(statement, table,amount, name);
+            return RevCost_Delete(statement, table, amount, name);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
+
     public static int RevCost_Delete(Statement statement, String table, String amount, String name) throws SQLException {
 
-        int a = statement.executeUpdate("DELETE FROM '" +table+ "' WHERE Amount = '" +amount+ "' AND Name = '" +name+ "'  ");
+        int a = statement.executeUpdate("DELETE FROM '" + table + "' WHERE Amount = '" + amount + "' AND Name = '" + name + "'  ");
         return a;
     }
 
 
     public static ResultSet TodoDoneUpLoad(Statement statement,
-                                      String table,String id) throws SQLException{
+                                           String table, String id) throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return TodoDoneUpload(statement,table,id);
+            return TodoDoneUpload(statement, table, id);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return null;
         }
     }
+
     public static ResultSet TodoDoneUpload(Statement statement,
-                                         String table,String id) throws SQLException {
-        return statement.executeQuery("SELECT * FROM '"+table+"' WHERE ID = '" +id+ "'  ");
+                                           String table, String id) throws SQLException {
+        return statement.executeQuery("SELECT * FROM '" + table + "' WHERE ID = '" + id + "'  ");
 
     }
 
 
     public static int TodoDoneLoad(Statement statement,
-                                     String table,String id, String name, String date, String description)
-            throws SQLException{
+                                   String table, String id, String name, String date, String description)
+            throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return Todo_Done_Load(statement,table,id,name,date,description);
+            return Todo_Done_Load(statement, table, id, name, date, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -236,23 +244,23 @@ public class DBOperations {
     }
 
     public static int Todo_Done_Load(Statement statement,
-                                     String table,String id, String name, String date, String description)
+                                     String table, String id, String name, String date, String description)
             throws SQLException {
-        int a= 0;
-        if (table.compareTo("DoneAction")==0){
-            a = statement.executeUpdate("INSERT INTO '"+table+"'(ID,Name,Execution,Description) " +
-                    "VALUES('"+id+"','"+name+"','"+date+"','"+description+"')");
+        int a = 0;
+        if (table.compareTo("DoneAction") == 0) {
+            a = statement.executeUpdate("INSERT INTO '" + table + "'(ID,Name,Execution,Description) " +
+                    "VALUES('" + id + "','" + name + "','" + date + "','" + description + "')");
         }
-        if (table.compareTo("ToDoAction")==0){
-            a = statement.executeUpdate("INSERT INTO '"+table+"'(ID,Name,Deadline,Description) " +
-                    "VALUES('"+id+"','"+name+"','"+date+"','"+description+"')");
+        if (table.compareTo("ToDoAction") == 0) {
+            a = statement.executeUpdate("INSERT INTO '" + table + "'(ID,Name,Deadline,Description) " +
+                    "VALUES('" + id + "','" + name + "','" + date + "','" + description + "')");
         }
 
         return a;
     }
 
 
-    public static int TodoDoneDelete(Statement statement, String table, String name, String date) throws SQLException{
+    public static int TodoDoneDelete(Statement statement, String table, String name, String date) throws SQLException {
         try {
             System.out.println("\n- Deleting project...");
             return TodoDone_Delete(statement, table, name, date);
@@ -261,42 +269,44 @@ public class DBOperations {
             return 0;
         }
     }
+
     public static int TodoDone_Delete(Statement statement, String table, String name, String date) throws SQLException {
 
-        int a=0;
-        if (table.compareTo("ToDoAction")==0){
-            a = statement.executeUpdate("DELETE FROM '" +table+ "' WHERE Name = '" +name+ "' AND Deadline = '" +date+ "'  ");
+        int a = 0;
+        if (table.compareTo("ToDoAction") == 0) {
+            a = statement.executeUpdate("DELETE FROM '" + table + "' WHERE Name = '" + name + "' AND Deadline = '" + date + "'  ");
         }
-        if (table.compareTo("DoneAction")==0){
-            a = statement.executeUpdate("DELETE FROM '" +table+ "' WHERE Name = '" +name+ "' AND Execution = '" +date+ "'  ");
+        if (table.compareTo("DoneAction") == 0) {
+            a = statement.executeUpdate("DELETE FROM '" + table + "' WHERE Name = '" + name + "' AND Execution = '" + date + "'  ");
         }
         return a;
     }
 
 
     public static int TicketsLoad(Statement statement,
-                                   String id, String name, String tickets, String description)
-            throws SQLException{
+                                  String id, String name, String tickets, String description)
+            throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return Tickets_Load(statement,id,name,tickets,description);
+            return Tickets_Load(statement, id, name, tickets, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
+
     public static int Tickets_Load(Statement statement,
-                                     String id, String name, String tickets, String description)
+                                   String id, String name, String tickets, String description)
             throws SQLException {
 
         int a = statement.executeUpdate("INSERT INTO Tickets (ID,NS,Tickets,Description) " +
-                "VALUES('"+id+"','"+name+"','"+tickets+"','"+description+"')");
+                "VALUES('" + id + "','" + name + "','" + tickets + "','" + description + "')");
 
         return a;
     }
 
 
-    public static int TicketsDelete(Statement statement, String id, String name) throws SQLException{
+    public static int TicketsDelete(Statement statement, String id, String name) throws SQLException {
         try {
             System.out.println("\n- Deleting project...");
             return Tickets_Delete(statement, id, name);
@@ -305,24 +315,26 @@ public class DBOperations {
             return 0;
         }
     }
+
     public static int Tickets_Delete(Statement statement, String id, String name) throws SQLException {
-        int a = statement.executeUpdate("DELETE FROM Tickets WHERE ID = '" +id+ "' AND NS = '" +name+ "' ");
+        int a = statement.executeUpdate("DELETE FROM Tickets WHERE ID = '" + id + "' AND NS = '" + name + "' ");
         return a;
     }
 
 
     public static ResultSet TicketsUpLoad(Statement statement,
-                                           String id) throws SQLException{
+                                          String id) throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return Tickets_Upload(statement,id);
+            return Tickets_Upload(statement, id);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return null;
         }
     }
+
     public static ResultSet Tickets_Upload(Statement statement, String id) throws SQLException {
-        return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" +id+ "' ");
+        return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" + id + "' ");
     }
 
     public static ResultSet staffUpload(Statement statement) throws SQLException {
@@ -405,49 +417,49 @@ public class DBOperations {
         return statement.executeQuery("SELECT * FROM Guest");
     }
 
-    public static int Add_Guest(Statement statement, String Name, String Surname, String Email,
-                                String Phone)
+    public static int Add_Guest(Statement statement, String Name, String Surname, String Date, String Email,
+                                String Phone, String Confirm)
             throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return AddGuest(statement, Name, Surname, Email, Phone);
+            return AddGuest(statement, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
 
-    public static int AddGuest(Statement statement, String Name, String Surname, String Email,
-                               String Phone)
+    public static int AddGuest(Statement statement, String Name, String Surname, String Date, String Email,
+                               String Phone, String Confirm)
             throws SQLException {
-
-        int a = statement.executeUpdate("INSERT INTO 'Guest'(Name,Surname,Email,Phone_Number) " +
-                "VALUES('" + Name + "','" + Surname + "','" + Email + "','" + Phone + "')");
+        int a;
+        if (Confirm.equals("true")) {
+            a = statement.executeUpdate("INSERT INTO 'Guest'(Name,Surname,Email,Phone_Number,Confirm,Date) " +
+                    "VALUES('" + Name + "','" + Surname + "','" + Email + "','" + Phone + "','" + 1 + "','" + Date + "')");
+        } else {
+            a = statement.executeUpdate("INSERT INTO 'Guest'(Name,Surname,Email,Phone_Number,Confirm,Date) " +
+                    "VALUES('" + Name + "','" + Surname + "','" + Email + "','" + Phone + "','" + 0 + "','" + Date + "')");
+        }
         return a;
     }
 
-    public static int Delete_Guest(Statement statement, String Name, String Surname, String Email,
+    public static int Delete_Guest(Statement statement, String Name, String Surname, String Date, String Email,
                                    String Phone) throws SQLException {
         try {
             System.out.println("\n- Deleting project...");
-            return DeleteGuest(statement, Name, Surname, Email, Phone);
+            return DeleteGuest(statement, Name, Surname, Date, Email, Phone);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
         }
     }
 
-    public static int DeleteGuest(Statement statement, String Name, String Surname, String Email,
+    public static int DeleteGuest(Statement statement, String Name, String Surname, String Date, String Email,
                                   String Phone) throws SQLException {
         int a = statement.executeUpdate("DELETE FROM 'Guest' WHERE Name = '" + Name + "' " +
                 "AND Surname = '" + Surname + "' " + "AND Email = '" + Email + "' " +
-                "AND Phone_Number = '" + Phone + "'");
+                "AND Phone_Number = '" + Phone + "' " +
+                "AND Date = '" + Date + "'");
         return a;
     }
-
-
-
-
-
-
 }

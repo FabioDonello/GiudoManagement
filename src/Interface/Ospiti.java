@@ -3,6 +3,7 @@ package Interface;
 import Utils.AddTextToGuestsTable;
 import Utils.Constants;
 import Utils.DBOperations;
+import Utils.DownloadTable;
 import Widgets.Button;
 import Widgets.Container;
 import Widgets.PannelloBorder;
@@ -26,6 +27,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     PannelloBorder buttonPanel;
     JTable guestsJTable;
     DefaultTableModel guestsTableModel = null;
+    AddTextToGuestsTable addTextToGuestsTable;
 
     public Ospiti(JFrame parent) throws SQLException {
 
@@ -35,11 +37,9 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         Button downloadTable = new Button(this, "Scarica", "Download");
 
         guestsTableModel = new DefaultTableModel() {
-
-
             public Class<?> getColumnClass(int column) {
                 switch (column) {
-                    case 4:
+                    case 5:
                         return Boolean.class;
                     default:
                         return String.class;
@@ -48,7 +48,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                if (column == 4)
+                if (column == 5)
                     return true;
                 else
                     return false;
@@ -56,6 +56,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         };
         guestsTableModel.addColumn("Name");
         guestsTableModel.addColumn("Surname");
+        guestsTableModel.addColumn("Date of Birth");
         guestsTableModel.addColumn("Email");
         guestsTableModel.addColumn("Phone number");
         guestsTableModel.addColumn("Confirm");
@@ -63,9 +64,11 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         guestsJTable = new JTable(guestsTableModel);
         guestsJTable.setAutoCreateRowSorter(true);
         guestsJTable.setBounds(30, 40, 230, 280);
-        guestsJTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(guestsJTable));
+        guestsJTable.setModel(guestsTableModel);
 
         JScrollPane guestsJScrollPane = new JScrollPane(guestsJTable);
+
+        Object Confirm=
 
         //Panels
         mainPanel = new PannelloBorder();
@@ -87,10 +90,12 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
+        parent.pack();
 
         setVisible(true);
 
         UploadDataGuest();
+
     }
 
     public void UploadDataGuest() throws SQLException {
@@ -101,16 +106,17 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
             while (resultSet.next()) {
                 String DBName = resultSet.getString("Name");
                 String DBSurname = resultSet.getString("Surname");
+                String DBDate = resultSet.getString("Date");
                 String DBEmail = resultSet.getString("Email");
                 String DBPhone = resultSet.getString("Phone_Number");
                 Integer DBConfirm = Integer.valueOf(resultSet.getString("Confirm"));
 
                 if (DBConfirm.equals(1)) {
                     guestsTableModel.insertRow(guestsTableModel.getRowCount(),
-                            new Object[]{DBName, DBSurname, DBEmail, DBPhone, Boolean.TRUE});
+                            new Object[]{DBName, DBSurname, DBDate, DBEmail, DBPhone, Boolean.TRUE});
                 } else {
                     guestsTableModel.insertRow(guestsTableModel.getRowCount(),
-                            new Object[]{DBName, DBSurname, DBEmail, DBPhone, Boolean.FALSE});
+                            new Object[]{DBName, DBSurname, DBDate, DBEmail, DBPhone, Boolean.FALSE});
                 }
             }
         }
@@ -118,27 +124,35 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
     public void AddGuest() throws SQLException {
 
-        AddTextToGuestsTable addTextToGuestsTable = new AddTextToGuestsTable();
+        addTextToGuestsTable = new AddTextToGuestsTable();
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cmd = e.getActionCommand();
                 String Name = addTextToGuestsTable.NameLabel.getText();
                 String Surname = addTextToGuestsTable.SurnameLabel.getText();
+                String Date = addTextToGuestsTable.DateLabel.getText();
                 String Email = addTextToGuestsTable.EmailLabel.getText();
                 String Phone = addTextToGuestsTable.PhoneLabel.getText();
+                String Confirm = String.valueOf(addTextToGuestsTable.checkConfirm.isSelected());
+                System.out.println(Confirm);
 
                 switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
-                            DBOperations.Add_Guest(statement, Name, Surname, Email, Phone);
+                            DBOperations.Add_Guest(statement, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
 
-                        guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Email, Phone});
+                        if (Confirm.equals("true")) {
+                            guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.TRUE});
+                        } else {
+                            guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.FALSE});
+                        }
+
                         addTextToGuestsTable.Close();
                         break;
                     case "Delete":
@@ -152,26 +166,22 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     public void DeleteGuest() throws SQLException {
         String Name;
         String Surname;
+        String Date;
         String Email;
         String Phone;
         int index = 0;
         index = guestsJTable.getSelectedRow();
         Name = (String) guestsTableModel.getValueAt(index, 0);
         Surname = (String) guestsTableModel.getValueAt(index, 1);
-        Email = (String) guestsTableModel.getValueAt(index, 2);
-        Phone = (String) guestsTableModel.getValueAt(index, 3);
+        Date = (String) guestsTableModel.getValueAt(index, 2);
+        Email = (String) guestsTableModel.getValueAt(index, 3);
+        Phone = (String) guestsTableModel.getValueAt(index, 4);
         if (index != -1) {
             Statement statement = DBOperations.establish_connection();
-            DBOperations.Delete_Guest(statement, Name, Surname, Email, Phone);
+            DBOperations.Delete_Guest(statement, Name, Surname, Date, Email, Phone);
             guestsTableModel.removeRow(index);
             JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
         }
-    }
-
-    public void downloadTable() throws FileNotFoundException {
-
-        String file = "C:\\Users\\39377\\Desktop\\SW";
-
     }
 
     @Override
@@ -194,11 +204,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
                 }
                 break;
             case "Download":
-                try {
-                    downloadTable();
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
+                new DownloadTable(guestsJTable);
                 break;
             default:
                 break;

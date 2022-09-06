@@ -142,7 +142,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         if (index!=-1){
             String id = (String) tableModel.getValueAt(index,0);
             dispose();
-            new Ticket(id);
+            new Dashboard(id);
         }
 
     }

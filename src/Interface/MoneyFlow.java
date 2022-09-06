@@ -17,7 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
+public class MoneyFlow extends PannelloBorder implements ActionListener, MouseListener {
 
     private final JTable Cost_jTable;
     private final JTable Revenues_jTable;
@@ -28,11 +28,7 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
     private static LabelTextField TotalRevLabel;
     private static LabelTextField TotalContLabel;
 
-    public MoneyFlow(String ID) throws SQLException{
-        super("GIUDO - Money Flow");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
-
+    public MoneyFlow(JFrame parent,String ID) throws SQLException{
         //Create Cost Management
 
         Text CostText = new Text("COST");
@@ -186,9 +182,9 @@ public class MoneyFlow extends JFrame implements ActionListener, MouseListener {
         contentView.add(InfoRevPanel);
         contentView.add(InfoContPanel);
 
-        this.add(contentView);
-        pack();
-        setLocationRelativeTo(null);
+        parent.add(contentView,BorderLayout.CENTER);
+        parent.setSize(1200,600);
+        parent.pack();
         setVisible(true);
 
 

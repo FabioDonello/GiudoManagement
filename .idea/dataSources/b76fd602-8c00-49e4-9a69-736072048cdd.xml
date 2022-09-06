@@ -1313,108 +1313,141 @@
     <argument id="481" parent="165">
       <Position>1</Position>
     </argument>
-    <table id="482" parent="166" name="Guest"/>
-    <table id="483" parent="166" name="Inventory"/>
-    <table id="484" parent="166" name="Projects"/>
-    <table id="485" parent="166" name="Staff"/>
-    <table id="486" parent="166" name="Users"/>
-    <table id="487" parent="166" name="sqlite_master">
+    <table id="482" parent="166" name="Cost"/>
+    <table id="483" parent="166" name="Guest"/>
+    <table id="484" parent="166" name="Inventory"/>
+    <table id="485" parent="166" name="Projects"/>
+    <table id="486" parent="166" name="Revenues"/>
+    <table id="487" parent="166" name="Staff"/>
+    <table id="488" parent="166" name="Users"/>
+    <table id="489" parent="166" name="sqlite_master">
       <System>1</System>
     </table>
-    <column id="488" parent="482" name="Name">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="490" parent="482" name="ID">
+      <DataType>VARCHAR(30)|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="489" parent="482" name="Surname">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="491" parent="482" name="Amount">
+      <DataType>VARCHAR(30)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="490" parent="482" name="Email">
-      <DataType>varchar|0s</DataType>
+    <column id="492" parent="482" name="Name">
+      <DataType>VARCHAR(30)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="491" parent="482" name="Phone_Number">
-      <DataType>varchar(10)|0s</DataType>
+    <column id="493" parent="482" name="Description">
+      <DataType>VARCHAR(30)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="492" parent="482" name="Confirm">
+    <column id="494" parent="483" name="Name">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="495" parent="483" name="Surname">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="496" parent="483" name="Email">
+      <DataType>VARCHAR|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="497" parent="483" name="Phone_Number">
+      <DataType>VARCHAR(10)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="498" parent="483" name="Confirm">
       <DataType>INTEGER|0s</DataType>
-      <DefaultExpression>0</DefaultExpression>
       <Position>5</Position>
     </column>
-    <column id="493" parent="483" name="Object">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="499" parent="483" name="Date">
+      <DataType>date|0s</DataType>
+      <Position>6</Position>
+    </column>
+    <column id="500" parent="484" name="Object">
+      <DataType>VARCHAR(30)|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="494" parent="483" name="Quantity">
+    <column id="501" parent="484" name="Quantity">
       <DataType>INTEGER|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="495" parent="483" name="Description">
-      <DataType>varchar|0s</DataType>
+    <column id="502" parent="484" name="Description">
+      <DataType>VARCHAR|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="496" parent="484" name="ID">
+    <column id="503" parent="485" name="ID">
       <DataType>INTEGER|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="497" parent="484" name="Name">
+    <column id="504" parent="485" name="Name">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="498" parent="484" name="Description">
+    <column id="505" parent="485" name="Description">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>3</Position>
     </column>
-    <index id="499" parent="484" name="Projects_ID_uindex">
-      <ColNames>ID</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <column id="500" parent="485" name="Name">
-      <DataType>varchar(30)|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="501" parent="485" name="Task">
-      <DataType>varchar(30)|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="502" parent="485" name="Description">
-      <DataType>varchar|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="503" parent="486" name="Name">
+    <column id="506" parent="486" name="ID">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="504" parent="486" name="Surname">
+    <column id="507" parent="486" name="Amount">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="505" parent="486" name="Email">
+    <column id="508" parent="486" name="Name">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="506" parent="486" name="Password">
+    <column id="509" parent="486" name="Description">
       <DataType>VARCHAR(30)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="507" parent="487" name="type">
+    <column id="510" parent="487" name="Name">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="511" parent="487" name="Task">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="512" parent="487" name="Description">
+      <DataType>VARCHAR|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="513" parent="488" name="Name">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="514" parent="488" name="Surname">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="515" parent="488" name="Email">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>3</Position>
+    </column>
+    <column id="516" parent="488" name="Password">
+      <DataType>VARCHAR(30)|0s</DataType>
+      <Position>4</Position>
+    </column>
+    <column id="517" parent="489" name="type">
       <DataType>TEXT|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="508" parent="487" name="name">
+    <column id="518" parent="489" name="name">
       <DataType>TEXT|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="509" parent="487" name="tbl_name">
+    <column id="519" parent="489" name="tbl_name">
       <DataType>TEXT|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="510" parent="487" name="rootpage">
+    <column id="520" parent="489" name="rootpage">
       <DataType>INT|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="511" parent="487" name="sql">
+    <column id="521" parent="489" name="sql">
       <DataType>TEXT|0s</DataType>
       <Position>5</Position>
     </column>
