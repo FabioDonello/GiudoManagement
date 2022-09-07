@@ -78,6 +78,7 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
     }
 
     //okay
+    //try
     public void UploadDataInventory() throws SQLException {
         Statement statement = DBOperations.establish_connection();
         ResultSet resultSet = DBOperations.inventoryUpload(statement);
