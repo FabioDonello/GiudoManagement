@@ -15,36 +15,81 @@ public class DBOperations {
         try {
             DBManager.setConnection(DBManager.JDBC_Driver, DBManager.JDBC_URL);
             statement = DBManager.getConnection().createStatement();
+        }catch (SQLException e){
+            System.out.println("Errore di connessione al database");
+        }
+
+        try {
             statement.executeQuery("SELECT * FROM Users LIMIT 1");
-            statement.executeQuery("SELECT * FROM Projects LIMIT 1");
-            statement.executeQuery("SELECT * FROM Cost LIMIT 1");
-            statement.executeQuery("SELECT * FROM Revenues LIMIT 1");
-            statement.executeQuery("SELECT * FROM Staff LIMIT 1");
-            statement.executeQuery("SELECT * FROM Inventory LIMIT 1");
-            statement.executeQuery("SELECT * FROM Guest LIMIT 1");
         }catch (SQLException e){
             statement.executeUpdate("DROP TABLE IF EXISTS Users");
-            statement.executeUpdate("DROP TABLE IF EXISTS Projects");
-            statement.executeUpdate("DROP TABLE IF EXISTS Cost");
-            statement.executeUpdate("DROP TABLE IF EXISTS Revenues");
-            statement.executeUpdate("DROP TABLE IF EXISTS Staff");
-            statement.executeUpdate("DROP TABLE IF EXISTS Inventory");
-            statement.executeUpdate("DROP TABLE IF EXISTS Guest");
             statement.executeUpdate("CREATE TABLE Users (" + "Name VARCHAR(30), " + "Surname VARCHAR(30),"
                     + "Email VARCHAR(30)," + "Password VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Projects LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Projects");
             statement.executeUpdate("CREATE TABLE Projects (" + "ID INTEGER, " + "Name VARCHAR(30),"
-                     + "Description VARCHAR(30))");
+                    + "Description VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Cost LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Revenues");
             statement.executeUpdate("CREATE TABLE Cost (" + "ID VARCHAR(30)," + "Amount VARCHAR(30),"
                     + "Name VARCHAR(30)," + "Description VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Revenues LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Revenues");
             statement.executeUpdate("CREATE TABLE Revenues (" + "ID VARCHAR(30)," + "Amount VARCHAR(30),"
                     + "Name VARCHAR(30)," + "Description VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Staff LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Staff");
             statement.executeUpdate("CREATE TABLE Staff (" + "Name VARCHAR(30), " + "Task VARCHAR(30),"
                     + "Description VARCHAR)");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Inventory LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Inventory");
             statement.executeUpdate("CREATE TABLE Inventory (" + "Object VARCHAR(30), " + "Quantity INTEGER,"
                     + "Description VARCHAR)");
-            statement.executeUpdate("CREATE TABLE Guest (" + "Name VARCHAR(30), " + "Surname VARCHAR(30),"
-                    + "Email VARCHAR" + "Phone_Number VARCHAR(10)" + "Confirm INTEGER = 0");
         }
+
+        try {
+            statement.executeQuery("SELECT * FROM Guest LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Guest");
+            statement.executeUpdate("CREATE TABLE Guest (" + "Name VARCHAR(30), " + "Surname VARCHAR(30),"
+                    + "Email VARCHAR, " + "Phone_Number VARCHAR(10)," + "Confirm INTEGER default 0)");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM Tickets LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS Tickets");
+            statement.executeUpdate("CREATE TABLE Tickets (" + "ID VARCHAR(30), " + "NS VARCHAR(30),"
+                    + "Tickets VARCHAR(30), " + "Description VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM TicketsPrice LIMIT 1");
+        }catch (SQLException e){
+            statement.executeUpdate("DROP TABLE IF EXISTS TicketsPrice");
+            statement.executeUpdate("CREATE TABLE TicketsPrice (" + "ID VARCHAR(30), " + "Price VARCHAR(30))");
+        }
+
         return statement;
     }
 
@@ -295,7 +340,6 @@ public class DBOperations {
         return a;
     }
 
-
     public static int TicketsDelete(Statement statement, String id, String name) throws SQLException{
         try {
             System.out.println("\n- Deleting project...");
@@ -321,8 +365,41 @@ public class DBOperations {
             return null;
         }
     }
+
     public static ResultSet Tickets_Upload(Statement statement, String id) throws SQLException {
         return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" +id+ "' ");
+    }
+
+    public static int TicketsPriceLoad(Statement statement, String id, String price)
+            throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return Tickets_Price_Load(statement,id,price);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+    public static int Tickets_Price_Load(Statement statement, String id, String price)
+            throws SQLException {
+        int a = statement.executeUpdate("INSERT INTO TicketsPrice (ID,Price) " +
+                "VALUES('"+id+"','"+price+"')");
+        return a;
+    }
+
+    public static ResultSet TicketsPriceUpLoad(Statement statement,
+                                          String id) throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return Tickets_Price_Upload(statement,id);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet Tickets_Price_Upload(Statement statement, String id) throws SQLException {
+        return statement.executeQuery("SELECT * FROM TicketsPrice WHERE ID = '" +id+ "' ");
     }
 
     public static ResultSet staffUpload(Statement statement) throws SQLException {
