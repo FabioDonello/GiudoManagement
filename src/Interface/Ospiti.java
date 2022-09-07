@@ -9,6 +9,8 @@ import Widgets.Container;
 import Widgets.PannelloBorder;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -26,7 +28,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     PannelloBorder mainPanel;
     PannelloBorder buttonPanel;
     JTable guestsJTable;
-    DefaultTableModel guestsTableModel = null;
+    static DefaultTableModel guestsTableModel = null;
     AddTextToGuestsTable addTextToGuestsTable;
 
     public Ospiti(JFrame parent) throws SQLException {
@@ -64,14 +66,14 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         guestsJTable = new JTable(guestsTableModel);
         guestsJTable.setAutoCreateRowSorter(true);
         guestsJTable.setBounds(30, 40, 230, 280);
-        guestsJTable.setModel(guestsTableModel);
+        guestsJTable.getModel().addTableModelListener(new GuestsTableModelListener(guestsJTable));
 
         JScrollPane guestsJScrollPane = new JScrollPane(guestsJTable);
 
-        Object Confirm=
+        Object Confirm =
 
-        //Panels
-        mainPanel = new PannelloBorder();
+                //Panels
+                mainPanel = new PannelloBorder();
         buttonPanel = new PannelloBorder();
 
         Box button = Box.createHorizontalBox();
@@ -233,6 +235,45 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    static class GuestsTableModelListener implements TableModelListener {
+
+        JTable table;
+
+        GuestsTableModelListener(JTable table) {
+            this.table = table;
+        }
+
+        @Override
+        public void tableChanged(TableModelEvent e) {
+            int firstRow = e.getFirstRow();
+
+            switch (e.getType()) {
+                case TableModelEvent.UPDATE:
+                    try {
+                        Statement statement = DBOperations.establish_connection();
+                        String Name = (String) guestsTableModel.getValueAt(firstRow, 0);
+                        String Surname = (String) guestsTableModel.getValueAt(firstRow, 1);
+                        String Date = (String) guestsTableModel.getValueAt(firstRow, 2);
+                        String Email = (String) guestsTableModel.getValueAt(firstRow, 3);
+                        String Phone = (String) guestsTableModel.getValueAt(firstRow, 4);
+                        boolean Confirm = (boolean) guestsTableModel.getValueAt(firstRow, 5);
+                        System.out.println(Confirm);
+                        if (Confirm) {
+                            DBOperations.guestsRefresh(statement, Name, Surname, Date, Email, Phone, String.valueOf(true));
+                        } else {
+                            DBOperations.guestsRefresh(statement, Name, Surname, Date, Email, Phone, String.valueOf(false));
+                        }
+                        break;
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                case TableModelEvent.DELETE:
+                    break;
+            }
+        }
 
     }
 }

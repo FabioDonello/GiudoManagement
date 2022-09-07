@@ -19,14 +19,14 @@ import java.sql.Statement;
 
 public class MoneyFlow extends PannelloBorder implements ActionListener, MouseListener {
 
-    private final JTable Cost_jTable;
-    private final JTable Revenues_jTable;
-    private static DefaultTableModel Cost_tableModel;
-    private static DefaultTableModel Revenues_tableModel;
-    private static String id;
-    private static LabelTextField TotalCostLabel;
-    private static LabelTextField TotalRevLabel;
-    private static LabelTextField TotalContLabel;
+    JTable Cost_jTable;
+    JTable Revenues_jTable;
+    DefaultTableModel Cost_tableModel;
+    DefaultTableModel Revenues_tableModel;
+    String id;
+    LabelTextField TotalCostLabel;
+    LabelTextField TotalRevLabel;
+    LabelTextField TotalContLabel;
 
     public MoneyFlow(JFrame parent,String ID) throws SQLException{
         //Create Cost Management
@@ -71,11 +71,10 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
         Revenues_jTable.setBounds(30, 40, 230, 280);
         Revenues_jTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(Revenues_jTable));
         JScrollPane Revenues_jScrollPane = new JScrollPane(Revenues_jTable);
+        //Button
 
         Button add_Rev_button = new Button(this, "+", "AddRev");
         Button delete_Rev_button = new Button(this, "-", "DelRev");
-
-        //Button
 
         Button add_cost_button = new Button(this, "+", "AddCost");
         Button delete_cost_button = new Button(this, "-", "DelCost");

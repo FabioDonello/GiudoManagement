@@ -462,4 +462,29 @@ public class DBOperations {
                 "AND Date = '" + Date + "'");
         return a;
     }
+
+    public static int guestsRefresh(Statement statement, String Name, String Surname, String Date, String Email,
+                                    String Phone, String Confirm)
+            throws SQLException {
+        try {
+            System.out.println("\n- Writing database...");
+            return guests_Refresh(statement, Name, Surname, Date, Email, Phone, Confirm);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return 0;
+        }
+    }
+
+    public static int guests_Refresh(Statement statement, String Name, String Surname, String Date, String Email,
+                                     String Phone, String Confirm)
+            throws SQLException {
+        int a;
+
+        if (Confirm.equals("true")) {
+            a = statement.executeUpdate("UPDATE Guest set Confirm = '" + 1 + "' where Email='" + Email + "'");
+        } else {
+            a = statement.executeUpdate("UPDATE Guest set Confirm = '" + 0 + "' where Email='" + Email + "'");
+        }
+        return a;
+    }
 }
