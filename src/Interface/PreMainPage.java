@@ -136,7 +136,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
             JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
         }
     }
-
     public void OpenProject() throws SQLException {
         int index = jTable.getSelectedRow();
         if (index!=-1){
@@ -146,8 +145,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         }
 
     }
-
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
@@ -174,29 +171,22 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
 
     }
-
-
-
     @Override
     public void mouseClicked(MouseEvent e) {
 
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
 
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
 
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
-
     @Override
     public void mouseExited(MouseEvent e) {
 
