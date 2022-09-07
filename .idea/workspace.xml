@@ -1,7 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Guests done (only the editable checkbox cell is missing)" />
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="07.09.2022">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Dashboard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Login.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MainPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$MyTableModelListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Registration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Welcome.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToDoTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToGuestsTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToInventoryTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToMoneyTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToStaffTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/CheckEmail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/CheckPassword.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/Constants.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DateTextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Button.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/CoinsButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Container.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/GrigliaBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/GuestsButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/HomeButton$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/HomeButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LabelTextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LogoutButton$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LogoutButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/PannelloBorder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/PasswordTextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/StorageButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Text.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/TicketButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/TodoListButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/UsersButton.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/back.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/clipboard-list.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/coins.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/garage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/guest.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/home.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/logout.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/ticket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/users.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +170,28 @@
       <option name="project" value="LOCAL" />
       <updated>1662475444253</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="07.09.2022">
+      <created>1662556881221</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662556881221</updated>
+    </task>
+    <task id="LOCAL-00005" summary="07.09.2022">
+      <created>1662556986500</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662556986500</updated>
+    </task>
+    <task id="LOCAL-00006" summary="07.09.2022">
+      <created>1662557068731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662557068731</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,6 +211,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Definitivo" />
     <MESSAGE value="Guests done (only the editable checkbox cell is missing)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Guests done (only the editable checkbox cell is missing)" />
+    <MESSAGE value="07.09.2022" />
+    <option name="LAST_COMMIT_MESSAGE" value="07.09.2022" />
   </component>
 </project>
