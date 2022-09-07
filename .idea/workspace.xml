@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Guests done (only the editable checkbox cell is missing)">
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Contabilità.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2EL8heErvQgnaz9A6BzSF7hjyrv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/39377/Downloads/poi-bin-5.2.2/lib/log4j-api-2.17.2.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="GESTIONALE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Definitivo">
+      <created>1662217703735</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662217703735</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Definitivo" />
+      <created>1662363630263</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1662363630263</updated>
+      <workItem from="1662363632403" duration="12214000" />
+      <workItem from="1662452740439" duration="3615000" />
+      <workItem from="1662470399081" duration="4658000" />
+      <workItem from="1662539622500" duration="5562000" />
+      <workItem from="1662551435602" duration="1730000" />
+    </task>
+    <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
+      <created>1662475429575</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662475429575</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Guests done (only the editable checkbox cell is missing)">
+      <created>1662475444253</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662475444253</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Definitivo" />
+    <MESSAGE value="Guests done (only the editable checkbox cell is missing)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guests done (only the editable checkbox cell is missing)" />
+  </component>
+</project>
