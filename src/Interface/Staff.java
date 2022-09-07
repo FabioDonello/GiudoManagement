@@ -69,6 +69,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
+        parent.pack();
 
         setVisible(true);
 

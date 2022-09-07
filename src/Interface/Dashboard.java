@@ -15,8 +15,9 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
     PannelloBorder center;
     PannelloBorder west;
+    public String id;
 
-    public Dashboard() {
+    public Dashboard(String ID) {
 
         super("Giudo - Dashboard");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,7 +33,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         GuestsButton guestsButton = new GuestsButton(this, "Ospiti", "guests");
         TicketButton ticketButton = new TicketButton(this, "Pre-vendite", "ticket");
 
-        HomeButton homeButton = new HomeButton(this);
+        HomeButton homeButton = new HomeButton(this, ID);
         LogoutButton logoutButton = new LogoutButton(this);
 
         //Pannelli
@@ -43,16 +44,17 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
         headerText.setBorder(Constants.compoundBottom5);
 
-        Box b = Box.createHorizontalBox();
-        b.add(Box.createHorizontalGlue());
-        b.add(homeButton);
-        b.add(Box.createHorizontalStrut(10));
-        b.add(logoutButton);
+        Box button=Box.createHorizontalBox();
+        button.add(Box.createHorizontalGlue());
+        button.add(homeButton);
+        button.add(Box.createHorizontalStrut(10));
+        button.add(logoutButton);
 
         west.setPreferredSize(Constants.FieldDimensions100);
         west.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         west.add(headerText, BorderLayout.NORTH);
-        west.add(b, BorderLayout.SOUTH);
+        west.add(button,BorderLayout.NORTH);
+
 
         center.setBackground(Constants.senapeColor);
         center.setPreferredSize(Constants.FieldDimensions100);
@@ -72,6 +74,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         setVisible(true);
         setLocationRelativeTo(null);
 
+        id = ID;
     }
 
     @Override
@@ -81,7 +84,11 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         switch (cmd) {
             case "costi":
                 center.setVisible(false);
-                new Contabilità(this);
+                try {
+                    new MoneyFlow(this, id);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 break;
             case "personale":
                 center.setVisible(false);
@@ -101,7 +108,11 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 break;
             case "todolist":
                 center.setVisible(false);
-                new ToDoList(this);
+                try {
+                    new ToDoList(this, id);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 break;
             case "guests":
                 center.setVisible(false);
@@ -111,10 +122,14 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                     throw new RuntimeException(ex);
                 }
                 break;
-            case "ticket":
+            /*case "ticket":
                 center.setVisible(false);
-                new Ticket(this);
-                break;
+                try {
+                    new Ticket(this, id);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                break;*/
             default:
                 break;
         }*/

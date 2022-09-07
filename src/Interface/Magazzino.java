@@ -70,12 +70,15 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
+        parent.pack();
 
         setVisible(true);
 
         UploadDataInventory();
     }
 
+    //okay
+    //try
     public void UploadDataInventory() throws SQLException {
         Statement statement = DBOperations.establish_connection();
         ResultSet resultSet = DBOperations.inventoryUpload(statement);

@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 
 public class HomeButton extends JLabel {
 
-    public HomeButton(JFrame parent) {
+    public HomeButton(JFrame parent, String id) {
         super("");
         setIcon(Constants.homeIcon);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -19,7 +19,7 @@ public class HomeButton extends JLabel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 parent.dispose();
-                new Dashboard();
+                new Dashboard(id);
             }
 
             @Override

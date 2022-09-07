@@ -22,7 +22,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ToDoList extends JFrame implements ActionListener, MouseListener {
+public class ToDoList extends PannelloBorder implements ActionListener, MouseListener {
 
     private final JTable Done_jTable;
     private final JTable ToDo_jTable;
@@ -32,15 +32,12 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
     private static LabelTextField TotalDoneLabel;
     private static LabelTextField TotalToDoLabel;
     private static LabelTextField TotalContLabel;
-    public ToDoList(String ID) throws SQLException {
 
-        super("GIUDO - To do list");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+    public ToDoList(JFrame parent, String ID) throws SQLException {
 
         //Create To do action Management
         Text ToDoText = new Text("To do actions:");
-        ToDo_tableModel = new DefaultTableModel(){
+        ToDo_tableModel = new DefaultTableModel() {
             /**
              * Make the all cell not editable
              */
@@ -62,7 +59,7 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         //Create done Management
 
         Text DoneText = new Text("Done actions:");
-        Done_tableModel = new DefaultTableModel(){
+        Done_tableModel = new DefaultTableModel() {
             /**
              * Make the all cell not editable
              */
@@ -99,16 +96,16 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
 
         Text TotalDoneText = new Text("Total done :");
         TotalDoneLabel = new LabelTextField();
-        TotalDoneLabel.setPreferredSize(new Dimension(100,20));
-        TotalDoneLabel.setMinimumSize(new Dimension(100,20));
-        TotalDoneLabel.setMaximumSize(new Dimension(100,20));
+        TotalDoneLabel.setPreferredSize(new Dimension(100, 20));
+        TotalDoneLabel.setMinimumSize(new Dimension(100, 20));
+        TotalDoneLabel.setMaximumSize(new Dimension(100, 20));
         TotalDoneLabel.setEditable(false);
 
         Text TotalToDoText = new Text("Total todo :");
         TotalToDoLabel = new LabelTextField();
-        TotalToDoLabel.setPreferredSize(new Dimension(100,20));
-        TotalToDoLabel.setMinimumSize(new Dimension(100,20));
-        TotalToDoLabel.setMaximumSize(new Dimension(100,20));
+        TotalToDoLabel.setPreferredSize(new Dimension(100, 20));
+        TotalToDoLabel.setMinimumSize(new Dimension(100, 20));
+        TotalToDoLabel.setMaximumSize(new Dimension(100, 20));
         TotalToDoLabel.setEditable(false);
 
 
@@ -123,25 +120,25 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         PannelloBorder InfoContPanel = new PannelloBorder();
         PannelloBorder SwapPanel = new PannelloBorder(new GridLayout(2, 1));
 
-        TablePanel.add(ToDo_jScrollPane,BorderLayout.WEST);
+        TablePanel.add(ToDo_jScrollPane, BorderLayout.WEST);
 
-        SwapPanel.add(swap_button,BorderLayout.CENTER);
+        SwapPanel.add(swap_button, BorderLayout.CENTER);
 
-        TablePanel.add(SwapPanel,BorderLayout.CENTER);
+        TablePanel.add(SwapPanel, BorderLayout.CENTER);
 
-        TablePanel.add(Done_jScrollPane,BorderLayout.EAST);
+        TablePanel.add(Done_jScrollPane, BorderLayout.EAST);
 
 
-        CostButtonPanel.add(add_To_Do_button,BorderLayout.WEST);
-        CostButtonPanel.add(delete_To_Do_button,BorderLayout.CENTER);
+        CostButtonPanel.add(add_To_Do_button, BorderLayout.WEST);
+        CostButtonPanel.add(delete_To_Do_button, BorderLayout.CENTER);
 
-        RevButtonPanel.add(add_Done_button,BorderLayout.WEST);
-        RevButtonPanel.add(delete_Done_button,BorderLayout.CENTER);
+        RevButtonPanel.add(add_Done_button, BorderLayout.WEST);
+        RevButtonPanel.add(delete_Done_button, BorderLayout.CENTER);
 
-        InfoRevPanel.add(TotalToDoText,BorderLayout.WEST);
-        InfoRevPanel.add(TotalToDoLabel,BorderLayout.EAST);
-        InfoCostPanel.add(TotalDoneText,BorderLayout.WEST);
-        InfoCostPanel.add(TotalDoneLabel,BorderLayout.EAST);
+        InfoRevPanel.add(TotalToDoText, BorderLayout.WEST);
+        InfoRevPanel.add(TotalToDoLabel, BorderLayout.EAST);
+        InfoCostPanel.add(TotalDoneText, BorderLayout.WEST);
+        InfoCostPanel.add(TotalDoneLabel, BorderLayout.EAST);
 
         //Title Grid
 
@@ -173,14 +170,14 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         b.gridy = 0;
         b.weightx = 0.5;
         b.weighty = 0.5;
-        ButtonGrid.add(CostButtonPanel,b);
+        ButtonGrid.add(CostButtonPanel, b);
 
         b.fill = GridBagConstraints.BASELINE;
         b.gridx = 1;
         b.gridy = 0;
         b.weightx = 0.5;
         b.weighty = 0.5;
-        ButtonGrid.add(RevButtonPanel,b);
+        ButtonGrid.add(RevButtonPanel, b);
         ButtonPanel.add(ButtonGrid);
 
         //Container
@@ -192,9 +189,9 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         contentView.add(InfoRevPanel);
         contentView.add(InfoContPanel);
 
-        this.add(contentView);
-        pack();
-        setLocationRelativeTo(null);
+        parent.add(contentView);
+        parent.setSize(1200,600);
+        parent.pack();
         setVisible(true);
 
         id = ID;
@@ -204,32 +201,33 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
     public void UpLoadData() throws SQLException {
         Statement statement = DBOperations.establish_connection();
 
-        ResultSet DoneAction = DBOperations.TodoDoneUpLoad(statement,"DoneAction",id);
+        ResultSet DoneAction = DBOperations.TodoDoneUpLoad(statement, "DoneAction", id);
 
-        if (DoneAction!=null){
+        if (DoneAction != null) {
             while (DoneAction.next()) {
                 String DBName = DoneAction.getString("Name");
                 String DBExecution = DoneAction.getString("Execution");
                 String DBDescription = DoneAction.getString("Description");
 
-                Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[] { DBName,DBExecution,DBDescription});
+                Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{DBName, DBExecution, DBDescription});
             }
         }
 
-        ResultSet ActionToDo = DBOperations.RevCostUpload(statement,"ToDoAction",id);
+        ResultSet ActionToDo = DBOperations.RevCostUpload(statement, "ToDoAction", id);
 
-        if (DoneAction!=null){
+        if (DoneAction != null) {
             while (ActionToDo.next()) {
                 String DBName = ActionToDo.getString("Name");
                 String DBDeadline = ActionToDo.getString("Deadline");
                 String DBDescription = ActionToDo.getString("Description");
 
-                ToDo_tableModel.insertRow(ToDo_tableModel.getRowCount(), new Object[] { DBName,DBDeadline,DBDescription});
+                ToDo_tableModel.insertRow(ToDo_tableModel.getRowCount(), new Object[]{DBName, DBDeadline, DBDescription});
             }
         }
 
         RefreshInfoPanel();
     }
+
     public void Add_ToDo_Done(String s) throws SQLException {
 
         AddTextToDoTable l = new AddTextToDoTable(s);
@@ -241,25 +239,25 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
                 String Date = String.valueOf(l.DateTimeField.GetData());
                 String Description = l.DescriptionLabel.getText();
 
-                switch (cmd){
+                switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
                             DBOperations.TodoDoneLoad(statement,
-                                    s,id,Name,Date,Description);
+                                    s, id, Name, Date, Description);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
 
-                        if (s.compareTo("DoneAction")==0) {
+                        if (s.compareTo("DoneAction") == 0) {
                             Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
-                                    Name,Date,Description});
+                                    Name, Date, Description});
                         }
 
-                        if (s.compareTo("ToDoAction")==0) {
+                        if (s.compareTo("ToDoAction") == 0) {
                             ToDo_tableModel.insertRow(ToDo_jTable.getRowCount(), new Object[]{
-                                    Name,Date,Description});
+                                    Name, Date, Description});
                         }
                         RefreshInfoPanel();
                         l.Close();
@@ -272,29 +270,30 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         };
         l.Add_button.addActionListener(x);
     }
+
     public void Delete_ToDo_Done(String s) throws SQLException {
 
-        String Name ;
-        String Date ;
+        String Name;
+        String Date;
         int index = 0;
-        if (s.compareTo("DoneAction")==0){
+        if (s.compareTo("DoneAction") == 0) {
             index = Done_jTable.getSelectedRow();
-            if (index != -1){
-                Name = (String) Done_tableModel.getValueAt(index,0);
-                Date = (String) Done_tableModel.getValueAt(index,1);
+            if (index != -1) {
+                Name = (String) Done_tableModel.getValueAt(index, 0);
+                Date = (String) Done_tableModel.getValueAt(index, 1);
                 Statement statement = DBOperations.establish_connection();
-                DBOperations.TodoDoneDelete(statement,s,Name,Date);
+                DBOperations.TodoDoneDelete(statement, s, Name, Date);
                 Done_tableModel.removeRow(index);
                 JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
         }
-        if (s.compareTo("ToDoAction")==0){
+        if (s.compareTo("ToDoAction") == 0) {
             index = ToDo_jTable.getSelectedRow();
-            if (index != -1){
-                Name = (String) ToDo_tableModel.getValueAt(index,0);
-                Date = (String) ToDo_tableModel.getValueAt(index,1);
+            if (index != -1) {
+                Name = (String) ToDo_tableModel.getValueAt(index, 0);
+                Date = (String) ToDo_tableModel.getValueAt(index, 1);
                 Statement statement = DBOperations.establish_connection();
-                DBOperations.TodoDone_Delete(statement,s,Name,Date);
+                DBOperations.TodoDone_Delete(statement, s, Name, Date);
                 ToDo_tableModel.removeRow(index);
                 JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
@@ -302,6 +301,7 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
 
         RefreshInfoPanel();
     }
+
     public void RefreshInfoPanel() {
         int TotalDoneActions = Done_jTable.getRowCount();
         int TotalToDoAction = ToDo_jTable.getRowCount();
@@ -309,21 +309,22 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
         TotalDoneLabel.setText(String.valueOf(TotalDoneActions));
         TotalToDoLabel.setText(String.valueOf(TotalToDoAction));
     }
+
     public void SwapActions() throws SQLException {
 
         int index = ToDo_jTable.getSelectedRow();
-        if (index!=-1){
-            String Name = (String) ToDo_tableModel.getValueAt(index,0);
+        if (index != -1) {
+            String Name = (String) ToDo_tableModel.getValueAt(index, 0);
             LocalDate now = LocalDate.now();
             String Date = String.valueOf(now);
-            String Description = (String) ToDo_tableModel.getValueAt(index,2);
+            String Description = (String) ToDo_tableModel.getValueAt(index, 2);
             Delete_ToDo_Done("ToDoAction");
 
             Statement statement = DBOperations.establish_connection();
             DBOperations.TodoDoneLoad(statement,
-                    "DoneAction",id,Name,Date,Description);
+                    "DoneAction", id, Name, Date, Description);
             Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
-                    Name,Date,Description});
+                    Name, Date, Description});
             RefreshInfoPanel();
         }
     }
@@ -332,7 +333,7 @@ public class ToDoList extends JFrame implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         System.out.println(cmd);
-        switch (cmd){
+        switch (cmd) {
             case "AddDone":
                 try {
                     Add_ToDo_Done("DoneAction");

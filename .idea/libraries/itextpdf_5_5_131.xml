@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="itextpdf-5.5.131">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../SportsManagement/Esame/Code/Lib/itextpdf-5.5.13.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
