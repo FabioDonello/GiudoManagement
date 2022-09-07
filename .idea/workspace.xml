@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="07.09.2022">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Dashboard.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Login.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$1.class" beforeDir="false" />
@@ -15,7 +18,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$MyTableModelListener.class" beforeDir="false" />
@@ -32,7 +35,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Welcome.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToDoTable.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToGuestsTable.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToInventoryTable.class" beforeDir="false" />
@@ -45,7 +48,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBManager.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DateTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Button.class" beforeDir="false" />
@@ -74,6 +77,16 @@
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/logout.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/ticket.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/users.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Magazzino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Magazzino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +101,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="main" />
+    <option name="BRANCH" value="Giuseppe" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

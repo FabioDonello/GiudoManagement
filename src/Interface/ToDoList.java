@@ -191,7 +191,7 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
 
         parent.add(contentView);
         parent.setSize(1200,600);
-        parent.pack();
+
         setVisible(true);
 
         id = ID;

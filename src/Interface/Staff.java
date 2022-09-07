@@ -24,8 +24,9 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
 
     JTable staffJTable;
     DefaultTableModel staffTableModel = null;
+    String id;
 
-    public Staff(JFrame parent) throws SQLException {
+    public Staff(JFrame parent, String ID) throws SQLException {
 
         //Create
         Button addStaff = new Button(this, "Aggiungi Personale", "Add");
@@ -69,17 +70,17 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
-        parent.pack();
 
         setVisible(true);
 
+        id = ID;
         UploadDataStaff();
     }
 
     public void UploadDataStaff() throws SQLException {
 
         Statement statement = DBOperations.establish_connection();
-        ResultSet resultSet = DBOperations.staffUpload(statement);
+        ResultSet resultSet = DBOperations.staffUpload(statement, "Staff", id);
         if (resultSet != null) {
             while (resultSet.next()) {
                 String DBName = resultSet.getString("Name");
@@ -106,7 +107,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
-                            DBOperations.Add_Staff(statement, Name, Task, Description);
+                            DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }

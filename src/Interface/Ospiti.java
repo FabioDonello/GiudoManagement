@@ -30,8 +30,9 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     JTable guestsJTable;
     static DefaultTableModel guestsTableModel = null;
     AddTextToGuestsTable addTextToGuestsTable;
+    String id;
 
-    public Ospiti(JFrame parent) throws SQLException {
+    public Ospiti(JFrame parent, String ID) throws SQLException {
 
         //Create
         Button addGuests = new Button(this, "Aggiungi ospite", "Add");
@@ -92,10 +93,10 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
-        parent.pack();
 
         setVisible(true);
 
+        id = ID;
         UploadDataGuest();
 
     }
@@ -103,7 +104,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     public void UploadDataGuest() throws SQLException {
 
         Statement statement = DBOperations.establish_connection();
-        ResultSet resultSet = DBOperations.guestsUpload(statement);
+        ResultSet resultSet = DBOperations.guestsUpload(statement, "Guest", id);
         if (resultSet != null) {
             while (resultSet.next()) {
                 String DBName = resultSet.getString("Name");
@@ -144,7 +145,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
-                            DBOperations.Add_Guest(statement, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
+                            DBOperations.Add_Guest(statement, "Guest", id, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }

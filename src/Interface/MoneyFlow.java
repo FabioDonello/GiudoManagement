@@ -183,7 +183,6 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
 
         parent.add(contentView,BorderLayout.CENTER);
         parent.setSize(1200,600);
-        parent.pack();
         setVisible(true);
 
 
