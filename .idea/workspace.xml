@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="07.09.2022">
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="aaaaa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,7 @@
     <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="origin/main" />
+    <option name="NEW_BASE" value="origin/Giuseppe" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +94,7 @@
       <workItem from="1662470399081" duration="4658000" />
       <workItem from="1662539622500" duration="5562000" />
       <workItem from="1662551435602" duration="1730000" />
-      <workItem from="1662559534793" duration="1651000" />
+      <workItem from="1662559534793" duration="3330000" />
     </task>
     <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
       <created>1662475429575</created>
@@ -139,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662560325863</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="aaaaa">
+      <created>1662561433430</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662561433430</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,6 +166,7 @@
     <MESSAGE value="Definitivo" />
     <MESSAGE value="Guests done (only the editable checkbox cell is missing)" />
     <MESSAGE value="07.09.2022" />
-    <option name="LAST_COMMIT_MESSAGE" value="07.09.2022" />
+    <MESSAGE value="aaaaa" />
+    <option name="LAST_COMMIT_MESSAGE" value="aaaaa" />
   </component>
 </project>
