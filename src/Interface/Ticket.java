@@ -21,7 +21,7 @@ import Widgets.Button;
 import Widgets.Container;
 
 
-public class Ticket extends JFrame implements ActionListener, MouseListener {
+public class Ticket extends PannelloBorder implements ActionListener, MouseListener {
 
     private final JTable Tickets_jTable;
     private static DefaultTableModel Tickets_TableModel = null;
@@ -29,17 +29,12 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
     private JComboBox<String> PriceComboBox;
     private JComboBox<String> AddComboBox;
     private JComboBox<String> SubComboBox;
-    private  LabelTextField AddPriceLabel;
-    private  LabelTextField NameLabel;
-    private  LabelTextField TicketsLabel;
-    private  LabelTextField ValueLabel;
+    private LabelTextField AddPriceLabel;
+    private LabelTextField NameLabel;
+    private LabelTextField TicketsLabel;
+    private LabelTextField ValueLabel;
 
-    public Ticket(String ID) throws SQLException {
-
-        super("GIUDO - Tickets");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
-
+    public Ticket(JFrame parent, String ID) throws SQLException {
         //Create
 
         Button add_button = new Button(this, "Add", "Add");
@@ -49,7 +44,7 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         Text AddPriceText = new Text("Or add price ticket:");
         Text NameText = new Text("Name and surname:");
         Text TicketsText = new Text("Tickets:");
-        Text ValueText = new Text("Value (€):" );
+        Text ValueText = new Text("Value (€):");
 
         AddPriceLabel = new LabelTextField();
         NameLabel = new LabelTextField();
@@ -62,21 +57,20 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = Tickets_jTable.getSelectedRow();
-                if (index != -1){
-                    String InfoName = (String) Tickets_TableModel.getValueAt(index,0);
-                    String InfoTickets = (String) Tickets_TableModel.getValueAt(index,1);
+                if (index != -1) {
+                    String InfoName = (String) Tickets_TableModel.getValueAt(index, 0);
+                    String InfoTickets = (String) Tickets_TableModel.getValueAt(index, 1);
                     NameLabel.setText(InfoName);
                     TicketsLabel.setText(InfoTickets);
 
                     String TicketsPrice = (String) PriceComboBox.getSelectedItem();
                     assert TicketsPrice != null;
-                    if (TicketsPrice.compareTo("None") == 0){
+                    if (TicketsPrice.compareTo("None") == 0) {
                         ValueLabel.setText("None");
-                    }
-                    else {
+                    } else {
                         int PriceComboValue = Integer.parseInt((String) PriceComboBox.getSelectedItem());
                         int TicketsValue = Integer.parseInt(InfoTickets);
-                        int value1 = PriceComboValue*TicketsValue;
+                        int value1 = PriceComboValue * TicketsValue;
                         String value = String.valueOf(value1);
                         ValueLabel.setText(value + "€");
                     }
@@ -87,7 +81,7 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
 
         AddComboBox = new JComboBox<String>();
         SubComboBox = new JComboBox<String>();
-        for (int i=0; i<21; i++){
+        for (int i = 0; i < 21; i++) {
             AddComboBox.addItem(String.valueOf(i));
             SubComboBox.addItem(String.valueOf(i));
         }
@@ -96,40 +90,40 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         Button add_tickets_button = new Button(this, "Add tickets", "AddTickets");
         Button sub_tickets_button = new Button(this, "Sub tickets", "SubTickets");
 
-        PriceComboBox.setPreferredSize(new Dimension(100,20));
-        PriceComboBox.setMinimumSize(new Dimension(100,20));
-        PriceComboBox.setMaximumSize(new Dimension(100,20));
+        PriceComboBox.setPreferredSize(new Dimension(100, 20));
+        PriceComboBox.setMinimumSize(new Dimension(100, 20));
+        PriceComboBox.setMaximumSize(new Dimension(100, 20));
 
-        AddPriceLabel.setPreferredSize(new Dimension(100,20));
-        AddPriceLabel.setMinimumSize(new Dimension(100,20));
-        AddPriceLabel.setMaximumSize(new Dimension(100,20));
+        AddPriceLabel.setPreferredSize(new Dimension(100, 20));
+        AddPriceLabel.setMinimumSize(new Dimension(100, 20));
+        AddPriceLabel.setMaximumSize(new Dimension(100, 20));
 
-        NameLabel.setPreferredSize(new Dimension(100,20));
-        NameLabel.setMinimumSize(new Dimension(100,20));
-        NameLabel.setMaximumSize(new Dimension(100,20));
+        NameLabel.setPreferredSize(new Dimension(100, 20));
+        NameLabel.setMinimumSize(new Dimension(100, 20));
+        NameLabel.setMaximumSize(new Dimension(100, 20));
 
-        TicketsLabel.setPreferredSize(new Dimension(100,20));
-        TicketsLabel.setMinimumSize(new Dimension(100,20));
-        TicketsLabel.setMaximumSize(new Dimension(100,20));
+        TicketsLabel.setPreferredSize(new Dimension(100, 20));
+        TicketsLabel.setMinimumSize(new Dimension(100, 20));
+        TicketsLabel.setMaximumSize(new Dimension(100, 20));
 
-        ValueLabel.setPreferredSize(new Dimension(100,20));
-        ValueLabel.setMinimumSize(new Dimension(100,20));
-        ValueLabel.setMaximumSize(new Dimension(100,20));
+        ValueLabel.setPreferredSize(new Dimension(100, 20));
+        ValueLabel.setMinimumSize(new Dimension(100, 20));
+        ValueLabel.setMaximumSize(new Dimension(100, 20));
 
-        AddComboBox.setPreferredSize(new Dimension(100,20));
-        AddComboBox.setMinimumSize(new Dimension(100,20));
-        AddComboBox.setMaximumSize(new Dimension(100,20));
+        AddComboBox.setPreferredSize(new Dimension(100, 20));
+        AddComboBox.setMinimumSize(new Dimension(100, 20));
+        AddComboBox.setMaximumSize(new Dimension(100, 20));
 
-        SubComboBox.setPreferredSize(new Dimension(100,20));
-        SubComboBox.setMinimumSize(new Dimension(100,20));
-        SubComboBox.setMaximumSize(new Dimension(100,20));
+        SubComboBox.setPreferredSize(new Dimension(100, 20));
+        SubComboBox.setMinimumSize(new Dimension(100, 20));
+        SubComboBox.setMaximumSize(new Dimension(100, 20));
 
         NameLabel.setEditable(false);
         TicketsLabel.setEditable(false);
         ValueLabel.setEditable(false);
 
 
-        Tickets_TableModel = new DefaultTableModel(){
+        Tickets_TableModel = new DefaultTableModel() {
             /**
              * Make the cell ID not editable
              */
@@ -147,21 +141,20 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int index = Tickets_jTable.getSelectedRow();
-                if (index != -1){
-                    String InfoName = (String) Tickets_TableModel.getValueAt(index,0);
-                    String InfoTickets = (String) Tickets_TableModel.getValueAt(index,1);
+                if (index != -1) {
+                    String InfoName = (String) Tickets_TableModel.getValueAt(index, 0);
+                    String InfoTickets = (String) Tickets_TableModel.getValueAt(index, 1);
                     NameLabel.setText(InfoName);
                     TicketsLabel.setText(InfoTickets);
 
                     String TicketsPrice = (String) PriceComboBox.getSelectedItem();
                     assert TicketsPrice != null;
-                    if (TicketsPrice.compareTo("None") == 0){
+                    if (TicketsPrice.compareTo("None") == 0) {
                         ValueLabel.setText("None");
-                    }
-                    else {
+                    } else {
                         int PriceComboValue = Integer.parseInt((String) PriceComboBox.getSelectedItem());
                         int TicketsValue = Integer.parseInt(InfoTickets);
-                        int value1 = PriceComboValue*TicketsValue;
+                        int value1 = PriceComboValue * TicketsValue;
                         String value = String.valueOf(value1);
                         ValueLabel.setText(value + "€");
                     }
@@ -177,8 +170,8 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         PannelloBorder InfoPanel1 = new PannelloBorder();
         PannelloBorder InfoPanel2 = new PannelloBorder();
 
-        ButtonPanel.add(add_button,BorderLayout.WEST);
-        ButtonPanel.add(delete_button,BorderLayout.EAST);
+        ButtonPanel.add(add_button, BorderLayout.WEST);
+        ButtonPanel.add(delete_button, BorderLayout.EAST);
 
         GrigliaBorder InfoGrid1 = new GrigliaBorder();
         GridBagConstraints a1 = new GridBagConstraints();
@@ -275,36 +268,36 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         contentView.add(TicketsPricePanel);
 
 
-        this.add(contentView);
-        pack();
-        setLocationRelativeTo(null);
+        parent.add(contentView);
         setVisible(true);
 
         id = ID;
         UpLoadData();
 
     }
+
     public void UpLoadData() throws SQLException {
         Statement statement = DBOperations.establish_connection();
-        ResultSet Tickets = DBOperations.TicketsUpLoad(statement,id);
-        if (Tickets!=null){
+        ResultSet Tickets = DBOperations.TicketsUpLoad(statement, id);
+        if (Tickets != null) {
             while (Tickets.next()) {
                 String DBName = Tickets.getString("NS");
                 String DBTickets = Tickets.getString("Tickets");
                 String DBDescription = Tickets.getString("Description");
                 Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(),
-                        new Object[] { DBName,DBTickets,DBDescription});
+                        new Object[]{DBName, DBTickets, DBDescription});
             }
         }
 
-        ResultSet Price = DBOperations.TicketsPriceUpLoad(statement,id);
-        if (Price!=null){
+        ResultSet Price = DBOperations.TicketsPriceUpLoad(statement, id);
+        if (Price != null) {
             while (Price.next()) {
                 String DBPrice = Price.getString("Price");
                 PriceComboBox.addItem(DBPrice);
             }
         }
     }
+
     public void Add_Tickets() throws SQLException {
 
         AddTextTicketsTable l = new AddTextTicketsTable();
@@ -316,16 +309,16 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
                 String Tickets = l.TicketsLabel.getText();
                 String Description = l.DescriptionLabel.getText();
 
-                switch (cmd){
+                switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
 
                             statement = DBOperations.establish_connection();
-                            DBOperations.TicketsLoad(statement,id,Name,Tickets,Description);
+                            DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
 
                             Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
-                                    Name,Tickets,Description});
+                                    Name, Tickets, Description});
 
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
@@ -340,57 +333,60 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         };
         l.Add_button.addActionListener(x);
     }
-    public void Delete_Tickets() throws SQLException{
+
+    public void Delete_Tickets() throws SQLException {
         int index = Tickets_jTable.getSelectedRow();
         System.out.println("ciao");
-        if (index != -1){
-            String Name = (String) Tickets_TableModel.getValueAt(index,0);
+        if (index != -1) {
+            String Name = (String) Tickets_TableModel.getValueAt(index, 0);
             Statement statement = DBOperations.establish_connection();
             DBOperations.TicketsDelete(statement, id, Name);
             Tickets_TableModel.removeRow(index);
             JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
         }
     }
-    public void Add_Tickets_Price() throws SQLException{
+
+    public void Add_Tickets_Price() throws SQLException {
         String Price = AddPriceLabel.getText();
-        if (Price.compareTo("")!=0){
+        if (Price.compareTo("") != 0) {
             Statement statement = DBOperations.establish_connection();
-            DBOperations.TicketsPriceLoad(statement,id,Price);
+            DBOperations.TicketsPriceLoad(statement, id, Price);
             PriceComboBox.addItem(Price);
         }
     }
 
-    public void Refresh_Tickets(String s) throws SQLException{
+    public void Refresh_Tickets(String s) throws SQLException {
         int index = Tickets_jTable.getSelectedRow();
-        if (index!=-1){
-            String NS = (String) Tickets_TableModel.getValueAt(index,0);
-            String Tickets = (String) Tickets_TableModel.getValueAt(index,1);
-            String Description = (String) Tickets_TableModel.getValueAt(index,2);
+        if (index != -1) {
+            String NS = (String) Tickets_TableModel.getValueAt(index, 0);
+            String Tickets = (String) Tickets_TableModel.getValueAt(index, 1);
+            String Description = (String) Tickets_TableModel.getValueAt(index, 2);
 
             int TicketsValue = Integer.parseInt(Tickets);
             int TicketsRefreshValue;
-            if (s.compareTo("+")==0){
+            if (s.compareTo("+") == 0) {
                 TicketsRefreshValue = Integer.parseInt((String) Objects.requireNonNull(AddComboBox.getSelectedItem()));
                 TicketsValue += TicketsRefreshValue;
-            } else if (s.compareTo("-")==0) {
+            } else if (s.compareTo("-") == 0) {
                 TicketsRefreshValue = Integer.parseInt((String) Objects.requireNonNull(SubComboBox.getSelectedItem()));
                 TicketsValue -= TicketsRefreshValue;
             }
 
             Statement statement = DBOperations.establish_connection();
-            DBOperations.TicketsDelete(statement,id,NS);
-            DBOperations.TicketsLoad(statement,id,NS,String.valueOf(TicketsValue),Description);
+            DBOperations.TicketsDelete(statement, id, NS);
+            DBOperations.TicketsLoad(statement, id, NS, String.valueOf(TicketsValue), Description);
 
             Tickets_TableModel.removeRow(index);
             Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
-                    NS,String.valueOf(TicketsValue),Description});
+                    NS, String.valueOf(TicketsValue), Description});
         }
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         System.out.println(cmd);
-        switch (cmd){
+        switch (cmd) {
             case "Add":
                 try {
                     Add_Tickets();
@@ -431,6 +427,7 @@ public class Ticket extends JFrame implements ActionListener, MouseListener {
         }
 
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
 

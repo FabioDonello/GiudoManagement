@@ -44,7 +44,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
         headerText.setBorder(Constants.compoundBottom5);
 
-        Box button=Box.createHorizontalBox();
+        Box button = Box.createHorizontalBox();
         button.add(Box.createHorizontalGlue());
         button.add(homeButton);
         button.add(Box.createHorizontalStrut(10));
@@ -53,7 +53,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         west.setPreferredSize(Constants.FieldDimensions100);
         west.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         west.add(headerText, BorderLayout.NORTH);
-        west.add(button,BorderLayout.NORTH);
+        west.add(button, BorderLayout.NORTH);
 
 
         center.setBackground(Constants.senapeColor);
@@ -80,7 +80,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        /*String cmd = e.getActionCommand();
+        String cmd = e.getActionCommand();
         switch (cmd) {
             case "costi":
                 center.setVisible(false);
@@ -93,7 +93,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
             case "personale":
                 center.setVisible(false);
                 try {
-                    new Staff(this);
+                    new Staff(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -101,7 +101,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
             case "magazzino":
                 center.setVisible(false);
                 try {
-                    new Magazzino(this);
+                    new Magazzino(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
@@ -117,22 +117,22 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
             case "guests":
                 center.setVisible(false);
                 try {
-                    new Ospiti(this);
+                    new Ospiti(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
                 break;
-            /*case "ticket":
+            case "ticket":
                 center.setVisible(false);
                 try {
                     new Ticket(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;*/
+                break;
             default:
                 break;
-        }*/
+        }
     }
 
     @Override

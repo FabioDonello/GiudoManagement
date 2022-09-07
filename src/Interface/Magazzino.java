@@ -25,8 +25,9 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
 
     JTable inventoryJTable;
     DefaultTableModel inventoryTableModel = null;
+    String id;
 
-    public Magazzino(JFrame parent) throws SQLException {
+    public Magazzino(JFrame parent, String ID) throws SQLException {
 
         //Create
         Button AddObject = new Button(this, "Aggiungi oggetto", "Add");
@@ -70,18 +71,16 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
         parent.add(contentView, BorderLayout.CENTER);
-        parent.pack();
 
         setVisible(true);
 
+        id = ID;
         UploadDataInventory();
     }
 
-    //okay
-    //try
     public void UploadDataInventory() throws SQLException {
         Statement statement = DBOperations.establish_connection();
-        ResultSet resultSet = DBOperations.inventoryUpload(statement);
+        ResultSet resultSet = DBOperations.inventoryUpload(statement, "Inventory", id);
         if (resultSet != null) {
             while (resultSet.next()) {
                 String DBObject = resultSet.getString("Object");
@@ -109,7 +108,8 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
                         Statement statement = null;
                         try {
                             statement = DBOperations.establish_connection();
-                            DBOperations.Add_Inventory(statement, Object, Quantity, Description);
+                            DBOperations.Add_Inventory(statement, "Inventory", id,
+                                    Object, Quantity, Description);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
