@@ -1,90 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="07.09.2022">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Dashboard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Login.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MainPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$MyTableModelListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Registration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Welcome.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToDoTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToGuestsTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToInventoryTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToMoneyTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToStaffTable.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/CheckEmail.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/CheckPassword.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/Constants.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DateTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DownloadTable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/BackButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Button.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/CoinsButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Container.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/GrigliaBorder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/GuestsButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/HomeButton$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/HomeButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LabelTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LogoutButton$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/LogoutButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/PannelloBorder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/PasswordTextField.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/StorageButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/Text.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/TicketButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/TodoListButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Widgets/UsersButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/clipboard-list.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/coins.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/garage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/guest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/home.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/logout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/ticket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/icons/users.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Magazzino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Magazzino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Staff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ToDoList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
     </list>
@@ -101,7 +25,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Giuseppe" />
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -117,23 +41,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/39377/Downloads/poi-bin-5.2.2/lib/log4j-api-2.17.2.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/39377/Downloads/poi-bin-5.2.2/lib/log4j-api-2.17.2.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -168,6 +96,7 @@
       <workItem from="1662470399081" duration="4658000" />
       <workItem from="1662539622500" duration="5562000" />
       <workItem from="1662551435602" duration="1730000" />
+      <workItem from="1662559534793" duration="757000" />
     </task>
     <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
       <created>1662475429575</created>
