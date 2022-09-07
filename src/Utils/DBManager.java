@@ -13,6 +13,7 @@ public class DBManager {
     public static String JDBC_Driver = "org.sqlite.JDBC";
 
     public static String JDBC_URL = "jdbc:sqlite:/Users/fabiodonello/IdeaProjects/GiudoManagement/src/Utils/DATABASE";
+
     static Connection connection;
 
     public static void setConnection(String Driver, String URL) {

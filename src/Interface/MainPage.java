@@ -34,13 +34,13 @@ public class MainPage extends JFrame implements ActionListener,MouseListener {
         headerText.setHorizontalAlignment(SwingConstants.LEFT);
         headerText.setBorder(Constants.compoundBottom5);
 
-        PannelloBorder pannellologo= new PannelloBorder();
-        PannelloBorder pannelloBtn1= new PannelloBorder();
-        PannelloBorder pannelloBtn2= new PannelloBorder();
-        PannelloBorder pannelloBtn3= new PannelloBorder();
-        PannelloBorder pannelloBtn4= new PannelloBorder();
-        PannelloBorder pannelloBtn5= new PannelloBorder();
-        PannelloBorder pannelloBtn6= new PannelloBorder();
+        PannelloBorder pannellologo= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn1= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn2= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn3= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn4= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn5= new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloBtn6= new PannelloBorder(new GridLayout(3, 2));
 
         pannellologo.add(headerText, BorderLayout.NORTH);
 

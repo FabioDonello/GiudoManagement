@@ -1,6 +1,7 @@
 package Utils;
 
 import java.awt.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -22,8 +23,8 @@ public abstract class Constants {
     public static final Insets top10bottom10 = new Insets(10, 0, 10, 0);
 
     //Label dimensions
-    public static final Dimension LabelwestFieldDimensions = new Dimension(200, 100);
-    public static final Dimension LabelcenterFieldDimensions = new Dimension(100, 100);
+    public static final Dimension FieldDimensions200 = new Dimension(200, 100);
+    public static final Dimension FieldDimensions100 = new Dimension(100, 100);
 
     //Colors
     public static final Color senapeColor = new Color(0xE5D224);
@@ -32,5 +33,13 @@ public abstract class Constants {
     public static final Color bluElettrico = new Color(2172);
 
     //Icons
-    public static final ImageIcon homeIcon= new ImageIcon("/home.png");
+    public static final Icon homeIcon = new ImageIcon("/Users/fabiodonello/IdeaProjects/GiudoManagement/src/icons/home.png");
+    public static final Icon logoutIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\logout.png");
+    public static final Icon leftarrowIcon = new ImageIcon("/Users/fabiodonello/IdeaProjects/GiudoManagement/src/icons/back.png");
+    public static final Icon coinsIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\coins.png");
+    public static final Icon garageIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\garage.png");
+    public static final Icon todolistIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\clipboard-list.png");
+    public static final Icon ticketIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\ticket.png");
+    public static final Icon usersIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\users.png");
+    public static final Icon guestsIcon = new ImageIcon("C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\icons\\guest.png");
 }

@@ -29,9 +29,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         setResizable(true);
 
         //Creo
-        BasicArrowButton Arrow = new BasicArrowButton(BasicArrowButton.WEST);
-        Arrow.setBackground(Color.red);
-        Arrow.addActionListener(this);
+        BackButton backButton= new BackButton(this);
 
         Text headerText = new Text("Registrazione", Constants.fontLabel26);
         Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
@@ -67,12 +65,12 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         password_field.setBorder(Constants.compoundBottom20);
 
         //Pannelli
-        PannelloBorder pannelloArrow = new PannelloBorder();
-        PannelloBorder pannelloLogo = new PannelloBorder();
-        PannelloBorder pannelloSingIn = new PannelloBorder();
-        PannelloBorder pannelloButtonSingIn = new PannelloBorder();
+        PannelloBorder pannelloArrow = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloLogo = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloSingIn = new PannelloBorder(new GridLayout(3, 2));
+        PannelloBorder pannelloButtonSingIn = new PannelloBorder(new GridLayout(3, 2));
 
-        pannelloArrow.add(Arrow,BorderLayout.WEST);
+        pannelloArrow.add(backButton,BorderLayout.WEST);
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
