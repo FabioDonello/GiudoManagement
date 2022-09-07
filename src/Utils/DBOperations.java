@@ -89,6 +89,7 @@ public class DBOperations {
             statement.executeUpdate("DROP TABLE IF EXISTS TicketsPrice");
             statement.executeUpdate("CREATE TABLE TicketsPrice (" + "ID VARCHAR(30), " + "Price VARCHAR(30))");
         }
+
         return statement;
     }
 
@@ -109,7 +110,7 @@ public class DBOperations {
 
 
     public static int userLoad(Statement statement,
-                               String name, String surname, String email, String password) throws SQLException {
+                               String name,String surname,String email,String password) throws SQLException{
         try {
             System.out.println("\n- reading database...");
             return user_load(statement, name, surname, email, password);
@@ -120,21 +121,21 @@ public class DBOperations {
     }
 
     public static int user_load(Statement statement,
-                                String name, String surname, String email, String password) throws SQLException {
+                                String name,String surname,String email,String password) throws SQLException {
 
         int a = statement.executeUpdate("INSERT INTO Users(Name,Surname,Email,Password) " +
-                "VALUES('" + name + "' , '" + surname + "', '" + email + "','" + password + "')");
+                "VALUES('"+name+"' , '"+surname+"', '"+email+"','"+password+"')");
 
         return a;
     }
 
 
     public static int projectLoad(Statement statement,
-                                  String id, String project_name, String description)
-            throws SQLException {
+                                  String id, String project_name,String description)
+            throws SQLException{
         try {
             System.out.println("\n- Writing database...");
-            return project_Load(statement, id, project_name, description);
+            return project_Load(statement,id,project_name,description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -142,21 +143,21 @@ public class DBOperations {
     }
 
     public static int project_Load(Statement statement,
-                                   String id, String project_name, String description)
+                                   String id, String project_name,String description)
             throws SQLException {
 
         int a = statement.executeUpdate("INSERT INTO Projects(ID,Name,Description) " +
-                "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
+                "VALUES('"+id+"', '"+project_name+"', '"+description+"')");
         return a;
     }
 
 
     public static int projectRefresh(Statement statement,
-                                     String id, String project_name, String description)
-            throws SQLException {
+                                  String id, String project_name,String description)
+            throws SQLException{
         try {
             System.out.println("\n- Writing database...");
-            return project_Refresh(statement, id, project_name, description);
+            return project_Refresh(statement,id,project_name,description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -379,11 +380,9 @@ public class DBOperations {
     }
 
     public static ResultSet Tickets_Upload(Statement statement, String id) throws SQLException {
-        return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" + id + "' ");
-       
+        return statement.executeQuery("SELECT * FROM Tickets WHERE ID = '" +id+ "' ");
     }
-    
-    
+
     public static int TicketsPriceLoad(Statement statement, String id, String price)
             throws SQLException{
         try {
@@ -402,7 +401,7 @@ public class DBOperations {
     }
 
     public static ResultSet TicketsPriceUpLoad(Statement statement,
-                                               String id) throws SQLException{
+                                          String id) throws SQLException{
         try {
             System.out.println("\n- Writing database...");
             return Tickets_Price_Upload(statement,id);
