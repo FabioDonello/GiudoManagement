@@ -80,7 +80,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String cmd = e.getActionCommand();
+        /*String cmd = e.getActionCommand();
         switch (cmd) {
             case "costi":
                 center.setVisible(false);
@@ -132,7 +132,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 break;*/
             default:
                 break;
-        }
+        }*/
     }
 
     @Override
