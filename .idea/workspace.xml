@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Guests done (only the editable checkbox cell is missing)">
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Contabilità.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DBOperations.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
-    </list>
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Guests done (only the editable checkbox cell is missing)" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +13,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
