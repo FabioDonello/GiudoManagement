@@ -401,6 +401,21 @@ public class DBOperations {
         return a;
     }
 
+    public static ResultSet TicketsPriceUpLoad(Statement statement,
+                                               String id) throws SQLException{
+        try {
+            System.out.println("\n- Writing database...");
+            return Tickets_Price_Upload(statement,id);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet Tickets_Price_Upload(Statement statement, String id) throws SQLException {
+        return statement.executeQuery("SELECT * FROM TicketsPrice WHERE ID = '" +id+ "' ");
+    }
+
     public static ResultSet staffUpload(Statement statement) throws SQLException {
         return statement.executeQuery("SELECT * FROM Staff");
     }
