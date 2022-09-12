@@ -565,4 +565,33 @@ public class DBOperations {
         }
         return a;
     }
+
+
+    public static ResultSet checkID(Statement statement) throws SQLException {
+        try {
+            System.out.println("\n- reading database...");
+            return check_ID(statement);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet check_ID(Statement statement) throws SQLException {
+        return statement.executeQuery("SELECT ID FROM Projects");
+    }
+
+    public static ResultSet checkEmail(Statement statement) throws SQLException {
+        try {
+            System.out.println("\n- reading database...");
+            return check_Email(statement);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet check_Email(Statement statement) throws SQLException {
+        return statement.executeQuery("SELECT Email FROM Users");
+    }
 }
