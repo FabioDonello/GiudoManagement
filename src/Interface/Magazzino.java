@@ -3,6 +3,7 @@ package Interface;
 import Utils.AddTextToInventoryTable;
 import Utils.Constants;
 import Utils.DBOperations;
+import Utils.DownloadTable;
 import Widgets.Button;
 import Widgets.Container;
 import Widgets.PannelloBorder;
@@ -32,6 +33,7 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         //Create
         Button AddObject = new Button(this, "Aggiungi oggetto", "Add");
         Button DeleteObject = new Button(this, "Rimouvi oggetto", "Delete");
+        Button DownloadTable = new Button(this, "Scarica", "Download");
 
         inventoryTableModel = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
@@ -61,6 +63,8 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
         button.add(AddObject);
         button.add(Box.createHorizontalStrut(10));
         button.add(DeleteObject);
+        button.add(Box.createHorizontalStrut(10));
+        button.add(DownloadTable);
 
 
         mainPanel.add(inventoryJScrollPane);
@@ -160,6 +164,9 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
+            case "Download":
+                new DownloadTable(inventoryJTable);
                 break;
             default:
                 break;

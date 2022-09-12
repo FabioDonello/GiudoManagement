@@ -17,7 +17,7 @@ public class AddTextToGuestsTable extends JFrame implements ActionListener {
     public LabelTextField SurnameLabel;
     public LabelTextField EmailLabel;
     public LabelTextField PhoneLabel;
-    public LabelTextField DateLabel;
+    public DateTextField DateLabel;
     public JCheckBox checkConfirm;
 
     public JDialog InfoFrame;
@@ -35,7 +35,8 @@ public class AddTextToGuestsTable extends JFrame implements ActionListener {
 
         NameLabel = new LabelTextField();
         SurnameLabel = new LabelTextField();
-        DateLabel = new LabelTextField();
+        DateLabel = new DateTextField();
+        DateLabel.setVisible(true);
         EmailLabel = new LabelTextField();
         PhoneLabel = new LabelTextField();
         checkConfirm=new JCheckBox();

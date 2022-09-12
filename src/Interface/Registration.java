@@ -3,17 +3,19 @@ package Interface;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.sql.SQLException;
 import java.sql.*;
-import Utils.Constants;
-import Utils.DBOperations;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
+import Utils.*;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
+
 import javax.swing.plaf.basic.BasicArrowButton;
 
 public class Registration extends JFrame implements ActionListener, MouseListener {
@@ -29,24 +31,25 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         setResizable(true);
 
         //Creo
-        BackButton backButton= new BackButton(this);
+        BackButton backButton = new BackButton(this);
 
         Text headerText = new Text("Registrazione", Constants.fontLabel26);
         Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
 
-        Text name_text = new Text("Name:");
+        Text name_text = new Text("Name:    ");
         name_field = new LabelTextField();
 
-        Text surname_text = new Text("Surname:");
+        Text surname_text = new Text("Surname:    ");
         surname_field = new LabelTextField();
 
-        Text email_text = new Text("Email:");
+        Text email_text = new Text("Email:    ");
         email_field = new LabelTextField();
 
-        Text password_text = new Text("Password:");
+        Text password_text = new Text("Password: ");
         password_field = new LabelTextField();
 
         Button loginbutton = new Button(this, "Sing in", "Sing in");
+
 
         //UI Settings
         headerText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -54,10 +57,10 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         headerText.setBorder(Constants.compoundBottom5);
         subText.setBorder(Constants.compoundBottom20);
 
-        //name_text.setBorder(Constants.compoundBottom20);
-        //surname_text.setBorder(Constants.compoundBottom20);
-        //email_text.setBorder(Constants.compoundBottom20);
-        //password_text.setBorder(Constants.compoundBottom20);
+        name_text.setBorder(Constants.compoundBottom20);
+        surname_text.setBorder(Constants.compoundBottom20);
+        email_text.setBorder(Constants.compoundBottom20);
+        password_text.setBorder(Constants.compoundBottom20);
 
         name_field.setBorder(Constants.compoundBottom20);
         surname_field.setBorder(Constants.compoundBottom20);
@@ -70,96 +73,75 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         PannelloBorder pannelloSingIn = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder pannelloButtonSingIn = new PannelloBorder(new GridLayout(3, 2));
 
-        pannelloArrow.add(backButton,BorderLayout.WEST);
+        pannelloArrow.add(backButton, BorderLayout.WEST);
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
 
         pannelloButtonSingIn.add(loginbutton);
-        //pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
+        pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
 
 
         //Grid
 
         GrigliaBorder grigliaSingIn = new GrigliaBorder();
-        /*GridBagConstraints a = new GridBagConstraints();
+        GridBagConstraints a = new GridBagConstraints();
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
+        grigliaSingIn.add(name_text, a);
 
-         */
-        //grigliaSingIn.add(name_text,a);
-        //name_text.setBorder(BorderFactory.createLineBorder(Color.black));
-        grigliaSingIn.add(name_text, new GridBagConstraints(0,0,1,1,0.0,1.0
-                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(name_field, new GridBagConstraints(1,0,1,1,1.0,0.0
-                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(surname_text, new GridBagConstraints(0,1,1,1,0.0,0.0
-                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(surname_field, new GridBagConstraints(1,1,1,1,1.0,0.0
-                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(email_text, new GridBagConstraints(0,2,1,1,0.0,0.0
-                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(email_field, new GridBagConstraints(1,2,1,1,1.0,0.0
-                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(password_text, new GridBagConstraints(0,3,1,1,0.0,0.0
-                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
-        grigliaSingIn.add(password_field, new GridBagConstraints(1,3,1,1,1.0,0.0
-                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
-
-        /*a.fill = GridBagConstraints.HORIZONTAL;
+        a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(name_field,a);
+        grigliaSingIn.add(name_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(surname_text,a);
+        grigliaSingIn.add(surname_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(surname_field,a);
+        grigliaSingIn.add(surname_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 2;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(email_text,a);
+        grigliaSingIn.add(email_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 2;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(email_field,a);
+        grigliaSingIn.add(email_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 3;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(password_text,a);
+        grigliaSingIn.add(password_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 3;
         a.weightx = 1;
         a.weighty = 1;
-        grigliaSingIn.add(password_field,a);
-
-         */
+        grigliaSingIn.add(password_field, a);
         pannelloSingIn.add(grigliaSingIn);
 
         //Container
@@ -175,6 +157,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         setVisible(true);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
@@ -186,16 +169,41 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                     String surname = surname_field.getText();
                     String email = email_field.getText();
                     String password = password_field.getText();
-                    int a = DBOperations.userLoad(statement, name, surname, email, password);
-                    if (a == 0){
-                        System.out.println("Caricamento users non riuscito");
+
+                    List<String> data=new LinkedList<String>(
+                            Arrays.asList(name,surname,email,password));
+
+                    if (LabelCheck.isEmpty(data)) {
+                        JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
+                                , JOptionPane.WARNING_MESSAGE);
                         dispose();
                         new Registration();
                         break;
+                    } else if (!CheckEmail.isAddressValid(email)) {
+                        JOptionPane.showMessageDialog(null, "Incorrect Email!", "Warning", JOptionPane.WARNING_MESSAGE);
+                        dispose();
+                        new Registration();
+                        break;
+                    } else if (!CheckEmail.checkEmail(email)) {
+                        dispose();
+                        new Registration();
+                        break;
+                    } else if (!CheckPassword.isValid(password)) {
+                        dispose();
+                        new Registration();
+                        break;
+                    } else {
+                        int a = DBOperations.userLoad(statement, name, surname, email, password);
+                        if (a == 0) {
+                            JOptionPane.showMessageDialog(null, "Loading users failed!", "Warning", JOptionPane.WARNING_MESSAGE);
+                            dispose();
+                            new Registration();
+                        } else {
+                            dispose();
+                            new PreMainPage(email);
+                        }
+                        break;
                     }
-                    dispose();
-                    new PreMainPage();
-                    break;
 
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
@@ -233,7 +241,6 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void mouseExited(MouseEvent e) {
 
     }
-
 
 
 }
