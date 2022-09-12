@@ -53,7 +53,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         west.setPreferredSize(Constants.FieldDimensions100);
         west.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         west.add(headerText, BorderLayout.NORTH);
-        west.add(button, BorderLayout.NORTH);
+        west.add(button, BorderLayout.SOUTH);
 
 
         center.setBackground(Constants.senapeColor);

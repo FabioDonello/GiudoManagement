@@ -71,10 +71,9 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
         JScrollPane guestsJScrollPane = new JScrollPane(guestsJTable);
 
-        Object Confirm =
+        //Panels
 
-                //Panels
-                mainPanel = new PannelloBorder();
+        mainPanel = new PannelloBorder();
         buttonPanel = new PannelloBorder();
 
         Box button = Box.createHorizontalBox();
@@ -134,7 +133,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
                 String cmd = e.getActionCommand();
                 String Name = addTextToGuestsTable.NameLabel.getText();
                 String Surname = addTextToGuestsTable.SurnameLabel.getText();
-                String Date = addTextToGuestsTable.DateLabel.getText();
+                String Date = String.valueOf(addTextToGuestsTable.DateLabel.GetData());
                 String Email = addTextToGuestsTable.EmailLabel.getText();
                 String Phone = addTextToGuestsTable.PhoneLabel.getText();
                 String Confirm = String.valueOf(addTextToGuestsTable.checkConfirm.isSelected());

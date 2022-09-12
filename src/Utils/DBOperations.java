@@ -31,7 +31,7 @@ public class DBOperations {
             statement.executeQuery("SELECT * FROM Projects LIMIT 1");
         } catch (SQLException e) {
             statement.executeUpdate("DROP TABLE IF EXISTS Projects");
-            statement.executeUpdate("CREATE TABLE Projects (" + "ID VARCHAR(30), " + "Name VARCHAR(30),"
+            statement.executeUpdate("CREATE TABLE Projects (" + "Email VARCHAR(30)," + "ID VARCHAR(30), " + "Name VARCHAR(30),"
                     + "Description VARCHAR(30))");
         }
 
@@ -131,11 +131,11 @@ public class DBOperations {
 
 
     public static int projectLoad(Statement statement,
-                                  String id, String project_name, String description)
+                                  String id, String project_name, String description, String Email)
             throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return project_Load(statement, id, project_name, description);
+            return project_Load(statement, id, project_name, description, Email);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -143,11 +143,11 @@ public class DBOperations {
     }
 
     public static int project_Load(Statement statement,
-                                   String id, String project_name, String description)
+                                   String id, String project_name, String description, String Email)
             throws SQLException {
 
-        int a = statement.executeUpdate("INSERT INTO Projects(ID,Name,Description) " +
-                "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
+        int a = statement.executeUpdate("INSERT INTO Projects(Email,ID,Name,Description) " +
+                "VALUES('" + Email + "','" + id + "', '" + project_name + "', '" + description + "')");
         return a;
     }
 
@@ -168,7 +168,7 @@ public class DBOperations {
                                       String id, String project_name, String description)
             throws SQLException {
 
-        int a = statement.executeUpdate("REPLACE INTO Projects(ID,Name,Description) " +
+        int a = statement.executeUpdate("REPLACE INTO Projects(Email,ID,Name,Description) " +
                 "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
         return a;
     }
@@ -191,18 +191,46 @@ public class DBOperations {
     }
 
 
-    public static ResultSet projectsUpload(Statement statement) throws SQLException {
+    public static ResultSet projectsUpload(Statement statement, String Email) throws SQLException {
         try {
             System.out.println("\n- reading database...");
-            return projects_Upload(statement);
+            return projects_Upload(statement, Email);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return null;
         }
     }
 
-    public static ResultSet projects_Upload(Statement statement) throws SQLException {
-        return statement.executeQuery("SELECT * FROM Projects");
+    public static ResultSet projects_Upload(Statement statement, String Email) throws SQLException {
+        return statement.executeQuery("SELECT * FROM Projects WHERE Email LIKE '" + Email + "'");
+    }
+
+    public static ResultSet checkID(Statement statement) throws SQLException {
+        try {
+            System.out.println("\n- reading database...");
+            return check_ID(statement);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet check_ID(Statement statement) throws SQLException {
+        return statement.executeQuery("SELECT ID FROM Projects");
+    }
+
+    public static ResultSet checkEmail(Statement statement) throws SQLException {
+        try {
+            System.out.println("\n- reading database...");
+            return check_Email(statement);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet check_Email(Statement statement) throws SQLException {
+        return statement.executeQuery("SELECT Email FROM Users");
     }
 
 
