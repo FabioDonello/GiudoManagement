@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="aaaaa">
-      <change afterPath="$PROJECT_DIR$/Lib/poi-5.2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lib/poi-ooxml-3.9.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GESTIONALE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GESTIONALE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DBManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" afterDir="false" />
-    </list>
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="aaaaa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +21,7 @@
     <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="origin/Giuseppe" />
+    <option name="NEW_BASE" value="origin/main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
