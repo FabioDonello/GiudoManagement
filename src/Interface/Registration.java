@@ -34,16 +34,16 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         Text headerText = new Text("Registrazione", Constants.fontLabel26);
         Text subText = new Text("Inserisci i dati richiesti per procedere alla registrazione");
 
-        Text name_text = new Text("Name:    ");
+        Text name_text = new Text("Name:");
         name_field = new LabelTextField();
 
-        Text surname_text = new Text("Surname:    ");
+        Text surname_text = new Text("Surname:");
         surname_field = new LabelTextField();
 
-        Text email_text = new Text("Email:    ");
+        Text email_text = new Text("Email:");
         email_field = new LabelTextField();
 
-        Text password_text = new Text("Password: ");
+        Text password_text = new Text("Password:");
         password_field = new LabelTextField();
 
         Button loginbutton = new Button(this, "Sing in", "Sing in");
@@ -54,10 +54,10 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         headerText.setBorder(Constants.compoundBottom5);
         subText.setBorder(Constants.compoundBottom20);
 
-        name_text.setBorder(Constants.compoundBottom20);
-        surname_text.setBorder(Constants.compoundBottom20);
-        email_text.setBorder(Constants.compoundBottom20);
-        password_text.setBorder(Constants.compoundBottom20);
+        //name_text.setBorder(Constants.compoundBottom20);
+        //surname_text.setBorder(Constants.compoundBottom20);
+        //email_text.setBorder(Constants.compoundBottom20);
+        //password_text.setBorder(Constants.compoundBottom20);
 
         name_field.setBorder(Constants.compoundBottom20);
         surname_field.setBorder(Constants.compoundBottom20);
@@ -76,22 +76,41 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         pannelloLogo.add(subText, BorderLayout.SOUTH);
 
         pannelloButtonSingIn.add(loginbutton);
-        pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
+        //pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
 
 
         //Grid
 
         GrigliaBorder grigliaSingIn = new GrigliaBorder();
-        GridBagConstraints a = new GridBagConstraints();
+        /*GridBagConstraints a = new GridBagConstraints();
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        grigliaSingIn.add(name_text,a);
 
-        a.fill = GridBagConstraints.HORIZONTAL;
+         */
+        //grigliaSingIn.add(name_text,a);
+        //name_text.setBorder(BorderFactory.createLineBorder(Color.black));
+        grigliaSingIn.add(name_text, new GridBagConstraints(0,0,1,1,0.0,1.0
+                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(name_field, new GridBagConstraints(1,0,1,1,1.0,0.0
+                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(surname_text, new GridBagConstraints(0,1,1,1,0.0,0.0
+                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(surname_field, new GridBagConstraints(1,1,1,1,1.0,0.0
+                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(email_text, new GridBagConstraints(0,2,1,1,0.0,0.0
+                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(email_field, new GridBagConstraints(1,2,1,1,1.0,0.0
+                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(password_text, new GridBagConstraints(0,3,1,1,0.0,0.0
+                ,GridBagConstraints.EAST,GridBagConstraints.NONE,new Insets(5,5,5,5), 0, 0));
+        grigliaSingIn.add(password_field, new GridBagConstraints(1,3,1,1,1.0,0.0
+                ,GridBagConstraints.WEST,GridBagConstraints.HORIZONTAL,new Insets(5,5,5,5), 0, 0));
+
+        /*a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
@@ -139,6 +158,8 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         a.weightx = 1;
         a.weighty = 1;
         grigliaSingIn.add(password_field,a);
+
+         */
         pannelloSingIn.add(grigliaSingIn);
 
         //Container
