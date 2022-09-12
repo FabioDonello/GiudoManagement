@@ -4,10 +4,7 @@ package Interface;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,12 +26,14 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
 
+
         //Creo
 
         Text headerText = new Text("Accedi", Constants.fontLabel26);
         Text subText = new Text("Accedi utilizzando le credenziali utilizzate al momento della registrazione");
 
         Text email_text = new Text("Email:    ");
+
         email_field = new LabelTextField();
         email_field.setBorder(Constants.compoundBottom20);
 
@@ -60,7 +59,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         PannelloBorder pannelloLogin = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder pannelloButtonAccedi = new PannelloBorder(new GridLayout(3, 2));
 
-        pannelloArrow.add(backButton,BorderLayout.WEST);
+        pannelloArrow.add(backButton, BorderLayout.WEST);
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
@@ -120,7 +119,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         String email = email_field.getText();
         String password = String.valueOf(password_field.getPassword());
         ResultSet ris = DBOperations.users_upload(statement);
-        if (ris == null){
+        if (ris == null) {
             System.out.println("Caricamento users non riuscito");
             dispose();
             new Welcome();
@@ -132,13 +131,13 @@ public class Login extends JFrame implements ActionListener, MouseListener {
             if (!ris.next()) break;
             String DBEmail = ris.getString("Email");
             String DBPassword = ris.getString("Password");
-            if (DBEmail.compareTo(email)==0 && DBPassword.compareTo(password)==0){
+            if (DBEmail.compareTo(email) == 0 && DBPassword.compareTo(password) == 0) {
                 dispose();
-                new PreMainPage();
-                x=1;
+                new PreMainPage(email);
+                x = 1;
             }
         }
-        if (x==0){
+        if (x == 0) {
             email_field.setText("");
             password_field.setText("");
             JOptionPane.showMessageDialog(null,
@@ -146,7 +145,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
 
         }
 
-}
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -193,6 +192,5 @@ public class Login extends JFrame implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
-
 
 }
