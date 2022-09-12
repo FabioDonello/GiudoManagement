@@ -8,9 +8,9 @@ public class LabelCheck {
         for(Iterator<String> tmp =data.iterator();tmp.hasNext();){
             String d=tmp.next();
             if(d.isBlank()) {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }

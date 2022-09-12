@@ -7,9 +7,7 @@ import java.awt.event.KeyListener;
 
 public class LabelTextField extends JTextField implements KeyListener {
 
-    public LabelTextField(String text, KeyListener keyListener) {
-
-        LabelTextField.super.addKeyListener(keyListener);
+    public LabelTextField(String text) {
 
         this.addKeyListener(new KeyAdapter() {
             @Override
@@ -37,9 +35,8 @@ public class LabelTextField extends JTextField implements KeyListener {
         });
     }
 
-    public LabelTextField(Double num, KeyListener keyListener) {
+    public LabelTextField(Double num) {
 
-        LabelTextField.super.addKeyListener(keyListener);
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -73,9 +70,8 @@ public class LabelTextField extends JTextField implements KeyListener {
         });
     }
 
-    public LabelTextField(int number, KeyListener keyListener) {
+    public LabelTextField(int number) {
 
-        LabelTextField.super.addKeyListener(keyListener);
         this.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -102,10 +98,6 @@ public class LabelTextField extends JTextField implements KeyListener {
     }
 
     public LabelTextField() {
-    }
-
-    public void setEnabledField(boolean value) {
-        LabelTextField.super.setEnabled(value);
     }
 
     @Override

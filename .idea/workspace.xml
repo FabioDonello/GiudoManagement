@@ -1,30 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="Definitivo pt.1">
-      <change afterPath="$PROJECT_DIR$/src/Utils/CheckId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Utils/LabelCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/GESTIONALE.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GESTIONALE.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b76fd602-8c00-49e4-9a69-736072048cdd.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="d7c74ea2-2d29-4bcb-b8ba-a0353f7f855e" name="Changes" comment="Complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Img/Arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Magazzino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Magazzino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Interface/PreMainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/PreMainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToGuestsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToGuestsTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/CheckEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/CheckEmail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/CheckPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/CheckPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/LabelCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/LabelCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Widgets/PasswordTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Widgets/PasswordTextField.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +24,11 @@
     <option name="BRANCH" value="Giuseppe" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -149,10 +136,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.CheckEmail" />
-        <item itemvalue="Application.EmailValidation" />
         <item itemvalue="Application.CheckPassword" />
+        <item itemvalue="Application.CheckEmail" />
         <item itemvalue="Application.CheckDate" />
+        <item itemvalue="Application.EmailValidation" />
       </list>
     </recent_temporary>
   </component>
@@ -189,7 +176,7 @@
       <workItem from="1662921706292" duration="2824000" />
       <workItem from="1662966343085" duration="12867000" />
       <workItem from="1662979507965" duration="42000" />
-      <workItem from="1662989959993" duration="3823000" />
+      <workItem from="1662989959993" duration="4753000" />
     </task>
     <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
       <created>1662475429575</created>
@@ -233,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662561784850</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Complete">
+      <created>1662994550926</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1662994550926</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +249,10 @@
     <MESSAGE value="Guests done (only the editable checkbox cell is missing)" />
     <MESSAGE value="07.09.2022" />
     <MESSAGE value="Definitivo pt.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Definitivo pt.1" />
+    <MESSAGE value="Complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Complete" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GiudoManagement$Main.ic" NAME="Main Coverage Results" MODIFIED="1662571366341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

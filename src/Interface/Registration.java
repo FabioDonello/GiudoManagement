@@ -175,7 +175,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
 
                     if (LabelCheck.isEmpty(data)) {
                         JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
-                                , JOptionPane.WARNING_MESSAGE);
+                                ,JOptionPane.WARNING_MESSAGE);
                         dispose();
                         new Registration();
                         break;

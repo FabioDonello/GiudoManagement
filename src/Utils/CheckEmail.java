@@ -3,13 +3,17 @@ package Utils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.*;
 
 public class CheckEmail {
 
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     public static boolean isAddressValid(String address) {
-
-        return false;
+        Matcher matcher=VALID_EMAIL_ADDRESS_REGEX.matcher(address);
+        return matcher.find();
     }
 
     public static boolean checkEmail(String Email) throws SQLException {
