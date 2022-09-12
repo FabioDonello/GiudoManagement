@@ -2,8 +2,11 @@ package Interface;
 
 import Utils.Constants;
 import Widgets.*;
+import Widgets.Button;
+import com.sun.tools.javac.Main;
 
 import javax.swing.*;
+import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +16,9 @@ import java.sql.SQLException;
 
 public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
-    PannelloBorder center;
-    PannelloBorder west;
+    JPanel DecisionMenu;
+    PannelloBorder MainMenu;
+
     public String id;
 
     public Dashboard(String ID) {
@@ -35,14 +39,19 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
         HomeButton homeButton = new HomeButton(this, ID);
         LogoutButton logoutButton = new LogoutButton(this);
+        Button SpaceButton = new Button(this,"");
+        SpaceButton.setBorder(Constants.emptyBottom5);
+        SpaceButton.setEnabled(false);
+
+
 
         //Pannelli
-        west = new PannelloBorder();
-        center = new PannelloBorder();
+        MainMenu = new PannelloBorder();
+        DecisionMenu = new JPanel(new GridLayout(2,3));
 
         //UI Settings
-        headerText.setHorizontalAlignment(SwingConstants.CENTER);
-        headerText.setBorder(Constants.compoundBottom5);
+        //headerText.setBorder(Constants.compoundBottom5);
+
 
         Box button = Box.createHorizontalBox();
         button.add(Box.createHorizontalGlue());
@@ -50,25 +59,52 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         button.add(Box.createHorizontalStrut(10));
         button.add(logoutButton);
 
-        west.setPreferredSize(Constants.FieldDimensions100);
-        west.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        west.add(headerText, BorderLayout.NORTH);
-        west.add(button, BorderLayout.NORTH);
+
+        /*
+        MainMenu.setPreferredSize(Constants.FieldDimensions100);
+        MainMenu.setMaximumSize(Constants.FieldDimensions100);
+        MainMenu.setMinimumSize(Constants.FieldDimensions100);
+        MainMenu.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+         */
 
 
-        center.setBackground(Constants.senapeColor);
-        center.setPreferredSize(Constants.FieldDimensions100);
-        center.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
+        GrigliaBorder InfoGrid1 = new GrigliaBorder();
+        GridBagConstraints a1 = new GridBagConstraints();
 
-        center.add(coinsButton);
-        center.add(usersButton);
-        center.add(storageButton);
-        center.add(todoListButton);
-        center.add(guestsButton);
-        center.add(ticketButton);
+        a1.fill = GridBagConstraints.HORIZONTAL;
+        a1.gridx = 0;
+        a1.gridy = 0;
+        InfoGrid1.add(headerText, a1);
 
-        this.add(west, BorderLayout.WEST);
-        this.add(center, BorderLayout.CENTER);
+        a1.fill = GridBagConstraints.HORIZONTAL;
+        a1.ipady = 315;
+        a1.gridx = 0;
+        a1.gridy = 1;
+        InfoGrid1.add(SpaceButton, a1);
+
+        a1.fill = GridBagConstraints.HORIZONTAL;
+        a1.gridx = 0;
+        a1.gridy = 2;
+        InfoGrid1.add(button, a1);
+        MainMenu.add(InfoGrid1);
+
+
+
+        /*DecisionMenù.setPreferredSize(Constants.FieldDimensions100);
+        DecisionMenù.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
+         */
+
+        DecisionMenu.setBackground(Constants.senapeColor);
+
+        DecisionMenu.add(coinsButton);
+        DecisionMenu.add(usersButton);
+        DecisionMenu.add(storageButton);
+        DecisionMenu.add(todoListButton);
+        DecisionMenu.add(guestsButton);
+        DecisionMenu.add(ticketButton);
+
+        this.add(MainMenu,BorderLayout.WEST);
+        this.add(DecisionMenu, BorderLayout.CENTER);
 
         setSize(900, 600);
         setVisible(true);
@@ -83,7 +119,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         String cmd = e.getActionCommand();
         switch (cmd) {
             case "costi":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new MoneyFlow(this, id);
                 } catch (SQLException ex) {
@@ -91,7 +127,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 }
                 break;
             case "personale":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new Staff(this, id);
                 } catch (SQLException ex) {
@@ -99,7 +135,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 }
                 break;
             case "magazzino":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new Magazzino(this, id);
                 } catch (SQLException ex) {
@@ -107,7 +143,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 }
                 break;
             case "todolist":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new ToDoList(this, id);
                 } catch (SQLException ex) {
@@ -115,7 +151,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 }
                 break;
             case "guests":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new Ospiti(this, id);
                 } catch (SQLException ex) {
@@ -123,7 +159,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
                 }
                 break;
             case "ticket":
-                center.setVisible(false);
+                DecisionMenu.setVisible(false);
                 try {
                     new Ticket(this, id);
                 } catch (SQLException ex) {
