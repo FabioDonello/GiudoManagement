@@ -1,8 +1,6 @@
 package Interface;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,13 +28,13 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
     private final JTable Tickets_jTable;
     private static DefaultTableModel Tickets_TableModel = null;
     private static String id;
-    private JComboBox<String> PriceComboBox;
-    private JComboBox<String> AddComboBox;
-    private JComboBox<String> SubComboBox;
-    private LabelTextField AddPriceLabel;
-    private LabelTextField NameLabel;
-    private LabelTextField TicketsLabel;
-    private LabelTextField ValueLabel;
+    private final JComboBox<String> PriceComboBox;
+    private final JComboBox<String> AddComboBox;
+    private final JComboBox<String> SubComboBox;
+    private final LabelTextField AddPriceLabel;
+    private final LabelTextField NameLabel;
+    private final LabelTextField TicketsLabel;
+    private final LabelTextField ValueLabel;
 
     public Ticket(JFrame parent, String ID) throws SQLException {
         //Create
@@ -55,7 +53,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
         TicketsLabel = new LabelTextField();
         ValueLabel = new LabelTextField();
 
-        PriceComboBox = new JComboBox<String>();
+        PriceComboBox = new JComboBox<>();
         PriceComboBox.addItem("None");
         PriceComboBox.addActionListener(new ActionListener() {
             @Override
@@ -83,8 +81,8 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
             }
         });
 
-        AddComboBox = new JComboBox<String>();
-        SubComboBox = new JComboBox<String>();
+        AddComboBox = new JComboBox<>();
+        SubComboBox = new JComboBox<>();
         for (int i = 0; i < 21; i++) {
             AddComboBox.addItem(String.valueOf(i));
             SubComboBox.addItem(String.valueOf(i));
@@ -141,27 +139,24 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
         Tickets_TableModel.addColumn("Description");
         Tickets_jTable = new JTable(Tickets_TableModel);
         Tickets_jTable.setBounds(30, 40, 600, 300);
-        Tickets_jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                int index = Tickets_jTable.getSelectedRow();
-                if (index != -1) {
-                    String InfoName = (String) Tickets_TableModel.getValueAt(index, 0);
-                    String InfoTickets = (String) Tickets_TableModel.getValueAt(index, 1);
-                    NameLabel.setText(InfoName);
-                    TicketsLabel.setText(InfoTickets);
+        Tickets_jTable.getSelectionModel().addListSelectionListener(e -> {
+            int index = Tickets_jTable.getSelectedRow();
+            if (index != -1) {
+                String InfoName = (String) Tickets_TableModel.getValueAt(index, 0);
+                String InfoTickets = (String) Tickets_TableModel.getValueAt(index, 1);
+                NameLabel.setText(InfoName);
+                TicketsLabel.setText(InfoTickets);
 
-                    String TicketsPrice = (String) PriceComboBox.getSelectedItem();
-                    assert TicketsPrice != null;
-                    if (TicketsPrice.compareTo("None") == 0) {
-                        ValueLabel.setText("None");
-                    } else {
-                        int PriceComboValue = Integer.parseInt((String) PriceComboBox.getSelectedItem());
-                        int TicketsValue = Integer.parseInt(InfoTickets);
-                        int value1 = PriceComboValue * TicketsValue;
-                        String value = String.valueOf(value1);
-                        ValueLabel.setText(value + "€");
-                    }
+                String TicketsPrice = (String) PriceComboBox.getSelectedItem();
+                assert TicketsPrice != null;
+                if (TicketsPrice.compareTo("None") == 0) {
+                    ValueLabel.setText("None");
+                } else {
+                    int PriceComboValue = Integer.parseInt((String) PriceComboBox.getSelectedItem());
+                    int TicketsValue = Integer.parseInt(InfoTickets);
+                    int value1 = PriceComboValue * TicketsValue;
+                    String value = String.valueOf(value1);
+                    ValueLabel.setText(value + "€");
                 }
             }
         });
@@ -305,41 +300,37 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
     public void Add_Tickets() throws SQLException {
 
         AddTextTicketsTable l = new AddTextTicketsTable();
-        ActionListener x = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Name = l.NameLabel.getText();
-                String Tickets = l.TicketsLabel.getText();
-                String Description = l.DescriptionLabel.getText();
+        ActionListener x = e -> {
+            String cmd = e.getActionCommand();
+            String Name = l.NameLabel.getText();
+            String Tickets = l.TicketsLabel.getText();
+            String Description = l.DescriptionLabel.getText();
 
-                List<String> data=new LinkedList<String>(
-                        Arrays.asList(Name,Tickets,Description));
+            List<String> data=new LinkedList<>(
+                    Arrays.asList(Name,Tickets,Description));
 
-                switch (cmd) {
-                    case "Add":
-                        if (LabelCheck.isEmpty(data)){
-                            Statement statement = null;
-                            try {
-                                statement = DBOperations.establish_connection();
-                                DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
+            switch (cmd) {
+                case "Add":
+                    if (LabelCheck.isEmpty(data)){
+                        try {
+                            Statement statement = DBOperations.establish_connection();
+                            DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
 
-                                Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
-                                        Name, Tickets, Description});
+                            Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
+                                    Name, Tickets, Description});
 
-                            } catch (SQLException ex) {
-                                throw new RuntimeException(ex);
-                            }
-                            l.Close();
+                        } catch (SQLException ex) {
+                            throw new RuntimeException(ex);
                         }
-                        else {
-                            AddTextTicketsTable.Error();
-                        }
-                        break;
-                    case "Del":
                         l.Close();
-                        break;
-                }
+                    }
+                    else {
+                        AddTextTicketsTable.Error();
+                    }
+                    break;
+                case "Del":
+                    l.Close();
+                    break;
             }
         };
         l.Add_button.addActionListener(x);
@@ -359,7 +350,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
     public void Add_Tickets_Price() throws SQLException {
         String Price = AddPriceLabel.getText();
-        List<String> data=new LinkedList<String>(
+        List<String> data=new LinkedList<>(
                 List.of(Price));
         if (LabelCheck.isEmpty(data)) {
             Statement statement = DBOperations.establish_connection();

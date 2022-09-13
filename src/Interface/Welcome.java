@@ -35,7 +35,6 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
         PannelloBorder pannelloLogo = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder pannelloButtonAccedi = new PannelloBorder(new GridLayout(3, 2));
         PannelloBorder pannelloButtonRegis = new PannelloBorder(new GridLayout(3, 2));
-        JPanel pannelloAdmin = new JPanel();
 
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
@@ -62,16 +61,16 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         switch (cmd) {
-            case "login":
+            case "login" -> {
                 dispose();
                 new Login();
-                break;
-            case "regis":
+            }
+            case "regis" -> {
                 dispose();
                 new Registration();
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 

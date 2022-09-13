@@ -23,7 +23,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
     PannelloBorder buttonPanel;
 
     JTable staffJTable;
-    DefaultTableModel staffTableModel = null;
+    DefaultTableModel staffTableModel;
     String id;
 
     public Staff(JFrame parent, String ID) throws SQLException {
@@ -35,10 +35,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         staffTableModel = new DefaultTableModel() {
 
             public boolean isCellEditable(int row, int col) {
-                if (col == 0)
-                    return false;
-                else
-                    return true;
+                return col != 0;
             }
         };
         staffTableModel.addColumn("Name");
@@ -94,30 +91,24 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
 
     public void AddStaff() throws SQLException {
         AddTextToStaffTable addTextToStaffTable = new AddTextToStaffTable();
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Name = addTextToStaffTable.NameLabel.getText();
-                String Task = addTextToStaffTable.TaskLabel.getText();
-                String Description = addTextToStaffTable.DescriptionLabel.getText();
+        ActionListener actionListener = e -> {
+            String cmd = e.getActionCommand();
+            String Name = addTextToStaffTable.NameLabel.getText();
+            String Task = addTextToStaffTable.TaskLabel.getText();
+            String Description = addTextToStaffTable.DescriptionLabel.getText();
 
-                switch (cmd) {
-                    case "Add":
-                        Statement statement = null;
-                        try {
-                            statement = DBOperations.establish_connection();
-                            DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
-                        staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
-                        addTextToStaffTable.Close();
-                        break;
-                    case "Delete":
-                        addTextToStaffTable.Close();
-                        break;
+            switch (cmd) {
+                case "Add" -> {
+                    try {
+                        Statement statement = DBOperations.establish_connection();
+                        DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
+                    addTextToStaffTable.Close();
                 }
+                case "Delete" -> addTextToStaffTable.Close();
             }
         };
         addTextToStaffTable.AddButton.addActionListener(actionListener);
@@ -126,7 +117,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
     public void DeleteStaff() throws SQLException {
         String Name;
         String Task;
-        int index = 0;
+        int index;
         index = staffJTable.getSelectedRow();
         Name = (String) staffTableModel.getValueAt(index, 0);
         Task = (String) staffTableModel.getValueAt(index, 1);
