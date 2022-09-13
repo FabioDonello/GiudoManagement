@@ -3,7 +3,6 @@ package Widgets;
 import javax.swing.*;
 
 import Utils.Constants;
-import javax.swing.*;
 import java.awt.*;
 public class Text extends JLabel {
     public Text(String testo){

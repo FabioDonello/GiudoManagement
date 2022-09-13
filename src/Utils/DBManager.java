@@ -12,7 +12,7 @@ import java.sql.*;
 public class DBManager {
     public static String JDBC_Driver = "org.sqlite.JDBC";
 
-    public static String JDBC_URL = "jdbc:sqlite:/Users/fabiodonello/IdeaProjects/GiudoManagement/src/Utils/DATABASE";
+    public static String JDBC_URL = "jdbc:sqlite:C:\\Users\\39377\\Desktop\\SW\\GESTIONALE\\src\\Utils\\DATABASE";
     static Connection connection;
 
     public static void setConnection(String Driver, String URL) {

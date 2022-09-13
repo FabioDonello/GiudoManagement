@@ -1,7 +1,6 @@
 package Interface;
 
 import Utils.AddTextToInventoryTable;
-import Utils.Constants;
 import Utils.DBOperations;
 import Utils.DownloadTable;
 import Utils.*;
@@ -29,14 +28,14 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
     PannelloBorder buttonPanel;
 
     JTable inventoryJTable;
-    DefaultTableModel inventoryTableModel = null;
+    DefaultTableModel inventoryTableModel;
     String id;
 
     public Magazzino(JFrame parent, String ID) throws SQLException {
 
         //Create
         Button AddObject = new Button(this, "Aggiungi oggetto", "Add");
-        Button DeleteObject = new Button(this, "Rimouvi oggetto", "Delete");
+        Button DeleteObject = new Button(this, "Rimuovi oggetto", "Delete");
         Button DownloadTable = new Button(this, "Scarica", "Download");
 
         inventoryTableModel = new DefaultTableModel() {
@@ -100,38 +99,34 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
 
     public void AddObject() throws SQLException {
         AddTextToInventoryTable addTextToInventoryTable = new AddTextToInventoryTable();
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Object = addTextToInventoryTable.ObjectLabel.getText();
-                String Quantity = addTextToInventoryTable.QuantityLabel.getText();
-                String Description = addTextToInventoryTable.DescriptionLabel.getText();
-                List<String> data = new LinkedList<String>(
-                        Arrays.asList(Object, Quantity, Description));
+        ActionListener actionListener = e -> {
+            String cmd = e.getActionCommand();
+            String Object = addTextToInventoryTable.ObjectLabel.getText();
+            String Quantity = addTextToInventoryTable.QuantityLabel.getText();
+            String Description = addTextToInventoryTable.DescriptionLabel.getText();
+            List<String> data = new LinkedList<>(
+                    Arrays.asList(Object, Quantity, Description));
 
-                switch (cmd) {
-                    case "Add":
-                        Statement statement = null;
-                        try {
-                            if (LabelCheck.isEmpty(data)) {
-                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
-                                        "Warning", JOptionPane.WARNING_MESSAGE);
-                                addTextToInventoryTable.dispose();
-                            } else {
-                                statement = DBOperations.establish_connection();
-                                DBOperations.Add_Inventory(statement, "Inventory", id,
-                                        Object, Quantity, Description);
-                                inventoryTableModel.insertRow(inventoryTableModel.getRowCount(), new Object[]{Object, Quantity, Description});
-                                addTextToInventoryTable.Close();
-                            }
-                            break;
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
+            switch (cmd) {
+                case "Add" -> {
+                    Statement statement;
+                    try {
+                        if (LabelCheck.isEmpty(data)) {
+                            JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                    "Warning", JOptionPane.WARNING_MESSAGE);
+                            addTextToInventoryTable.dispose();
+                        } else {
+                            statement = DBOperations.establish_connection();
+                            DBOperations.Add_Inventory(statement, "Inventory", id,
+                                    Object, Quantity, Description);
+                            inventoryTableModel.insertRow(inventoryTableModel.getRowCount(), new Object[]{Object, Quantity, Description});
+                            addTextToInventoryTable.Close();
                         }
-                    case "Delete":
-                        addTextToInventoryTable.Close();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
+                case "Delete" -> addTextToInventoryTable.Close();
             }
         };
         addTextToInventoryTable.AddButton.addActionListener(actionListener);
@@ -141,7 +136,7 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
 
         String Object;
         String Quantity;
-        int index = 0;
+        int index;
         index = inventoryJTable.getSelectedRow();
         Object = (String) inventoryTableModel.getValueAt(index, 0);
         Quantity = (String) inventoryTableModel.getValueAt(index, 1);

@@ -6,7 +6,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -15,8 +14,6 @@ import Utils.*;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
-
-import javax.swing.plaf.basic.BasicArrowButton;
 
 public class Registration extends JFrame implements ActionListener, MouseListener {
 
@@ -49,7 +46,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         password_field = new LabelTextField();
         password_field.setToolTipText("Minimum 8 characters");
 
-        Button loginbutton = new Button(this, "Sing in", "Sing in");
+        Button loginButton = new Button(this, "Sing in", "Sing in");
 
 
         //UI Settings
@@ -79,7 +76,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
 
-        pannelloButtonSingIn.add(loginbutton);
+        pannelloButtonSingIn.add(loginButton);
         pannelloButtonSingIn.setBorder(Constants.emptyBottom5);
 
 
@@ -171,12 +168,12 @@ public class Registration extends JFrame implements ActionListener, MouseListene
                     String email = email_field.getText();
                     String password = password_field.getText();
 
-                    List<String> data=new LinkedList<String>(
-                            Arrays.asList(name,surname,email,password));
+                    List<String> data = new LinkedList<>(
+                            Arrays.asList(name, surname, email, password));
 
                     if (LabelCheck.isEmpty(data)) {
                         JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
-                                ,JOptionPane.WARNING_MESSAGE);
+                                , JOptionPane.WARNING_MESSAGE);
                         dispose();
                         new Registration();
                         break;
@@ -242,7 +239,6 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void mouseExited(MouseEvent e) {
 
     }
-
 
 
 }

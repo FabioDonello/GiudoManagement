@@ -20,6 +20,7 @@ public class CheckPassword {
             String str = Integer.toString(i);
             if (password.contains(str)) {
                 count = 1;
+                break;
             }
             i++;
         }

@@ -20,7 +20,7 @@ public class DownloadTable extends Component {
             fileChooser.showSaveDialog(this);
             File saveFile = fileChooser.getSelectedFile();
             if (saveFile != null) {
-                saveFile = new File(saveFile.toString() + ".xlsx");
+                saveFile = new File(saveFile + ".xlsx");
                 XSSFWorkbook workbook = new XSSFWorkbook();
                 XSSFSheet sheet = workbook.createSheet();
 
@@ -39,7 +39,7 @@ public class DownloadTable extends Component {
                         }
                     }
                 }
-                FileOutputStream outputStream = new FileOutputStream(new File(saveFile.toString()));
+                FileOutputStream outputStream = new FileOutputStream(saveFile.toString());
                 workbook.write(outputStream);
                 workbook.close();
                 outputStream.close();
@@ -47,8 +47,8 @@ public class DownloadTable extends Component {
             } else {
                 JOptionPane.showMessageDialog(null, "Error in generating the archive");
             }
-        } catch (IOException e) {
-            System.out.println(e);
+        } catch (IOException ignored) {
+
         }
     }
 
@@ -56,8 +56,8 @@ public class DownloadTable extends Component {
         try {
             File path = new File(file);
             Desktop.getDesktop().open(path);
-        } catch (IOException ex) {
-            System.out.println(ex);
+        } catch (IOException ignored) {
+
         }
     }
 }

@@ -12,7 +12,7 @@ public class BackButton extends JLabel {
 
     public BackButton(JFrame parent){
         super("");
-        setIcon(Constants.leftarrowIcon);
+        setIcon(Constants.leftArrowIcon);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         addMouseListener(new MouseListener() {

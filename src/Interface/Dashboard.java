@@ -3,12 +3,8 @@ package Interface;
 import Utils.Constants;
 import Utils.DBOperations;
 import Widgets.*;
-import Widgets.Button;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +48,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
         //Pannelli
         MainMenu = new PannelloBorder();
-        DecisionMenu = new JPanel(new GridLayout(2,3));
+        DecisionMenu = new JPanel(new GridLayout(2, 3));
         MainMenu = new PannelloBorder();
 
         GrigliaBorder MenuGrid = new GrigliaBorder();
@@ -101,7 +97,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         DecisionMenu.add(guestsButton);
         DecisionMenu.add(ticketButton);
 
-        this.add(MainMenu,BorderLayout.WEST);
+        this.add(MainMenu, BorderLayout.WEST);
         this.add(DecisionMenu, BorderLayout.CENTER);
 
         setSize(1200, 600);
@@ -123,56 +119,56 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
         String cmd = e.getActionCommand();
         switch (cmd) {
-            case "costi":
+            case "costi" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new MoneyFlow(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            case "personale":
+            }
+            case "personale" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new Staff(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            case "magazzino":
+            }
+            case "magazzino" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new Magazzino(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            case "todolist":
+            }
+            case "todolist" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new ToDoList(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            case "guests":
+            }
+            case "guests" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new Ospiti(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            case "ticket":
+            }
+            case "ticket" -> {
                 DecisionMenu.setVisible(false);
                 try {
                     new Ticket(this, id);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
     }
 

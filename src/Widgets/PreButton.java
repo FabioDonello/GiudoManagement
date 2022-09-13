@@ -1,6 +1,5 @@
 package Widgets;
 
-import Interface.Dashboard;
 import Interface.PreMainPage;
 import Utils.Constants;
 
@@ -14,7 +13,7 @@ public class PreButton extends JLabel {
 
     public PreButton(JFrame parent, String email) {
         super("");
-        setIcon(Constants.leftarrowIcon);
+        setIcon(Constants.leftArrowIcon);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         addMouseListener(new MouseListener() {

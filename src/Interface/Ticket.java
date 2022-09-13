@@ -1,8 +1,6 @@
 package Interface;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -310,12 +308,12 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
             String Tickets = l.TicketsLabel.getText();
             String Description = l.DescriptionLabel.getText();
 
-            List<String> data=new LinkedList<>(
-                    Arrays.asList(Name,Tickets,Description));
+            List<String> data = new LinkedList<>(
+                    Arrays.asList(Name, Tickets, Description));
 
             switch (cmd) {
                 case "Add":
-                    if (!LabelCheck.isEmpty(data)){
+                    if (!LabelCheck.isEmpty(data)) {
                         try {
                             Statement statement = DBOperations.establish_connection();
                             DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
@@ -327,8 +325,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
                             throw new RuntimeException(ex);
                         }
                         l.Close();
-                    }
-                    else {
+                    } else {
                         AddTextTicketsTable.Error();
                     }
                     break;
@@ -354,7 +351,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
     public void Add_Tickets_Price() throws SQLException {
         String Price = AddPriceLabel.getText();
-        List<String> data=new LinkedList<>(
+        List<String> data = new LinkedList<>(
                 List.of(Price));
         if (!LabelCheck.isEmpty(data)) {
             Statement statement = DBOperations.establish_connection();

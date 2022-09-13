@@ -14,7 +14,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,20 +40,15 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
         guestsTableModel = new DefaultTableModel() {
             public Class<?> getColumnClass(int column) {
-                switch (column) {
-                    case 5:
-                        return Boolean.class;
-                    default:
-                        return String.class;
+                if (column == 5) {
+                    return Boolean.class;
                 }
+                return String.class;
             }
 
             @Override
             public boolean isCellEditable(int row, int column) {
-                if (column == 5)
-                    return true;
-                else
-                    return false;
+                return column == 5;
             }
         };
         guestsTableModel.addColumn("Name");
@@ -127,45 +121,40 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     public void AddGuest() throws SQLException {
 
         addTextToGuestsTable = new AddTextToGuestsTable();
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Name = addTextToGuestsTable.NameLabel.getText();
-                String Surname = addTextToGuestsTable.SurnameLabel.getText();
-                String Date = String.valueOf(addTextToGuestsTable.DateLabel.GetData());
-                String Email = addTextToGuestsTable.EmailLabel.getText();
-                String Phone = addTextToGuestsTable.PhoneLabel.getText();
-                String Confirm = String.valueOf(addTextToGuestsTable.checkConfirm.isSelected());
-                List<String> data = new LinkedList<String>(
-                        Arrays.asList(Name, Surname, Date, Email, Phone));
+        ActionListener actionListener = e -> {
+            String cmd = e.getActionCommand();
+            String Name = addTextToGuestsTable.NameLabel.getText();
+            String Surname = addTextToGuestsTable.SurnameLabel.getText();
+            String Date = String.valueOf(addTextToGuestsTable.DateLabel.GetData());
+            String Email = addTextToGuestsTable.EmailLabel.getText();
+            String Phone = addTextToGuestsTable.PhoneLabel.getText();
+            String Confirm = String.valueOf(addTextToGuestsTable.checkConfirm.isSelected());
+            List<String> data = new LinkedList<>(
+                    Arrays.asList(Name, Surname, Date, Email, Phone));
 
-                switch (cmd) {
-                    case "Add":
-                        Statement statement = null;
-                        try {
-                            if (LabelCheck.isEmpty(data)) {
-                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
-                                        "Warning", JOptionPane.WARNING_MESSAGE);
-                                addTextToGuestsTable.dispose();
+            switch (cmd) {
+                case "Add" -> {
+                    Statement statement;
+                    try {
+                        if (LabelCheck.isEmpty(data)) {
+                            JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                    "Warning", JOptionPane.WARNING_MESSAGE);
+                            addTextToGuestsTable.dispose();
+                        } else {
+                            statement = DBOperations.establish_connection();
+                            DBOperations.Add_Guest(statement, "Guest", id, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
+                            if (Confirm.equals("true")) {
+                                guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.TRUE});
                             } else {
-                                statement = DBOperations.establish_connection();
-                                DBOperations.Add_Guest(statement, "Guest", id, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
-                                if (Confirm.equals("true")) {
-                                    guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.TRUE});
-                                } else {
-                                    guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.FALSE});
-                                }
-                                addTextToGuestsTable.Close();
+                                guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.FALSE});
                             }
-                            break;
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
+                            addTextToGuestsTable.Close();
                         }
-                    case "Delete":
-                        addTextToGuestsTable.Close();
-                        break;
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
+                case "Delete" -> addTextToGuestsTable.Close();
             }
         };
         addTextToGuestsTable.AddButton.addActionListener(actionListener);
@@ -177,7 +166,7 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         String Date;
         String Email;
         String Phone;
-        int index = 0;
+        int index;
         index = guestsJTable.getSelectedRow();
         Name = (String) guestsTableModel.getValueAt(index, 0);
         Surname = (String) guestsTableModel.getValueAt(index, 1);

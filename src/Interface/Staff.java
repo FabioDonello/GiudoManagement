@@ -99,37 +99,32 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
 
     public void AddStaff() throws SQLException {
         AddTextToStaffTable addTextToStaffTable = new AddTextToStaffTable();
-        ActionListener actionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Name = addTextToStaffTable.NameLabel.getText();
-                String Task = addTextToStaffTable.TaskLabel.getText();
-                String Description = addTextToStaffTable.DescriptionLabel.getText();
-                List<String> data = new LinkedList<String>(
-                        Arrays.asList(Name, Task, Description));
-                switch (cmd) {
-                    case "Add":
-                        Statement statement = null;
-                        try {
-                            if (LabelCheck.isEmpty(data)) {
-                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
-                                        "Warning", JOptionPane.WARNING_MESSAGE);
-                                addTextToStaffTable.dispose();
-                            } else {
-                                statement = DBOperations.establish_connection();
-                                DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
-                                staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
-                                addTextToStaffTable.Close();
-                            }
-                            break;
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
+        ActionListener actionListener = e -> {
+            String cmd = e.getActionCommand();
+            String Name = addTextToStaffTable.NameLabel.getText();
+            String Task = addTextToStaffTable.TaskLabel.getText();
+            String Description = addTextToStaffTable.DescriptionLabel.getText();
+            List<String> data = new LinkedList<>(
+                    Arrays.asList(Name, Task, Description));
+            switch (cmd) {
+                case "Add" -> {
+                    Statement statement;
+                    try {
+                        if (LabelCheck.isEmpty(data)) {
+                            JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                    "Warning", JOptionPane.WARNING_MESSAGE);
+                            addTextToStaffTable.dispose();
+                        } else {
+                            statement = DBOperations.establish_connection();
+                            DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
+                            staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
+                            addTextToStaffTable.Close();
                         }
-                    case "Delete":
-                        addTextToStaffTable.Close();
-                        break;
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
+                case "Delete" -> addTextToStaffTable.Close();
             }
         };
         addTextToStaffTable.AddButton.addActionListener(actionListener);

@@ -42,7 +42,6 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         Button open_project_button = new Button(this, "Open project", "Open");
         Button create_table_button = new Button(this, "Create project", "Create");
         Button delete_table_button = new Button(this, "Delete project", "Delete");
-        //LogoutButton logoutButton = new LogoutButton(this);
         BackButton backButton = new BackButton(this);
 
 
@@ -52,11 +51,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
              */
             @Override
             public boolean isCellEditable(int row, int col) {
-                if (col == 0) {
-                    return false;
-                } else {
-                    return true;
-                }
+                return col != 0;
             }
         };
         tableModel.addColumn("ID");
@@ -124,7 +119,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
     public void CreateProject() throws SQLException {
         int Row = tableModel.getRowCount();
         String ID = String.valueOf((int) Math.floor(Math.random() * (19999 - 10000 + 1) + 10000));
-        if (CheckId.CheckId(ID)) {
+        if (CheckId.checkId(ID)) {
             tableModel.insertRow(tableModel.getRowCount(), new Object[]{ID, "Project " + String.valueOf(Row),
                     "This is project " + String.valueOf(Row)});
 

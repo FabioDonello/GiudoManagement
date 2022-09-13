@@ -2,7 +2,6 @@ package Interface;
 
 
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicArrowButton;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.ResultSet;
@@ -40,7 +39,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         password_field = new PasswordTextField();
         password_field.setBorder(Constants.compoundBottom20);
 
-        Button loginbutton = new Button(this, "Login", "Login");
+        Button loginButton = new Button(this, "Login", "Login");
         BackButton backButton = new BackButton(this);
 
         //UI Settings
@@ -63,11 +62,11 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         pannelloLogo.add(headerText, BorderLayout.NORTH);
         pannelloLogo.add(subText, BorderLayout.SOUTH);
 
-        pannelloButtonAccedi.add(loginbutton);
+        pannelloButtonAccedi.add(loginButton);
         pannelloButtonAccedi.setBorder(Constants.emptyBottom5);
 
         //Grid
-        GrigliaBorder griglialogin = new GrigliaBorder();
+        GrigliaBorder grigliaLogin = new GrigliaBorder();
         GridBagConstraints a = new GridBagConstraints();
 
         a.fill = GridBagConstraints.BASELINE;
@@ -75,29 +74,29 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         a.gridy = 0;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(email_text, a);
+        grigliaLogin.add(email_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 0;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(email_field, a);
+        grigliaLogin.add(email_field, a);
 
         a.fill = GridBagConstraints.BASELINE;
         a.gridx = 0;
         a.gridy = 1;
         a.weightx = 0.1;
         a.weighty = 0.1;
-        griglialogin.add(password_text, a);
+        grigliaLogin.add(password_text, a);
 
         a.fill = GridBagConstraints.HORIZONTAL;
         a.gridx = 1;
         a.gridy = 1;
         a.weightx = 1;
         a.weighty = 1;
-        griglialogin.add(password_field, a);
-        pannelloLogin.add(griglialogin);
+        grigliaLogin.add(password_field, a);
+        pannelloLogin.add(grigliaLogin);
 
         //Container
         Container contentView = new Container();
