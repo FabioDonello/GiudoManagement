@@ -1,12 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7c74ea2-2d29-4bcb-b8ba-a0353f7f855e" name="Changes" comment="Complete">
+    <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="fabio 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Magazzino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Magazzino.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Ospiti.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ospiti.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/PreMainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/PreMainPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Registration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/CheckEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/CheckEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Welcome.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Welcome.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextTicketsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextTicketsTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToDoTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToDoTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToGuestsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToGuestsTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToInventoryTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToInventoryTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToMoneyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToMoneyTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToStaffTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToStaffTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/LabelCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/LabelCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Widgets/LabelTextField.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +41,10 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Giuseppe" />
+    <option name="BRANCH" value="main" />
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/Giuseppe" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -44,20 +67,18 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path&quot;: &quot;C:\\Users\\39377\\Downloads\\checkemail\\commons-validator-1.7-src&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/39377/Downloads/checkemail/javax.mail.jar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/39377/Downloads/poi-bin-5.2.2/lib/log4j-api-2.17.2.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -163,20 +184,15 @@
       <workItem from="1662470399081" duration="4658000" />
       <workItem from="1662539622500" duration="5562000" />
       <workItem from="1662551435602" duration="1730000" />
-      <workItem from="1662562253671" duration="630000" />
-      <workItem from="1662562992294" duration="198000" />
-      <workItem from="1662563207210" duration="2757000" />
-      <workItem from="1662624465559" duration="9315000" />
-      <workItem from="1662644397654" duration="8151000" />
-      <workItem from="1662652809754" duration="367000" />
-      <workItem from="1662707807376" duration="2546000" />
-      <workItem from="1662710613950" duration="779000" />
-      <workItem from="1662738738228" duration="802000" />
-      <workItem from="1662796743502" duration="14541000" />
-      <workItem from="1662921706292" duration="2824000" />
-      <workItem from="1662966343085" duration="12867000" />
-      <workItem from="1662979507965" duration="42000" />
-      <workItem from="1662989959993" duration="4753000" />
+      <workItem from="1662559534793" duration="3330000" />
+      <workItem from="1662578162847" duration="4398000" />
+      <workItem from="1662646550677" duration="1228000" />
+      <workItem from="1662991076838" duration="1307000" />
+      <workItem from="1662997018668" duration="8826000" />
+      <workItem from="1663015896340" duration="2428000" />
+      <workItem from="1663054490047" duration="101000" />
+      <workItem from="1663075479531" duration="690000" />
+      <workItem from="1663080082067" duration="1236000" />
     </task>
     <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
       <created>1662475429575</created>
@@ -213,21 +229,28 @@
       <option name="project" value="LOCAL" />
       <updated>1662557068731</updated>
     </task>
-    <task id="LOCAL-00007" summary="Definitivo pt.1">
-      <created>1662561784850</created>
+    <task id="LOCAL-00007" summary="07.09.2022">
+      <created>1662560325863</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1662561784850</updated>
+      <updated>1662560325863</updated>
     </task>
-    <task id="LOCAL-00008" summary="Complete">
-      <created>1662994550926</created>
+    <task id="LOCAL-00008" summary="aaaaa">
+      <created>1662561433430</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1662994550926</updated>
+      <updated>1662561433430</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fabio 1">
+      <created>1662994412312</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1662994412312</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,9 +271,9 @@
     <MESSAGE value="Definitivo" />
     <MESSAGE value="Guests done (only the editable checkbox cell is missing)" />
     <MESSAGE value="07.09.2022" />
-    <MESSAGE value="Definitivo pt.1" />
-    <MESSAGE value="Complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete" />
+    <MESSAGE value="aaaaa" />
+    <MESSAGE value="fabio 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="fabio 1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/GiudoManagement$Main.ic" NAME="Main Coverage Results" MODIFIED="1662571366341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

@@ -90,6 +90,20 @@ public class DBOperations {
             statement.executeUpdate("CREATE TABLE TicketsPrice (" + "ID VARCHAR(30), " + "Price VARCHAR(30))");
         }
 
+        try {
+            statement.executeQuery("SELECT * FROM ToDoAction LIMIT 1");
+        } catch (SQLException e) {
+            statement.executeUpdate("DROP TABLE IF EXISTS ToDoAction");
+            statement.executeUpdate("CREATE TABLE ToDoAction (" + "ID VARCHAR(30), " + "Name VARCHAR(30)," + "Deadline VARCHAR(30)," + "Description VARCHAR(30))");
+        }
+
+        try {
+            statement.executeQuery("SELECT * FROM DoneAction LIMIT 1");
+        } catch (SQLException e) {
+            statement.executeUpdate("DROP TABLE IF EXISTS DoneAction");
+            statement.executeUpdate("CREATE TABLE DoneAction (" + "ID VARCHAR(30), " + "Name VARCHAR(30)," + "Execution VARCHAR(30)," + "Description VARCHAR(30))");
+        }
+
         return statement;
     }
 

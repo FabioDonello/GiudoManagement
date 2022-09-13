@@ -12,10 +12,14 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 import Utils.AddTextTicketsTable;
 import Utils.DBOperations;
+import Utils.LabelCheck;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
@@ -258,7 +262,6 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
         InfoGrid2.add(SubComboBox, a2);
         InfoPanel2.add(InfoGrid2);
 
-
         //Container
         Container contentView = new Container();
         contentView.add(jScrollPane);
@@ -267,13 +270,13 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
         contentView.add(InfoPanel2);
         contentView.add(TicketsPricePanel);
 
-
         parent.add(contentView);
+        parent.setSize(1100, 600);
+        parent.setLocationRelativeTo(null);
         setVisible(true);
 
         id = ID;
         UpLoadData();
-
     }
 
     public void UpLoadData() throws SQLException {
@@ -308,23 +311,30 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
                 String Name = l.NameLabel.getText();
                 String Tickets = l.TicketsLabel.getText();
                 String Description = l.DescriptionLabel.getText();
+                List<String> data = new LinkedList<String>(
+                        Arrays.asList(Name, Tickets, Description));
 
                 switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
+                            if (LabelCheck.isEmpty(data)) {
+                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                        "Warning", JOptionPane.WARNING_MESSAGE);
+                                l.dispose();
+                            } else {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
 
-                            statement = DBOperations.establish_connection();
-                            DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
-
-                            Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
-                                    Name, Tickets, Description});
+                                Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
+                                        Name, Tickets, Description});
+                                l.Close();
+                            }
+                            break;
 
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
-                        l.Close();
-                        break;
                     case "Del":
                         l.Close();
                         break;

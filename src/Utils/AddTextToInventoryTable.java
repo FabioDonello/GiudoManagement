@@ -26,12 +26,12 @@ public class AddTextToInventoryTable extends JFrame implements ActionListener {
         Text QuantityText = new Text("Quantity:");
         Text DescriptionText = new Text("Description:");
 
-        ObjectLabel = new LabelTextField();
-        QuantityLabel = new LabelTextField();
-        DescriptionLabel = new LabelTextField();
+        ObjectLabel = new LabelTextField("");
+        QuantityLabel = new LabelTextField(0);
+        DescriptionLabel = new LabelTextField("");
 
         AddButton = new Button(this, "Aggiungi", "Add");
-        DeleteButton = new Button(this, "Rimuovi", "Delete");
+        DeleteButton = new Button(this, "Cancella", "Delete");
 
         JPanel InfoPanel = new JPanel(new GridLayout(4, 2));
 
@@ -45,12 +45,12 @@ public class AddTextToInventoryTable extends JFrame implements ActionListener {
         InfoPanel.add(DeleteButton);
 
         InfoFrame.add(InfoPanel);
-        InfoFrame.setSize(400,200);
+        InfoFrame.setSize(400, 200);
         InfoFrame.setLocationRelativeTo(null);
         InfoFrame.setVisible(true);
     }
 
-    public void Close(){
+    public void Close() {
         InfoFrame.dispose();
     }
 

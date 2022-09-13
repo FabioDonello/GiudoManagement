@@ -17,21 +17,21 @@ public class AddTextTicketsTable extends JFrame implements ActionListener {
 
     public JDialog InfoFrame;
 
-    public AddTextTicketsTable(){
+    public AddTextTicketsTable() {
         InfoFrame = new JDialog();
 
         Text NameText = new Text("Name and Surname:");
         Text TicketsText = new Text("Number of ticket:");
         Text DescriptionText = new Text("Description:");
 
-        NameLabel = new LabelTextField();
-        TicketsLabel = new LabelTextField();
-        DescriptionLabel = new LabelTextField();
+        NameLabel = new LabelTextField("");
+        TicketsLabel = new LabelTextField(1.0);
+        DescriptionLabel = new LabelTextField("");
 
-        Add_button = new Button( this,"Add", "Add");
-        Button Delete_button = new Button( this,"Cancel", "Del");
+        Add_button = new Button(this, "Add", "Add");
+        Button Delete_button = new Button(this, "Cancel", "Del");
 
-        JPanel InfoPanel = new JPanel(new GridLayout(4,2));
+        JPanel InfoPanel = new JPanel(new GridLayout(4, 2));
 
         InfoPanel.add(NameText);
         InfoPanel.add(NameLabel);
@@ -44,20 +44,20 @@ public class AddTextTicketsTable extends JFrame implements ActionListener {
 
 
         InfoFrame.add(InfoPanel);
-        InfoFrame.setSize(450,200);
+        InfoFrame.setSize(450, 200);
         InfoFrame.setLocationRelativeTo(null);
         InfoFrame.setVisible(true);
 
     }
-    public void Close()
-    {
+
+    public void Close() {
         InfoFrame.dispose();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
-        if (cmd.compareTo("Del")==0){
+        if (cmd.compareTo("Del") == 0) {
             Close();
         }
     }

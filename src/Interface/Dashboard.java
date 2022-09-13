@@ -39,15 +39,15 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
         HomeButton homeButton = new HomeButton(this, ID);
         LogoutButton logoutButton = new LogoutButton(this);
-        Button SpaceButton = new Button(this,"");
+        BackButton backButton = new BackButton(this);
+        Button SpaceButton = new Button(this, "");
         SpaceButton.setBorder(Constants.emptyBottom5);
         SpaceButton.setEnabled(false);
 
 
-
         //Pannelli
         MainMenu = new PannelloBorder();
-        DecisionMenu = new JPanel(new GridLayout(2,3));
+        DecisionMenu = new JPanel(new GridLayout(2, 3));
 
         //UI Settings
         //headerText.setBorder(Constants.compoundBottom5);
@@ -58,6 +58,8 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         button.add(homeButton);
         button.add(Box.createHorizontalStrut(10));
         button.add(logoutButton);
+        button.add(Box.createHorizontalStrut(10));
+        button.add(backButton);
 
 
         /*
@@ -103,7 +105,7 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         DecisionMenu.add(guestsButton);
         DecisionMenu.add(ticketButton);
 
-        this.add(MainMenu,BorderLayout.WEST);
+        this.add(MainMenu, BorderLayout.WEST);
         this.add(DecisionMenu, BorderLayout.CENTER);
 
         setSize(900, 600);

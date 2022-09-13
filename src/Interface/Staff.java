@@ -2,6 +2,7 @@ package Interface;
 
 import Utils.AddTextToStaffTable;
 import Utils.DBOperations;
+import Utils.LabelCheck;
 import Widgets.Button;
 import Widgets.Container;
 import Widgets.PannelloBorder;
@@ -16,6 +17,9 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Staff extends PannelloBorder implements ActionListener, MouseListener {
 
@@ -31,14 +35,12 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         //Create
         Button addStaff = new Button(this, "Aggiungi Personale", "Add");
         Button deleteStaff = new Button(this, "Rimuovi Personale", "Delete");
+        Button downloadTable = new Button(this, "Scarica", "Download");
 
         staffTableModel = new DefaultTableModel() {
 
             public boolean isCellEditable(int row, int col) {
-                if (col == 0)
-                    return false;
-                else
-                    return true;
+                return false;
             }
         };
         staffTableModel.addColumn("Name");
@@ -47,17 +49,19 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
 
         staffJTable = new JTable(staffTableModel);
         staffJTable.setAutoCreateRowSorter(true);
-        staffJTable.setBounds(30, 40, 230, 280);
+        staffJTable.setBounds(30, 40, 300, 280);
         staffJTable.getModel().addTableModelListener(new PreMainPage.MyTableModelListener(staffJTable));
 
         JScrollPane staffJScrollPane = new JScrollPane(staffJTable);
 
         //Panels
-        mainPanel = new PannelloBorder();
-        buttonPanel = new PannelloBorder();
+        mainPanel = new PannelloBorder(new GridLayout());
+        buttonPanel = new PannelloBorder(new GridLayout());
 
         Box button = Box.createHorizontalBox();
         button.add(Box.createHorizontalGlue());
+        button.add(downloadTable);
+        button.add(Box.createHorizontalStrut(10));
         button.add(addStaff);
         button.add(Box.createHorizontalStrut(10));
         button.add(deleteStaff);
@@ -69,8 +73,8 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         Container contentView = new Container();
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
-        parent.add(contentView, BorderLayout.CENTER);
-
+        parent.add(contentView);
+        parent.setLocationRelativeTo(null);
         setVisible(true);
 
         id = ID;
@@ -101,19 +105,26 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
                 String Name = addTextToStaffTable.NameLabel.getText();
                 String Task = addTextToStaffTable.TaskLabel.getText();
                 String Description = addTextToStaffTable.DescriptionLabel.getText();
-
+                List<String> data = new LinkedList<String>(
+                        Arrays.asList(Name, Task, Description));
                 switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
-                            statement = DBOperations.establish_connection();
-                            DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
+                            if (LabelCheck.isEmpty(data)) {
+                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                        "Warning", JOptionPane.WARNING_MESSAGE);
+                                addTextToStaffTable.dispose();
+                            } else {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.Add_Staff(statement, "Staff", id, Name, Task, Description);
+                                staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
+                                addTextToStaffTable.Close();
+                            }
+                            break;
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
-                        staffTableModel.insertRow(staffTableModel.getRowCount(), new Object[]{Name, Task, Description});
-                        addTextToStaffTable.Close();
-                        break;
                     case "Delete":
                         addTextToStaffTable.Close();
                         break;

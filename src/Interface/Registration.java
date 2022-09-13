@@ -6,11 +6,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
 import Utils.*;
 import Widgets.*;
 import Widgets.Button;
@@ -28,7 +26,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public Registration() {
         super("Gestionale Eventi - Registrati");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
         //Creo
         BackButton backButton = new BackButton(this);
