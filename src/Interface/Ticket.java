@@ -12,10 +12,14 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 import Utils.AddTextTicketsTable;
 import Utils.DBOperations;
+import Utils.LabelCheck;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
@@ -309,21 +313,28 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
                 String Tickets = l.TicketsLabel.getText();
                 String Description = l.DescriptionLabel.getText();
 
+                List<String> data=new LinkedList<String>(
+                        Arrays.asList(Name,Tickets,Description));
+
                 switch (cmd) {
                     case "Add":
-                        Statement statement = null;
-                        try {
+                        if (LabelCheck.isEmpty(data)){
+                            Statement statement = null;
+                            try {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
 
-                            statement = DBOperations.establish_connection();
-                            DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
+                                Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
+                                        Name, Tickets, Description});
 
-                            Tickets_TableModel.insertRow(Tickets_TableModel.getRowCount(), new Object[]{
-                                    Name, Tickets, Description});
-
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                            l.Close();
                         }
-                        l.Close();
+                        else {
+                            AddTextTicketsTable.Error();
+                        }
                         break;
                     case "Del":
                         l.Close();
@@ -348,7 +359,9 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
     public void Add_Tickets_Price() throws SQLException {
         String Price = AddPriceLabel.getText();
-        if (Price.compareTo("") != 0) {
+        List<String> data=new LinkedList<String>(
+                List.of(Price));
+        if (LabelCheck.isEmpty(data)) {
             Statement statement = DBOperations.establish_connection();
             DBOperations.TicketsPriceLoad(statement, id, Price);
             PriceComboBox.addItem(Price);

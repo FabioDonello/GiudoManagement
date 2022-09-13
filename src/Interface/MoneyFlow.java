@@ -2,6 +2,7 @@ package Interface;
 
 import Utils.AddTextToMoneyTable;
 import Utils.DBOperations;
+import Utils.LabelCheck;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
@@ -16,6 +17,9 @@ import java.awt.event.MouseListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MoneyFlow extends PannelloBorder implements ActionListener, MouseListener {
 
@@ -229,30 +233,38 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
                 String Name = l.NameLabel.getText();
                 String Description = l.DescriptionLabel.getText();
 
+                List<String> data=new LinkedList<String>(
+                        Arrays.asList(Amount,Name,Description));
+
                 switch (cmd){
                     case "Add":
-                        Statement statement = null;
-                        try {
-                            statement = DBOperations.establish_connection();
-                            DBOperations.AddRevCostLoad(statement,
-                                    s,id,Amount+"€",Name,Description);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
+                        if (LabelCheck.isEmpty(data)){
+                            Statement statement = null;
+                            try {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.AddRevCostLoad(statement,
+                                        s,id,Amount+"€",Name,Description);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
 
-                        if (s.compareTo("Cost")==0) {
-                            Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[]{
-                                    Amount+"€",Name,Description});
-                            RefreshInfoPanel();
-                        }
+                            if (s.compareTo("Cost")==0) {
+                                Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[]{
+                                        Amount+"€",Name,Description});
+                                RefreshInfoPanel();
+                            }
 
-                        if (s.compareTo("Revenues")==0) {
-                            Revenues_tableModel.insertRow(Revenues_jTable.getRowCount(), new Object[]{
-                                    Amount+"€",Name,Description});
-                            RefreshInfoPanel();
+                            if (s.compareTo("Revenues")==0) {
+                                Revenues_tableModel.insertRow(Revenues_jTable.getRowCount(), new Object[]{
+                                        Amount+"€",Name,Description});
+                                RefreshInfoPanel();
+                            }
+                            l.Close();
+                            break;                            
                         }
-                        l.Close();
-                        break;
+                        else {
+                            AddTextToMoneyTable.Error();
+                        }
                     case "Del":
                         l.Close();
                         break;

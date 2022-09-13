@@ -1,6 +1,7 @@
 package Widgets;
 
 import Interface.Dashboard;
+import Interface.PreMainPage;
 import Utils.Constants;
 
 import javax.swing.*;
@@ -9,11 +10,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.sql.SQLException;
 
-public class HomeButton extends JLabel {
+public class PreButton extends JLabel {
 
-    public HomeButton(JFrame parent, String id) {
+    public PreButton(JFrame parent, String email) {
         super("");
-        setIcon(Constants.homeIcon);
+        setIcon(Constants.leftarrowIcon);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
         addMouseListener(new MouseListener() {
@@ -21,7 +22,7 @@ public class HomeButton extends JLabel {
             public void mouseClicked(MouseEvent e) {
                 parent.dispose();
                 try {
-                    new Dashboard(id);
+                    new PreMainPage(email);
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }

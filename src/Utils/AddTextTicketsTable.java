@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddTextTicketsTable extends JFrame implements ActionListener {
+public class AddTextTicketsTable implements ActionListener {
     public Button Add_button;
     public LabelTextField TicketsLabel;
     public LabelTextField NameLabel;
@@ -54,6 +54,10 @@ public class AddTextTicketsTable extends JFrame implements ActionListener {
         InfoFrame.dispose();
     }
 
+    public static void Error(){
+        JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
+                , JOptionPane.WARNING_MESSAGE);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();

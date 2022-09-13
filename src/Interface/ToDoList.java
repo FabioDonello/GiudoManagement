@@ -1,9 +1,6 @@
 package Interface;
 
-import Utils.AddTextTicketsTable;
-import Utils.AddTextToDoTable;
-import Utils.DBOperations;
-import Utils.DateTextField;
+import Utils.*;
 import Widgets.*;
 import Widgets.Button;
 import Widgets.Container;
@@ -21,6 +18,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ToDoList extends PannelloBorder implements ActionListener, MouseListener {
 
@@ -239,28 +239,36 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
                 String Date = String.valueOf(l.DateTimeField.GetData());
                 String Description = l.DescriptionLabel.getText();
 
+                List<String> data=new LinkedList<String>(
+                        Arrays.asList(Name,Date,Description));
+
                 switch (cmd) {
                     case "Add":
-                        Statement statement = null;
-                        try {
-                            statement = DBOperations.establish_connection();
-                            DBOperations.TodoDoneLoad(statement,
-                                    s, id, Name, Date, Description);
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
-                        }
+                        if (LabelCheck.isEmpty(data)){
+                            Statement statement = null;
+                            try {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.TodoDoneLoad(statement,
+                                        s, id, Name, Date, Description);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
 
-                        if (s.compareTo("DoneAction") == 0) {
-                            Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
-                                    Name, Date, Description});
-                        }
+                            if (s.compareTo("DoneAction") == 0) {
+                                Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
+                                        Name, Date, Description});
+                            }
 
-                        if (s.compareTo("ToDoAction") == 0) {
-                            ToDo_tableModel.insertRow(ToDo_jTable.getRowCount(), new Object[]{
-                                    Name, Date, Description});
+                            if (s.compareTo("ToDoAction") == 0) {
+                                ToDo_tableModel.insertRow(ToDo_jTable.getRowCount(), new Object[]{
+                                        Name, Date, Description});
+                            }
+                            RefreshInfoPanel();
+                            l.Close();
                         }
-                        RefreshInfoPanel();
-                        l.Close();
+                        else {
+                            AddTextToDoTable.Error();
+                        }
                         break;
                     case "Del":
                         l.Close();

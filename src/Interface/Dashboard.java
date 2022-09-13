@@ -1,18 +1,22 @@
 package Interface;
 
 import Utils.Constants;
+import Utils.DBOperations;
 import Widgets.*;
 import Widgets.Button;
 import com.sun.tools.javac.Main;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
@@ -21,14 +25,15 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
 
     public String id;
 
-    public Dashboard(String ID) {
+    public Dashboard(String ID) throws SQLException {
+
 
         super("Giudo - Dashboard");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
         //Creo
-        Text headerText = new Text("HOME", Constants.fontLabel26);
+        Text headerText = new Text("DASHBOARD");
 
         CoinsButton coinsButton = new CoinsButton(this, "Contabilità", "costi");
         UsersButton usersButton = new UsersButton(this, "Personale", "personale");
@@ -38,64 +43,58 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         TicketButton ticketButton = new TicketButton(this, "Pre-vendite", "ticket");
 
         HomeButton homeButton = new HomeButton(this, ID);
+        PreButton preButton = new PreButton(this, GetEmail(ID));
         LogoutButton logoutButton = new LogoutButton(this);
-        Button SpaceButton = new Button(this,"");
-        SpaceButton.setBorder(Constants.emptyBottom5);
-        SpaceButton.setEnabled(false);
 
-
+        homeButton.setBorder(Constants.compoundBottom20);
+        preButton.setBorder(Constants.compoundBottom20);
+        logoutButton.setBorder(Constants.compoundBottom20);
 
         //Pannelli
         MainMenu = new PannelloBorder();
         DecisionMenu = new JPanel(new GridLayout(2,3));
+        MainMenu = new PannelloBorder();
 
-        //UI Settings
-        //headerText.setBorder(Constants.compoundBottom5);
+        GrigliaBorder MenuGrid = new GrigliaBorder();
+        GridBagConstraints a = new GridBagConstraints();
 
+        MenuGrid.setBorder(Constants.compoundBottom5);
 
-        Box button = Box.createHorizontalBox();
-        button.add(Box.createHorizontalGlue());
-        button.add(homeButton);
-        button.add(Box.createHorizontalStrut(10));
-        button.add(logoutButton);
+        a.fill = GridBagConstraints.CENTER;
+        a.gridx = 0;
+        a.gridy = 0;
+        a.weightx = 1;
+        a.weighty = 1;
+        MenuGrid.add(headerText, a);
 
+        a.fill = GridBagConstraints.CENTER;
+        a.ipady = 120;
+        a.gridx = 0;
+        a.gridy = 1;
+        a.weightx = 1;
+        a.weighty = 1;
+        MenuGrid.add(homeButton, a);
 
-        /*
-        MainMenu.setPreferredSize(Constants.FieldDimensions100);
-        MainMenu.setMaximumSize(Constants.FieldDimensions100);
-        MainMenu.setMinimumSize(Constants.FieldDimensions100);
-        MainMenu.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-         */
+        a.fill = GridBagConstraints.CENTER;
+        a.ipady = 120;
+        a.gridx = 0;
+        a.gridy = 2;
+        a.weightx = 1;
+        a.weighty = 1;
+        MenuGrid.add(preButton, a);
 
+        a.fill = GridBagConstraints.CENTER;
+        a.ipady = 120;
+        a.gridx = 0;
+        a.gridy = 3;
+        a.weightx = 1;
+        a.weighty = 1;
+        MenuGrid.add(logoutButton, a);
+        MenuGrid.setBorder(Constants.compoundBottom5);
+        MainMenu.add(MenuGrid);
 
-        GrigliaBorder InfoGrid1 = new GrigliaBorder();
-        GridBagConstraints a1 = new GridBagConstraints();
-
-        a1.fill = GridBagConstraints.HORIZONTAL;
-        a1.gridx = 0;
-        a1.gridy = 0;
-        InfoGrid1.add(headerText, a1);
-
-        a1.fill = GridBagConstraints.HORIZONTAL;
-        a1.ipady = 315;
-        a1.gridx = 0;
-        a1.gridy = 1;
-        InfoGrid1.add(SpaceButton, a1);
-
-        a1.fill = GridBagConstraints.HORIZONTAL;
-        a1.gridx = 0;
-        a1.gridy = 2;
-        InfoGrid1.add(button, a1);
-        MainMenu.add(InfoGrid1);
-
-
-
-        /*DecisionMenù.setPreferredSize(Constants.FieldDimensions100);
-        DecisionMenù.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 100));
-         */
 
         DecisionMenu.setBackground(Constants.senapeColor);
-
         DecisionMenu.add(coinsButton);
         DecisionMenu.add(usersButton);
         DecisionMenu.add(storageButton);
@@ -106,11 +105,18 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         this.add(MainMenu,BorderLayout.WEST);
         this.add(DecisionMenu, BorderLayout.CENTER);
 
-        setSize(900, 600);
+        setSize(1200, 600);
         setVisible(true);
         setLocationRelativeTo(null);
 
         id = ID;
+    }
+
+    public static String GetEmail(String ID) throws SQLException {
+        Statement statement = DBOperations.establish_connection();
+        ResultSet ris = DBOperations.getEmail(statement, ID);
+        assert ris != null;
+        return ris.getString("Email");
     }
 
     @Override

@@ -17,7 +17,7 @@ public class Welcome extends JFrame implements ActionListener, MouseListener {
     public Welcome() {
         super("Gestionale Eventi - Benvenuti");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
         //Creo
         Text headerText = new Text("Gestionale Eventi", Constants.fontLabel26);
