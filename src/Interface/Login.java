@@ -33,7 +33,6 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         Text subText = new Text("Accedi utilizzando le credenziali utilizzate al momento della registrazione");
 
         Text email_text = new Text("Email:    ");
-
         email_field = new LabelTextField();
         email_field.setBorder(Constants.compoundBottom20);
 
@@ -192,5 +191,6 @@ public class Login extends JFrame implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 }

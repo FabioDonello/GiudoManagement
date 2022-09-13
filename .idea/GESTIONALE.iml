@@ -28,7 +28,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/poi-5.2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/Lib/poi-5.2.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -37,7 +37,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/poi-ooxml-5.2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/Lib/poi-ooxml-3.9.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -46,73 +46,16 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/lib/commons-math3-3.6.1.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-tests.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7.jar!/" />
         </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/lib/commons-collections4-4.4.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/ooxml-lib/commons-compress-1.21.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/ooxml-lib/xmlbeans-5.0.3.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/poi-ooxml-full-5.2.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="poi-5.2.2" level="project" />
-    <orderEntry type="library" exported="" name="commons-math3-3.6.1" level="project" />
-    <orderEntry type="library" exported="" name="poi-ooxml-5.2.2" level="project" />
-    <orderEntry type="library" exported="" name="commons-collections4-4.4" level="project" />
-    <orderEntry type="library" exported="" name="commons-compress-1.21" level="project" />
-    <orderEntry type="library" exported="" name="xmlbeans-5.0.3" level="project" />
-    <orderEntry type="library" exported="" name="poi-ooxml-full-5.2.2" level="project" />
-    <orderEntry type="library" exported="" name="commons-io-2.11.0" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/lib/commons-io-2.11.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" exported="" name="log4j-api-2.17.2" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/poi-bin-5.2.2/lib/log4j-api-2.17.2.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-sources.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-test-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library" exported="">

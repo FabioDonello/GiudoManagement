@@ -2,6 +2,7 @@ package Interface;
 
 import Utils.AddTextToStaffTable;
 import Utils.DBOperations;
+import Utils.DownloadTable;
 import Utils.LabelCheck;
 import Widgets.Button;
 import Widgets.Container;
@@ -27,7 +28,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
     PannelloBorder buttonPanel;
 
     JTable staffJTable;
-    DefaultTableModel staffTableModel = null;
+    DefaultTableModel staffTableModel;
     String id;
 
     public Staff(JFrame parent, String ID) throws SQLException {
@@ -40,7 +41,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
         staffTableModel = new DefaultTableModel() {
 
             public boolean isCellEditable(int row, int col) {
-                return false;
+                return col != 0;
             }
         };
         staffTableModel.addColumn("Name");
@@ -137,7 +138,7 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
     public void DeleteStaff() throws SQLException {
         String Name;
         String Task;
-        int index = 0;
+        int index;
         index = staffJTable.getSelectedRow();
         Name = (String) staffTableModel.getValueAt(index, 0);
         Task = (String) staffTableModel.getValueAt(index, 1);
@@ -170,6 +171,9 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
+            case "Download":
+                new DownloadTable(staffJTable);
                 break;
             default:
                 break;

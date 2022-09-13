@@ -12,12 +12,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +29,6 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
     private static String id;
     private static LabelTextField TotalDoneLabel;
     private static LabelTextField TotalToDoLabel;
-    private static LabelTextField TotalContLabel;
 
     public ToDoList(JFrame parent, String ID) throws SQLException {
 
@@ -216,7 +213,9 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
         ResultSet ActionToDo = DBOperations.RevCostUpload(statement, "ToDoAction", id);
 
         if (DoneAction != null) {
-            while (ActionToDo.next()) {
+            while (true) {
+                assert ActionToDo != null;
+                if (!ActionToDo.next()) break;
                 String DBName = ActionToDo.getString("Name");
                 String DBDeadline = ActionToDo.getString("Deadline");
                 String DBDescription = ActionToDo.getString("Description");
@@ -231,48 +230,45 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
     public void Add_ToDo_Done(String s) throws SQLException {
 
         AddTextToDoTable l = new AddTextToDoTable(s);
-        ActionListener x = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String cmd = e.getActionCommand();
-                String Name = l.NameLabel.getText();
-                String Date = String.valueOf(l.DateTimeField.GetData());
-                String Description = l.DescriptionLabel.getText();
-                List<String> data = new LinkedList<String>(
-                        Arrays.asList(Name, Date, Description));
+        ActionListener x = e -> {
+            String cmd = e.getActionCommand();
+            String Name = l.NameLabel.getText();
+            String Date = String.valueOf(l.DateTimeField.GetData());
+            String Description = l.DescriptionLabel.getText();
 
-                switch (cmd) {
-                    case "Add":
-                        Statement statement = null;
+            List<String> data=new LinkedList<>(
+                    Arrays.asList(Name,Date,Description));
+
+            switch (cmd) {
+                case "Add":
+                    if (!LabelCheck.isEmpty(data)){
                         try {
-                            if (LabelCheck.isEmpty(data)) {
-                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
-                                        "Warning", JOptionPane.WARNING_MESSAGE);
-                                l.dispose();
-                            } else {
-                                statement = DBOperations.establish_connection();
-                                DBOperations.TodoDoneLoad(statement,
-                                        s, id, Name, Date, Description);
-                                if (s.compareTo("DoneAction") == 0) {
-                                    Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
-                                            Name, Date, Description});
-                                }
-
-                                if (s.compareTo("ToDoAction") == 0) {
-                                    ToDo_tableModel.insertRow(ToDo_jTable.getRowCount(), new Object[]{
-                                            Name, Date, Description});
-                                }
-                                RefreshInfoPanel();
-                                l.Close();
-                            }
-                            break;
+                            Statement statement = DBOperations.establish_connection();
+                            DBOperations.TodoDoneLoad(statement,
+                                    s, id, Name, Date, Description);
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
-                    case "Del":
+
+                        if (s.compareTo("DoneAction") == 0) {
+                            Done_tableModel.insertRow(Done_tableModel.getRowCount(), new Object[]{
+                                    Name, Date, Description});
+                        }
+
+                        if (s.compareTo("ToDoAction") == 0) {
+                            ToDo_tableModel.insertRow(ToDo_jTable.getRowCount(), new Object[]{
+                                    Name, Date, Description});
+                        }
+                        RefreshInfoPanel();
                         l.Close();
-                        break;
-                }
+                    }
+                    else {
+                        AddTextToDoTable.Error();
+                    }
+                    break;
+                case "Del":
+                    l.Close();
+                    break;
             }
         };
         l.Add_button.addActionListener(x);
@@ -282,7 +278,7 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
 
         String Name;
         String Date;
-        int index = 0;
+        int index;
         if (s.compareTo("DoneAction") == 0) {
             index = Done_jTable.getSelectedRow();
             if (index != -1) {
@@ -291,7 +287,6 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
                 Statement statement = DBOperations.establish_connection();
                 DBOperations.TodoDoneDelete(statement, s, Name, Date);
                 Done_tableModel.removeRow(index);
-                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
         }
         if (s.compareTo("ToDoAction") == 0) {
@@ -302,7 +297,6 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
                 Statement statement = DBOperations.establish_connection();
                 DBOperations.TodoDone_Delete(statement, s, Name, Date);
                 ToDo_tableModel.removeRow(index);
-                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
         }
 

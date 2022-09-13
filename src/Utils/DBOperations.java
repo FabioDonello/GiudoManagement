@@ -167,11 +167,11 @@ public class DBOperations {
 
 
     public static int projectRefresh(Statement statement,
-                                     String id, String project_name, String description)
+                                     String email, String id, String project_name, String description)
             throws SQLException {
         try {
             System.out.println("\n- Writing database...");
-            return project_Refresh(statement, id, project_name, description);
+            return project_Refresh(statement, email, id, project_name, description);
         } catch (SQLException e) {
             System.out.println("Something went wrong... " + e.getMessage());
             return 0;
@@ -179,11 +179,11 @@ public class DBOperations {
     }
 
     public static int project_Refresh(Statement statement,
-                                      String id, String project_name, String description)
+                                      String email, String id, String project_name, String description)
             throws SQLException {
 
         int a = statement.executeUpdate("REPLACE INTO Projects(Email,ID,Name,Description) " +
-                "VALUES('" + id + "', '" + project_name + "', '" + description + "')");
+                "VALUES( '" + email + "', '" + id + "', '" + project_name + "', '" + description + "')");
         return a;
     }
 
@@ -246,6 +246,21 @@ public class DBOperations {
     public static ResultSet check_Email(Statement statement) throws SQLException {
         return statement.executeQuery("SELECT Email FROM Users");
     }
+
+    public static ResultSet getEmail(Statement statement, String id) throws SQLException {
+        try {
+            System.out.println("\n- reading database...");
+            return get_Email(statement, id);
+        } catch (SQLException e) {
+            System.out.println("Something went wrong... " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static ResultSet get_Email(Statement statement, String id) throws SQLException {
+        return statement.executeQuery("SELECT Email FROM Projects WHERE ID = '" + id + "' ");
+    }
+
 
 
     public static int AddRevCostLoad(Statement statement,

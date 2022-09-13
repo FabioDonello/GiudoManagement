@@ -26,7 +26,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
     private final JTable jTable;
     private static DefaultTableModel tableModel = null;
 
-    String email;
+    static String email;
 
     public PreMainPage(String Email) throws SQLException {
 
@@ -42,6 +42,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         Button open_project_button = new Button(this, "Open project", "Open");
         Button create_table_button = new Button(this, "Create project", "Create");
         Button delete_table_button = new Button(this, "Delete project", "Delete");
+        //LogoutButton logoutButton = new LogoutButton(this);
         BackButton backButton = new BackButton(this);
 
 
@@ -94,6 +95,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         email = Email;
         UpLoadData();
+
     }
 
 
@@ -169,18 +171,21 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
             case "Delete":
                 try {
                     DeleteProject();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
             case "Open":
                 try {
                     OpenProject();
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
         }
 
 
@@ -229,7 +234,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
                         String id = (String) tableModel.getValueAt(firstRow, 0);
                         String name = (String) tableModel.getValueAt(firstRow, 1);
                         String description = (String) tableModel.getValueAt(firstRow, 2);
-                        DBOperations.projectRefresh(statement, id, name, description);
+                        DBOperations.projectRefresh(statement, email, id, name, description);
                         break;
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);

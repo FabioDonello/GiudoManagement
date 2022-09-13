@@ -134,6 +134,8 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
         InfoContPanel.add(TotalContLabel, BorderLayout.EAST);
 
 
+
+
         //Title Grid
 
         GrigliaBorder TitleGrid = new GrigliaBorder();
@@ -188,6 +190,7 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
         parent.setLocationRelativeTo(null);
         setVisible(true);
 
+
         id = ID;
         UpLoadData();
     }
@@ -232,38 +235,38 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
                 String Amount = l.ValueLabel.getText();
                 String Name = l.NameLabel.getText();
                 String Description = l.DescriptionLabel.getText();
-                List<String> data = new LinkedList<String>(
-                        Arrays.asList(Amount, Name, Description));
 
-                switch (cmd) {
+                List<String> data=new LinkedList<String>(
+                        Arrays.asList(Amount,Name,Description));
+
+                switch (cmd){
                     case "Add":
-                        Statement statement = null;
-                        try {
-                            if (LabelCheck.isEmpty(data)) {
-                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
-                                        "Warning", JOptionPane.WARNING_MESSAGE);
-                                l.dispose();
-                            } else {
+                        if (!LabelCheck.isEmpty(data)){
+                            Statement statement = null;
+                            try {
                                 statement = DBOperations.establish_connection();
                                 DBOperations.AddRevCostLoad(statement,
-                                        s, id, Amount + "€", Name, Description);
-
-                                if (s.compareTo("Cost") == 0) {
-                                    Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[]{
-                                            Amount + "€", Name, Description});
-                                    RefreshInfoPanel();
-                                }
-
-                                if (s.compareTo("Revenues") == 0) {
-                                    Revenues_tableModel.insertRow(Revenues_jTable.getRowCount(), new Object[]{
-                                            Amount + "€", Name, Description});
-                                    RefreshInfoPanel();
-                                }
-                                l.Close();
+                                        s,id,Amount+"€",Name,Description);
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
                             }
+
+                            if (s.compareTo("Cost")==0) {
+                                Cost_tableModel.insertRow(Cost_tableModel.getRowCount(), new Object[]{
+                                        Amount+"€",Name,Description});
+                                RefreshInfoPanel();
+                            }
+
+                            if (s.compareTo("Revenues")==0) {
+                                Revenues_tableModel.insertRow(Revenues_jTable.getRowCount(), new Object[]{
+                                        Amount+"€",Name,Description});
+                                RefreshInfoPanel();
+                            }
+                            l.Close();
                             break;
-                        } catch (SQLException ex) {
-                            throw new RuntimeException(ex);
+                        }
+                        else {
+                            AddTextToMoneyTable.Error();
                         }
                     case "Del":
                         l.Close();

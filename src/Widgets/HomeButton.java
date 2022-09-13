@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 
 public class HomeButton extends JLabel {
 
@@ -19,7 +20,11 @@ public class HomeButton extends JLabel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 parent.dispose();
-                new Dashboard(id);
+                try {
+                    new Dashboard(id);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
 
             @Override

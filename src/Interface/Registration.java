@@ -6,9 +6,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+
 import Utils.*;
 import Widgets.*;
 import Widgets.Button;
@@ -45,6 +47,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
 
         Text password_text = new Text("Password: ");
         password_field = new LabelTextField();
+        password_field.setToolTipText("Minimum 8 characters");
 
         Button loginbutton = new Button(this, "Sing in", "Sing in");
 
@@ -239,6 +242,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 
 }

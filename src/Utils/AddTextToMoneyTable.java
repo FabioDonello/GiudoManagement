@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddTextToMoneyTable extends JFrame implements ActionListener {
+public class AddTextToMoneyTable implements ActionListener  {
 
     public Button Add_button;
     public LabelTextField ValueLabel;
@@ -26,8 +26,8 @@ public class AddTextToMoneyTable extends JFrame implements ActionListener {
         Text DescriptionText = new Text("Description:");
 
         ValueLabel = new LabelTextField(1.0);
-        NameLabel = new LabelTextField("");
-        DescriptionLabel = new LabelTextField("");
+        NameLabel = new LabelTextField();
+        DescriptionLabel = new LabelTextField();
 
         Add_button = new Button(this, "Add", "Add");
         Button Delete_button = new Button(this, "Cancel", "Del");
@@ -55,7 +55,10 @@ public class AddTextToMoneyTable extends JFrame implements ActionListener {
         InfoFrame.dispose();
     }
 
-
+    public static void Error(){
+        JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
+                , JOptionPane.WARNING_MESSAGE);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
 

@@ -1,5 +1,9 @@
 package Interface;
 
+import Utils.AddTextToInventoryTable;
+import Utils.Constants;
+import Utils.DBOperations;
+import Utils.DownloadTable;
 import Utils.*;
 import Widgets.Button;
 import Widgets.Container;

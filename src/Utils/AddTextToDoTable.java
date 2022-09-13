@@ -9,7 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddTextToDoTable extends JFrame implements ActionListener {
+public class AddTextToDoTable implements ActionListener {
     public Button Add_button;
     public DateTextField DateTimeField;
     public LabelTextField NameLabel;
@@ -57,6 +57,11 @@ public class AddTextToDoTable extends JFrame implements ActionListener {
 
     public void Close() {
         InfoFrame.dispose();
+    }
+
+    public static void Error(){
+        JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
+                , JOptionPane.WARNING_MESSAGE);
     }
 
     @Override
