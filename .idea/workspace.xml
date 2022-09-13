@@ -5,14 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6aaa72e7-1715-4a3e-b436-4cb484708016" name="Changes" comment="fabio 4">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2e996be7-80de-496c-a2b7-89bb43448d23.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/2e996be7-80de-496c-a2b7-89bb43448d23.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Dashboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Dashboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Magazzino.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MainPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/MoneyFlow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti$GuestsTableModelListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ospiti.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$MyTableModelListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage$MyTableModelListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/PreMainPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Registration.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Registration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Staff.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket$4.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/Ticket.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Interface/ToDoList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextTicketsTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToDoTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToDoTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToGuestsTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToGuestsTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToInventoryTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToInventoryTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToMoneyTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToMoneyTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToStaffTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/AddTextToStaffTable.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTIONALE/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/MoneyFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/PreMainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/PreMainPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Staff.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Interface/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Interface/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Interface/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/AddTextToMoneyTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/AddTextToMoneyTable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utils/DATABASE" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DATABASE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utils/DBOperations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utils/DBOperations.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +63,12 @@
     <option name="BRANCH" value="main" />
   </component>
   <component name="Git.Rebase.Settings">
-    <option name="NEW_BASE" value="origin/Giuseppe" />
+    <option name="NEW_BASE" value="main" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Giuseppe" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,6 +119,7 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -114,6 +148,7 @@
       <workItem from="1662646550677" duration="1228000" />
       <workItem from="1662991076838" duration="1307000" />
       <workItem from="1663077876091" duration="7758000" />
+      <workItem from="1663096615672" duration="5179000" />
     </task>
     <task id="LOCAL-00002" summary="Guests done (only the editable checkbox cell is missing)">
       <created>1662475429575</created>

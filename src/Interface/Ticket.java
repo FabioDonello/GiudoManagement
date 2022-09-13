@@ -270,7 +270,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
 
         parent.add(contentView);
-        parent.setSize(1100, 600);
+        parent.setSize(1200, 600);
         parent.setLocationRelativeTo(null);
         setVisible(true);
 
@@ -315,7 +315,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
             switch (cmd) {
                 case "Add":
-                    if (LabelCheck.isEmpty(data)){
+                    if (!LabelCheck.isEmpty(data)){
                         try {
                             Statement statement = DBOperations.establish_connection();
                             DBOperations.TicketsLoad(statement, id, Name, Tickets, Description);
@@ -356,7 +356,7 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
         String Price = AddPriceLabel.getText();
         List<String> data=new LinkedList<>(
                 List.of(Price));
-        if (LabelCheck.isEmpty(data)) {
+        if (!LabelCheck.isEmpty(data)) {
             Statement statement = DBOperations.establish_connection();
             DBOperations.TicketsPriceLoad(statement, id, Price);
             PriceComboBox.addItem(Price);

@@ -2,6 +2,7 @@ package Interface;
 
 import Utils.AddTextToStaffTable;
 import Utils.DBOperations;
+import Utils.DownloadTable;
 import Utils.LabelCheck;
 import Widgets.Button;
 import Widgets.Container;
@@ -170,6 +171,9 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
+                break;
+            case "Download":
+                new DownloadTable(staffJTable);
                 break;
             default:
                 break;

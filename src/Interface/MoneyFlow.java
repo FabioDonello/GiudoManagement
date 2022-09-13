@@ -241,7 +241,7 @@ public class MoneyFlow extends PannelloBorder implements ActionListener, MouseLi
 
                 switch (cmd){
                     case "Add":
-                        if (LabelCheck.isEmpty(data)){
+                        if (!LabelCheck.isEmpty(data)){
                             Statement statement = null;
                             try {
                                 statement = DBOperations.establish_connection();

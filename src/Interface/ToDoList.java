@@ -241,7 +241,7 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
 
             switch (cmd) {
                 case "Add":
-                    if (LabelCheck.isEmpty(data)){
+                    if (!LabelCheck.isEmpty(data)){
                         try {
                             Statement statement = DBOperations.establish_connection();
                             DBOperations.TodoDoneLoad(statement,
@@ -287,7 +287,6 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
                 Statement statement = DBOperations.establish_connection();
                 DBOperations.TodoDoneDelete(statement, s, Name, Date);
                 Done_tableModel.removeRow(index);
-                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
         }
         if (s.compareTo("ToDoAction") == 0) {
@@ -298,7 +297,6 @@ public class ToDoList extends PannelloBorder implements ActionListener, MouseLis
                 Statement statement = DBOperations.establish_connection();
                 DBOperations.TodoDone_Delete(statement, s, Name, Date);
                 ToDo_tableModel.removeRow(index);
-                JOptionPane.showMessageDialog(null, "Selected row deleted successfully");
             }
         }
 

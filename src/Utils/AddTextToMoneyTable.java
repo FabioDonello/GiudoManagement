@@ -26,8 +26,8 @@ public class AddTextToMoneyTable implements ActionListener  {
         Text DescriptionText = new Text("Description:");
 
         ValueLabel = new LabelTextField(1.0);
-        NameLabel = new LabelTextField("");
-        DescriptionLabel = new LabelTextField("");
+        NameLabel = new LabelTextField();
+        DescriptionLabel = new LabelTextField();
 
         Add_button = new Button(this, "Add", "Add");
         Button Delete_button = new Button(this, "Cancel", "Del");

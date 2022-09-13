@@ -47,6 +47,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
 
         Text password_text = new Text("Password: ");
         password_field = new LabelTextField();
+        password_field.setToolTipText("Minimum 8 characters");
 
         Button loginbutton = new Button(this, "Sing in", "Sing in");
 
