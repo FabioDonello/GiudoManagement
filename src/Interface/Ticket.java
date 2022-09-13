@@ -1,6 +1,8 @@
 package Interface;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -268,6 +270,8 @@ public class Ticket extends PannelloBorder implements ActionListener, MouseListe
 
 
         parent.add(contentView);
+        parent.setSize(1100, 600);
+        parent.setLocationRelativeTo(null);
         setVisible(true);
 
         id = ID;

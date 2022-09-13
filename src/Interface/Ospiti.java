@@ -1,9 +1,6 @@
 package Interface;
 
-import Utils.AddTextToGuestsTable;
-import Utils.Constants;
-import Utils.DBOperations;
-import Utils.DownloadTable;
+import Utils.*;
 import Widgets.Button;
 import Widgets.Container;
 import Widgets.PannelloBorder;
@@ -21,6 +18,9 @@ import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class Ospiti extends PannelloBorder implements ActionListener, MouseListener {
@@ -73,8 +73,8 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
 
         //Panels
 
-        mainPanel = new PannelloBorder();
-        buttonPanel = new PannelloBorder();
+        mainPanel = new PannelloBorder(new GridLayout());
+        buttonPanel = new PannelloBorder(new GridLayout());
 
         Box button = Box.createHorizontalBox();
         button.add(Box.createHorizontalGlue());
@@ -91,8 +91,8 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
         Container contentView = new Container();
         contentView.add(mainPanel);
         contentView.add(buttonPanel);
-        parent.add(contentView, BorderLayout.CENTER);
-
+        parent.add(contentView);
+        parent.setLocationRelativeTo(null);
         setVisible(true);
 
         id = ID;
@@ -137,28 +137,34 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
                 String Email = addTextToGuestsTable.EmailLabel.getText();
                 String Phone = addTextToGuestsTable.PhoneLabel.getText();
                 String Confirm = String.valueOf(addTextToGuestsTable.checkConfirm.isSelected());
-                System.out.println(Confirm);
+                List<String> data = new LinkedList<String>(
+                        Arrays.asList(Name, Surname, Date, Email, Phone));
 
                 switch (cmd) {
                     case "Add":
                         Statement statement = null;
                         try {
-                            statement = DBOperations.establish_connection();
-                            DBOperations.Add_Guest(statement, "Guest", id, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
+                            if (LabelCheck.isEmpty(data)) {
+                                JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!",
+                                        "Warning", JOptionPane.WARNING_MESSAGE);
+                                addTextToGuestsTable.dispose();
+                            } else {
+                                statement = DBOperations.establish_connection();
+                                DBOperations.Add_Guest(statement, "Guest", id, Name, Surname, Date, Email, Phone, String.valueOf(Boolean.parseBoolean(Confirm)));
+                                if (Confirm.equals("true")) {
+                                    guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.TRUE});
+                                } else {
+                                    guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.FALSE});
+                                }
+                                addTextToGuestsTable.Close();
+                            }
+                            break;
                         } catch (SQLException ex) {
                             throw new RuntimeException(ex);
                         }
-
-                        if (Confirm.equals("true")) {
-                            guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.TRUE});
-                        } else {
-                            guestsTableModel.insertRow(guestsTableModel.getRowCount(), new Object[]{Name, Surname, Date, Email, Phone, Boolean.FALSE});
-                        }
-
-                        addTextToGuestsTable.Close();
-                        break;
                     case "Delete":
                         addTextToGuestsTable.Close();
+                        break;
                 }
             }
         };

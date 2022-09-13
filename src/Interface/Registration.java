@@ -28,7 +28,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public Registration() {
         super("Gestionale Eventi - Registrati");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
         //Creo
         BackButton backButton = new BackButton(this);
@@ -175,7 +175,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
 
                     if (LabelCheck.isEmpty(data)) {
                         JOptionPane.showMessageDialog(null, "Attention, you must fill in all fields correctly!", "Warning"
-                                , JOptionPane.WARNING_MESSAGE);
+                                ,JOptionPane.WARNING_MESSAGE);
                         dispose();
                         new Registration();
                         break;
@@ -241,6 +241,7 @@ public class Registration extends JFrame implements ActionListener, MouseListene
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 
 }

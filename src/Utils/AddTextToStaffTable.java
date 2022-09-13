@@ -27,12 +27,12 @@ public class AddTextToStaffTable extends JFrame implements ActionListener {
         Text TaskText = new Text("Task:");
         Text DescriptionText = new Text("Description:");
 
-        NameLabel = new LabelTextField();
-        TaskLabel = new LabelTextField();
-        DescriptionLabel = new LabelTextField();
+        NameLabel = new LabelTextField("");
+        TaskLabel = new LabelTextField("");
+        DescriptionLabel = new LabelTextField("");
 
         AddButton = new Button(this, "Aggiungi", "Add");
-        DeleteButton = new Button(this, "Rimuovi", "Delete");
+        DeleteButton = new Button(this, "Cancella", "Delete");
 
         JPanel InfoPanel = new JPanel(new GridLayout(4, 2));
 

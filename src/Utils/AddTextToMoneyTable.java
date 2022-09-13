@@ -16,6 +16,7 @@ public class AddTextToMoneyTable implements ActionListener  {
     public LabelTextField DescriptionLabel;
 
     public JDialog InfoFrame;
+
     public AddTextToMoneyTable() {
 
         InfoFrame = new JDialog();
@@ -24,14 +25,14 @@ public class AddTextToMoneyTable implements ActionListener  {
         Text NameText = new Text("Name:");
         Text DescriptionText = new Text("Description:");
 
-        ValueLabel = new LabelTextField();
-        NameLabel = new LabelTextField();
-        DescriptionLabel = new LabelTextField();
+        ValueLabel = new LabelTextField(1.0);
+        NameLabel = new LabelTextField("");
+        DescriptionLabel = new LabelTextField("");
 
-        Add_button = new Button( this,"Add", "Add");
-        Button Delete_button = new Button( this,"Cancel", "Del");
+        Add_button = new Button(this, "Add", "Add");
+        Button Delete_button = new Button(this, "Cancel", "Del");
 
-        JPanel InfoPanel = new JPanel(new GridLayout(4,2));
+        JPanel InfoPanel = new JPanel(new GridLayout(4, 2));
 
         InfoPanel.add(ValueText);
         InfoPanel.add(ValueLabel);
@@ -44,13 +45,13 @@ public class AddTextToMoneyTable implements ActionListener  {
 
 
         InfoFrame.add(InfoPanel);
-        InfoFrame.setSize(400,200);
+        InfoFrame.setSize(400, 200);
         InfoFrame.setLocationRelativeTo(null);
         InfoFrame.setVisible(true);
 
     }
 
-    public void Close(){
+    public void Close() {
         InfoFrame.dispose();
     }
 

@@ -3,6 +3,7 @@ package Utils;
 import Widgets.Button;
 import Widgets.LabelTextField;
 import Widgets.Text;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,13 +17,13 @@ public class AddTextToDoTable implements ActionListener {
 
     public JDialog InfoFrame;
 
-    public AddTextToDoTable(String s){
+    public AddTextToDoTable(String s) {
         InfoFrame = new JDialog();
 
         Text NameText = new Text("Name:");
         Text DateText = new Text("In Deadline:");
 
-        if (s.compareTo("DoneAction")==0){
+        if (s.compareTo("DoneAction") == 0) {
             DateText.setText("In date:");
         }
 
@@ -30,13 +31,13 @@ public class AddTextToDoTable implements ActionListener {
         DateTimeField.setVisible(true);
         Text DescriptionText = new Text("Description:");
 
-        NameLabel = new LabelTextField();
-        DescriptionLabel = new LabelTextField();
+        NameLabel = new LabelTextField("");
+        DescriptionLabel = new LabelTextField("");
 
-        Add_button = new Button( this,"Add", "Add");
-        Button Delete_button = new Button( this,"Cancel", "Del");
+        Add_button = new Button(this, "Add", "Add");
+        Button Delete_button = new Button(this, "Cancel", "Del");
 
-        JPanel InfoPanel = new JPanel(new GridLayout(4,2));
+        JPanel InfoPanel = new JPanel(new GridLayout(4, 2));
 
         InfoPanel.add(NameText);
         InfoPanel.add(NameLabel);
@@ -49,13 +50,12 @@ public class AddTextToDoTable implements ActionListener {
 
 
         InfoFrame.add(InfoPanel);
-        InfoFrame.setSize(450,200);
+        InfoFrame.setSize(450, 200);
         InfoFrame.setLocationRelativeTo(null);
         InfoFrame.setVisible(true);
     }
 
-    public void Close()
-    {
+    public void Close() {
         InfoFrame.dispose();
     }
 
@@ -67,7 +67,7 @@ public class AddTextToDoTable implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
-        if (cmd.compareTo("Del")==0){
+        if (cmd.compareTo("Del") == 0) {
             Close();
         }
 

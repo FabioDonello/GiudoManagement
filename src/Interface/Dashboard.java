@@ -93,7 +93,6 @@ public class Dashboard extends JFrame implements ActionListener, MouseListener {
         MenuGrid.setBorder(Constants.compoundBottom5);
         MainMenu.add(MenuGrid);
 
-
         DecisionMenu.setBackground(Constants.senapeColor);
         DecisionMenu.add(coinsButton);
         DecisionMenu.add(usersButton);

@@ -58,5 +58,20 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-tests.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7.jar!/" />
+        </CLASSES>
+        <JAVADOC>
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-javadoc.jar!/" />
+        </JAVADOC>
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-sources.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/checkemail/commons-validator-1.7/commons-validator-1.7-test-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -24,7 +24,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
     public Login() {
         super("Gestionale Eventi - Accedi");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
 
         //Creo
@@ -33,7 +33,6 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         Text subText = new Text("Accedi utilizzando le credenziali utilizzate al momento della registrazione");
 
         Text email_text = new Text("Email:    ");
-
         email_field = new LabelTextField();
         email_field.setBorder(Constants.compoundBottom20);
 
@@ -118,7 +117,7 @@ public class Login extends JFrame implements ActionListener, MouseListener {
         Statement statement = DBOperations.establish_connection();
         String email = email_field.getText();
         String password = String.valueOf(password_field.getPassword());
-        ResultSet ris = DBOperations.users_upload(statement);
+        ResultSet ris = DBOperations.usersUpload(statement);
         if (ris == null) {
             System.out.println("Caricamento users non riuscito");
             dispose();
@@ -192,5 +191,6 @@ public class Login extends JFrame implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
 
     }
+
 
 }

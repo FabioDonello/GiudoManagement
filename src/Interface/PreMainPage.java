@@ -42,7 +42,8 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         Button open_project_button = new Button(this, "Open project", "Open");
         Button create_table_button = new Button(this, "Create project", "Create");
         Button delete_table_button = new Button(this, "Delete project", "Delete");
-        LogoutButton logoutButton = new LogoutButton(this);
+        //LogoutButton logoutButton = new LogoutButton(this);
+        BackButton backButton = new BackButton(this);
 
 
         tableModel = new DefaultTableModel() {
@@ -68,12 +69,12 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
         JScrollPane jScrollPane = new JScrollPane(jTable);
 
         //Panel
-        PannelloBorder LogoPanel = new PannelloBorder(new GridLayout(3, 3));
+        JPanel LogoPanel = new JPanel(new GridLayout(3, 3));
         PannelloBorder ButtonPanel = new PannelloBorder(new GridLayout(3, 2));
 
-        LogoPanel.add(headerText, BorderLayout.NORTH);
-        LogoPanel.add(subText, BorderLayout.SOUTH);
-        LogoPanel.add(logoutButton, BorderLayout.EAST);
+        LogoPanel.add(backButton);
+        LogoPanel.add(headerText);
+        LogoPanel.add(subText);
 
         ButtonPanel.add(open_project_button, BorderLayout.WEST);
         ButtonPanel.add(create_table_button, BorderLayout.CENTER);
@@ -94,6 +95,7 @@ public class PreMainPage extends JFrame implements ActionListener, MouseListener
 
         email = Email;
         UpLoadData();
+
     }
 
 
