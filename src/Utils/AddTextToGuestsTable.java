@@ -41,8 +41,8 @@ public class AddTextToGuestsTable extends JFrame implements ActionListener {
         PhoneLabel = new LabelTextField(1);
         checkConfirm=new JCheckBox();
 
-        AddButton = new Button(this, "Aggiungi", "Add");
-        DeleteButton = new Button(this, "Cancella", "Delete");
+        AddButton = new Button(this, "Add", "Add");
+        DeleteButton = new Button(this, "Cancel", "Delete");
 
         JPanel InfoPanel = new JPanel(new GridLayout(7, 2));
 

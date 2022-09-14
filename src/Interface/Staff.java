@@ -34,9 +34,9 @@ public class Staff extends PannelloBorder implements ActionListener, MouseListen
     public Staff(JFrame parent, String ID) throws SQLException {
 
         //Create
-        Button addStaff = new Button(this, "Aggiungi Personale", "Add");
-        Button deleteStaff = new Button(this, "Rimuovi Personale", "Delete");
-        Button downloadTable = new Button(this, "Scarica", "Download");
+        Button addStaff = new Button(this, "Add", "Add");
+        Button deleteStaff = new Button(this, "Remove", "Delete");
+        Button downloadTable = new Button(this, "Download", "Download");
 
         staffTableModel = new DefaultTableModel() {
 

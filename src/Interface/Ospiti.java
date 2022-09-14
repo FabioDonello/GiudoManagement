@@ -34,9 +34,9 @@ public class Ospiti extends PannelloBorder implements ActionListener, MouseListe
     public Ospiti(JFrame parent, String ID) throws SQLException {
 
         //Create
-        Button addGuests = new Button(this, "Aggiungi ospite", "Add");
-        Button deleteGuests = new Button(this, "Rimuovi ospite", "Delete");
-        Button downloadTable = new Button(this, "Scarica", "Download");
+        Button addGuests = new Button(this, "Add", "Add");
+        Button deleteGuests = new Button(this, "Remove", "Delete");
+        Button downloadTable = new Button(this, "Download", "Download");
 
         guestsTableModel = new DefaultTableModel() {
             public Class<?> getColumnClass(int column) {

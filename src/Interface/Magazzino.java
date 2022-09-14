@@ -34,9 +34,9 @@ public class Magazzino extends PannelloBorder implements ActionListener, MouseLi
     public Magazzino(JFrame parent, String ID) throws SQLException {
 
         //Create
-        Button AddObject = new Button(this, "Aggiungi oggetto", "Add");
-        Button DeleteObject = new Button(this, "Rimuovi oggetto", "Delete");
-        Button DownloadTable = new Button(this, "Scarica", "Download");
+        Button AddObject = new Button(this, "Add", "Add");
+        Button DeleteObject = new Button(this, "Remove", "Delete");
+        Button DownloadTable = new Button(this, "Download", "Download");
 
         inventoryTableModel = new DefaultTableModel() {
             public boolean isCellEditable(int row, int col) {
